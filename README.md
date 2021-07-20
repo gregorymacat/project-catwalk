@@ -1,7 +1,8 @@
 # project-catwalk
-Project Overview
-Table of Contents
+
 <ul>
+  <li>Project Overview</li>
+  <li>Table of Contents</li>
   <li>Description</li>
   <li>Installation</li>
   <li>Usage</li>
