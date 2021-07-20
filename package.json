@@ -1,0 +1,33 @@
+{
+  "name": "project-catwalk",
+  "version": "1.0.0",
+  "description": "<ul>   <li>Project Overview</li>   <li>Table of Contents</li>   <li>Description</li>   <li>Installation</li>   <li>Usage</li>   <li>Team Members</li> </ul>",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && node server.js",
+    "build": "webpack -d –watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mount-Doom/project-catwalk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mount-Doom/project-catwalk/issues"
+  },
+  "homepage": "https://github.com/Mount-Doom/project-catwalk#readme",
+  "dependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.8",
+    "@babel/preset-react": "^7.14.5",
+    "axios": "^0.21.1",
+    "babel-loader": "^8.2.2",
+    "express": "^4.17.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.7.2"
+  }
+}
