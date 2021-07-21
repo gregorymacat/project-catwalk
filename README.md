@@ -35,7 +35,11 @@ Top-most module on Product Detail Page, divided into several pieces:
     * Quantity Selector
 
 ## Ratings & Reviews
-
+  * Reviews List
+  * Sort Options
+  * Rating Breakdown
+  * Filtering Reviews
+  * Keyword Search
 
 ## Questions and Answers
 * The functionality contained within this module can be divided into several pieces:
@@ -82,11 +86,11 @@ Top-most module on Product Detail Page, divided into several pieces:
 
 ## Related Items and Comparisons
 Displays two lists: a list of related products to the one being viewed, and the second will be an outfit list that the user has saved while shopping.
-  * Related Products
+  ### Related Products
     * Carousel list of Product Cards
     * Action Button
     * Comparison Modal
-  * Your Outfit
+  ### Your Outfit
     * Carousel list of Product Cards, but only the ones the user selected to be in an outfit
     * Add to Outfit Card
 
