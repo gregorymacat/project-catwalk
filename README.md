@@ -1,7 +1,8 @@
 # Project Catwalk
 
-# Overview
+# Project Overview
 Our outdated client-facing retail web-portal must be updated to modern standards in order to avoid harming sales figures. Project Catwalk comprises a redesign of the retail portal and a modernization of the website to ensure the business succeeds.
+
 
 # Table of Contents
 <details open="open">
@@ -17,11 +18,11 @@ Our outdated client-facing retail web-portal must be updated to modern standards
     </ol>
 </details>
 
-# Description
 
-# Overview
+# Description
+## Overview
 Top-most module on Product Detail Page, divided into several pieces:
-## Product Information
+### Product Information
   * Star rating
   * Product Category
   * Product Title
@@ -102,9 +103,11 @@ Displays two lists: a list of related products to the one being viewed, and the 
    ```sh
    npm start
 
+
 # Usage
 Use this app to browse a certain products through the ecommerce website. Actions include looking at different sytles, selecting different sizes,
 leaving a review,asking a question, or responding to one.
+
 
 # Team Members
 * Sumit Patel
