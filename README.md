@@ -5,7 +5,6 @@ Our outdated client-facing retail web-portal must be updated to modern standards
 
 # Table of Contents
 <details open="open">
-  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
     <ol>
       <ul>
         <li> <a href="#Overview">Overview </li>
