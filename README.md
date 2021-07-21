@@ -7,12 +7,14 @@ Our outdated client-facing retail web-portal must be updated to modern standards
 <details open="open">
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
     <ol>
-      <li> <a href="#Overview">Overview </li>
-      <li> <a href="#Table of Contents">Table of Contents</li>
-      <li> <a href="#Description">Description </li>
-      <li> <a href="#Installation">Installation </li>
-      <li> <a href="#Usage">Usage </li>
-      <li> <a href="#Team Members">Team Members </li>
+      <ul>
+        <li> <a href="#Overview">Overview </li>
+        <li> <a href="#Table of Contents">Table of Contents</li>
+        <li> <a href="#Description">Description </li>
+        <li> <a href="#Installation">Installation </li>
+        <li> <a href="#Usage">Usage </li>
+        <li> <a href="#Team Members">Team Members </li>
+      </ul>
     </ol>
 </details>
 
@@ -106,9 +108,9 @@ Use this app to browse a certain products through the ecommerce website. Actions
 leaving a review,asking a question, or responding to one.
 
 # Team Members
-*Sumit Patel
-*Greg Macat
-*Griffin Georgiadis
-*Melika Campbell
+* Sumit Patel
+* Greg Macat
+* Griffin Georgiadis
+* Melika Campbell
 
 
