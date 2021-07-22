@@ -4,7 +4,7 @@
   "description": "<ul>   <li>Project Overview</li>   <li>Table of Contents</li>   <li>Description</li>   <li>Installation</li>   <li>Usage</li>   <li>Team Members</li> </ul>",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && node server.js",
+    "start": "npm run build && node ./server/index.js",
     "build": "webpack -d –watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
