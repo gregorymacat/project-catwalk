@@ -1,40 +1,38 @@
-.recommended {
-  /* display: inline; */
-  border: 1px solid;
-  background-color: aquamarine;
+.related {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin: 0 auto;
   padding: 5px;
   width: 75%;
   height: 100px;
-  /* overflow: hidden; */
 }
 .arrow-left {
   display: inline;
-  float: left;
   padding-top: 25px;
   padding-bottom: 25px;
 }
-/*
-LOOK INTO SETTING FLEX AS THE DISPLAY TO CENTER THE PRODUCTS
-MIGHT HAVE TO SWITCH OUT FLOAT BUT COULD INSTEAD USE FLEX FOR
-THE ARROWS AS WELL.
-*/
 .card-container {
-  display: inline;
-  float: left;
-  width: 75%;
-  /* margin: 0 auto; */
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  width: 80%;
   text-align: center;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  border: 1px solid;
+  background-color: aquamarine;
 }
 .product-card {
   display: inline-block;
   margin: 0.75% 0.5%;
+  padding: 5px;
+  width: 15%;
+  border: 1px solid;
+  border-radius: 5px;
+  background-color: silver;
 }
 .arrow-right {
   display: inline;
-  float: right;
   padding-top: 25px;
   padding-bottom: 25px;
 }

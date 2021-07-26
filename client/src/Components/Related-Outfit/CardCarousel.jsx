@@ -5,6 +5,7 @@ import React from 'react';
 //Right arrow, scrolls items to the right
 
 var CardCarousel = function(props){
+  console.log(props.products);
   return(
     <React.Fragment>
       {/* <Arrow direction='left'/> */}
@@ -14,7 +15,13 @@ var CardCarousel = function(props){
       <div className='card-container'>
         {
           props.products.map((product) => {
-            return <div key={product.id} className='product-card'>{product.name}</div>
+            return (
+            <div key={product.id} className='product-card'>
+              <p>{product.category}</p>
+              <p>{product.name}</p>
+              <p>{product.default_price}</p>
+            </div>
+            )
           })
         }
       </div>

@@ -9,7 +9,7 @@ class RelatedOutfit extends React.Component {
   render(){
     console.log(this.props.products);
     return(
-      <div className='recommended'>
+      <div className='related'>
         <CardCarousel products={this.props.products}/>
       </div>
     )
