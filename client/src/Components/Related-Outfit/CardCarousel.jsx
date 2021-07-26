@@ -6,19 +6,23 @@ import React from 'react';
 
 var CardCarousel = function(props){
   return(
-    <div>
-      {/* <Arrow direction="left"/> */}
-      <div className="arrow-left"></div>
-      <div>
+    <React.Fragment>
+      {/* <Arrow direction='left'/> */}
+      <div className='arrow-left'>
+        <img src='Assets/Icons/ArrowBack/2x/outline_arrow_back_black_24dp.png'></img>
+      </div>
+      <div className='card-container'>
         {
           props.products.map((product) => {
             return <div key={product.id} className='product-card'>{product.name}</div>
           })
         }
       </div>
-      <div className="arrow-right"></div>
+      <div className='arrow-right'>
+        <img src='Assets/Icons/ArrowForward/2x/outline_arrow_forward_black_24dp.png'></img>
+      </div>
       {/* <Arrow direction='right'/> */}
-    </div>
+    </React.Fragment>
   )
 }
 
