@@ -1,4 +1,5 @@
 import React from 'react';
+import CardCarousel from './CardCarousel.jsx';
 
 class RelatedOutfit extends React.Component {
   constructor(props){
@@ -9,11 +10,7 @@ class RelatedOutfit extends React.Component {
     console.log(this.props.products);
     return(
       <div>
-        {
-          this.props.products.map((product) => {
-            return <div key={product.id}>{product.name}</div>
-          })
-        }
+        <CardCarousel products={products}/>
       </div>
     )
   }
