@@ -1,89 +1,35 @@
 var express = require('express');
 var router = express.Router();
-var {find, add, update} = require('./controllers.js');
+var {findToDo, addToDo, updateToDo} = require('./Controllers/helpers.js');
 
 // PRODUCTS API
-router.get('/api/products', (req, res) => {
-  find('/products', (err, data) => {
-    if (err) {
-      console.log('!!!ERROR: express router \"/routers.js\"');
-      return res.end();
-    }
-    res.send(data);
-  });
-});
-router.get('/api/products/:product_id', (req, res) => {
-  find(`/products/${req.params.product_id}/`, (err, data) => {
-    if (err) {
-      console.log('!!!ERROR: express router \"/routers.js\"');
-      return res.end();
-    }
-    res.send(data);
-  });
-});
-router.get('/api/products/:product_id/styles', (req, res) => {
-  find(`/products/${req.params.product_id}/styles`, (err, data) => {
-    if (err) {
-      console.log('!!!ERROR: express router \"/routers.js\"');
-      return res.end();
-    }
-    res.send(data);
-  });
-});
-router.get('/api/products/:product_id/related', (req, res) => {
-  res.send();
-});
+router.get('/products', findToDo);
+router.get('/products/:product_id', findToDo);
+router.get('/products/:product_id/styles', findToDo);
+router.get('/products/:product_id/related', findToDo);
+
 // REVIEWS API
-router.get('/api/reviews', (req, res) => {
-  res.send();
-});
-router.get('/api/reviews/meta', (req, res) => {
-  res.send();
-});
-router.post('/api/reviews', (req, res) => {
-  res.send();
-});
-router.put('/api/reviews/:review_id/helpful', (req, res) => {
-  res.send();
-});
-router.put('/api/reviews/:review_id/report', (req, res) => {
-  res.send();
-});
+router.get('/reviews', findToDo);
+router.get('/reviews/meta', findToDo);
+router.post('/reviews', addToDo);
+router.put('/reviews/:review_id/helpful', updateToDo);
+router.put('/reviews/:review_id/report', updateToDo);
+
 // QA API
-router.get('/qa/questions', (req, res) => {
-  res.send();
-});
-router.get('/qa/questions/:question_id/answers', (req, res) => {
-  res.send();
-});
-router.post('/qa/questions', (req, res) => {
-  res.send();
-});
-router.post('/qa/questions/:question_id/answers', (req, res) => {
-  res.send();
-});
-router.put('/qa/questions/:question_id/helpful', (req, res) => {
-  res.send();
-});
-router.put('/qa/questions/:question_id/report', (req, res) => {
-  res.send();
-});
-router.put('/qa/answers/:answer_id/helpful', (req, res) => {
-  res.send();
-});
-router.put('/qa/answers/:answer_id/report', (req, res) => {
-  res.send();
-});
+router.get('/qa/questions', findToDo);
+router.get('/qa/questions/:question_id/answers', findToDo);
+router.post('/qa/questions', addToDo);
+router.post('/qa/questions/:question_id/answers', addToDo);
+router.put('/qa/questions/:question_id/helpful', updateToDo);
+router.put('/qa/questions/:question_id/report', updateToDo);
+router.put('/qa/answers/:answer_id/helpful', updateToDo);
+router.put('/qa/answers/:answer_id/report', updateToDo);
+
 // CART API
-router.get('/api/cart', (req, res) => {
-  res.send();
-});
-router.post('/api/cart', (req, res) => {
-  res.send();
-});
+router.get('/cart', findToDo);
+router.post('/cart', addToDo);
+
 // INTERACTIONS API
-router.post('/api/interactions', (req, res) => {
-  res.send();
-});
+router.post('/interactions', addToDo);
 
 module.exports = router;
