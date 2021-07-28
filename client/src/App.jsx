@@ -5,14 +5,14 @@ import {getOneProduct} from '../Controllers/general.js';
 import RelatedOutfit from './Components/Related-Outfit/RelatedOutfit';
 //import QuestionsAnswers from './Components/Questions-Answers';
 import RatingsReviews from './Components/Shared/Stars';
-import testData from './dummy-data.js';
+import testProduct from './dummy-product.js';
 
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product: [testData]
+      product: [testProduct]
     }
   }
 
@@ -21,7 +21,6 @@ class App extends React.Component {
       if (err) {
         return console.log('Unable to get a product: ', err)
       }
-      //console.log('GOT NEW DATA FOR APP: ', results);
       this.setState({product: results});
     })
   }
