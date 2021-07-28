@@ -1,4 +1,5 @@
 import React from 'react';
+import RelatedCarousel from './RelatedCarousel.jsx';
 
 class RelatedOutfit extends React.Component {
   constructor(props){
@@ -8,12 +9,9 @@ class RelatedOutfit extends React.Component {
   render(){
     console.log(this.props.products);
     return(
-      <div>
-        {
-          this.props.products.map((product) => {
-            return <div key={product.id}>{product.name}</div>
-          })
-        }
+      <div className='related'>
+        <RelatedCarousel products={this.props.products}
+          handleClick={this.handleClick}/>
       </div>
     )
   }
