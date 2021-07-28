@@ -24,6 +24,16 @@ var TableModal = function(props) {
             <td><p>Another Thing</p></td>
             <td><p>More Second Item Details</p></td>
           </tr>
+          <tr>
+            <td><p>No way there's more</p></td>
+            <td><p>Cooler Thing</p></td>
+            <td><p>This is insane there's more</p></td>
+          </tr>
+          <tr>
+            <td><p>It just keeps on going</p></td>
+            <td><p>Less Cool Thing</p></td>
+            <td><p>I can't believe it at this point</p></td>
+          </tr>
         </tbody>
       </table>
     </div>

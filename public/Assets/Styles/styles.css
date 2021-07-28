@@ -16,6 +16,8 @@
   border: 1px solid;
   border-radius: 5px;
   background-color: darkgray;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .compare-table #close {
   margin: 0.5% 98%;
