@@ -2,7 +2,7 @@ var axios = require('axios');
 
 module.exports = {
   getProducts: function(callback) {
-    axios.get('/api/products')
+    axios.get('/products')
       .then((response) => {
         callback(response.data);
       })
