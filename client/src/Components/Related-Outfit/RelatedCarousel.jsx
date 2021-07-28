@@ -2,16 +2,19 @@ import React from 'react';
 import ProductCards from './ProductCards.jsx';
 import ArrowLeft from './ArrowLeft.jsx';
 import ArrowRight from './ArrowRight.jsx';
+import TableModal from './TableModal.jsx';
 
 class RelatedCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       displayIndex: 0,
+      displayModal: false,
       leftVisible: false,
       rightVisible: true
     }
-    this.handleArrowClick = this.handleArrowClick.bind(this)
+    this.handleArrowClick = this.handleArrowClick.bind(this);
+    this.handleActionClick = this.handleActionClick.bind(this);
   }
 
   handleArrowClick(event) {
@@ -44,6 +47,15 @@ class RelatedCarousel extends React.Component {
       }
     }
   }
+  handleActionClick(event) {
+    var id = event.target.id;
+    console.log(id);
+    if (id === 'compare') {
+      this.setState({displayModal: true});
+    } else if (id === 'close') {
+      this.setState({displayModal: false});
+    }
+  }
 
   displayArrow(direction) {
     if (direction === 'left') {
@@ -55,14 +67,19 @@ class RelatedCarousel extends React.Component {
     }
   }
 
+
   render () {
     const startIndex = this.state.displayIndex;
     const allProducts = this.props.products;
+    const modal = this.state.displayModal ?
+                  <TableModal click={this.handleActionClick}/> : <div></div>
     return (
       <React.Fragment>
+        {modal}
         {this.displayArrow('left')}
         <div className='card-container'>
-          <ProductCards startIndex={startIndex} allProducts={allProducts}/>
+          <ProductCards startIndex={startIndex} allProducts={allProducts}
+          click={this.handleActionClick}/>
         </div>
         {this.displayArrow('right')}
       </React.Fragment>
