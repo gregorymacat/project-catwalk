@@ -7,7 +7,7 @@
   width: 75%;
   height: 10%;
 }
-.compare-table {
+.modal-body {
   margin: 0 15%;
   position: fixed;
   z-index: 1;
@@ -16,26 +16,28 @@
   border: 1px solid;
   border-radius: 5px;
   background-color: darkgray;
+}
+.table {
   overflow-y: auto;
   overflow-x: hidden;
 }
-.compare-table #close {
+.table #close {
   margin: 0.5% 98%;
 }
-.compare-table #close:hover {
+.table #close:hover {
   color: rgba(207, 8, 8, 0.842);
 }
-.compare-table table {
+.table table {
   margin: 2% auto;
   width: 80%;
   height: 80%;
 }
-.compare-table table, thead, td {
+.table table, thead, td {
   border: 2px solid #ddd;
   border-collapse: collapse;
   text-align: center;
 }
-.compare-table thead, td {
+.table thead, td {
   padding: 4px;
 }
 .arrow-left {

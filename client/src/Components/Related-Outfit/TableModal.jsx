@@ -2,7 +2,7 @@ import React from 'react';
 
 var TableModal = function(props) {
   return (
-    <div className='compare-table'>
+    <div className='modal-body table'>
       <span id='close' className="fa fa-times"
       onClick={props.click}></span>
       <table>
