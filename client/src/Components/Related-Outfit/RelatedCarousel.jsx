@@ -1,18 +1,21 @@
 import React from 'react';
+import ProductCards from './ProductCards.jsx';
+import ArrowLeft from './ArrowLeft.jsx';
+import ArrowRight from './ArrowRight.jsx';
+import TableModal from './TableModal.jsx';
 
-//Display 5 cards at a time as a horizontal list
-//Left arrow, scrolls items to the left
-//Right arrow, scrolls items to the right
 
 class RelatedCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       displayIndex: 0,
+      displayModal: false,
       leftVisible: false,
       rightVisible: true
     }
-    this.handleArrowClick = this.handleArrowClick.bind(this)
+    this.handleArrowClick = this.handleArrowClick.bind(this);
+    this.handleActionClick = this.handleActionClick.bind(this);
   }
 
   handleArrowClick(event) {
@@ -45,71 +48,43 @@ class RelatedCarousel extends React.Component {
       }
     }
   }
+  handleActionClick(event) {
+    var id = event.target.id;
+    //console.log(id);
+    if (id === 'compare') {
+      this.setState({displayModal: true});
+    } else if (id === 'close') {
+      this.setState({displayModal: false});
+    }
+  }
 
   displayArrow(direction) {
     if (direction === 'left') {
-      if (this.state.leftVisible) {
-        return (
-          <div className='arrow-left'>
-            <img src='Assets/Icons/ArrowBack/2x/outline_arrow_back_black_24dp.png'
-            onClick={this.handleArrowClick} id="arrow-back"></img>
-          </div>
-        )
-      } else {
-        return <div className='arrow-left'></div>
-      }
+      if (this.state.leftVisible) { return <ArrowLeft click={this.handleArrowClick}/> }
+      return <div className='arrow-left'></div>
     } else if (direction === 'right') {
-      if (this.state.rightVisible) {
-        return (
-          <div className='arrow-right'>
-          <img src='Assets/Icons/ArrowForward/2x/outline_arrow_forward_black_24dp.png'
-            onClick={this.handleArrowClick} id="arrow-forward"></img>
-        </div>
-        )
-      } else {
-        return <div className='arrow-right'></div>
-      }
+      if (this.state.rightVisible) { return <ArrowRight click={this.handleArrowClick}/> }
+      return <div className='arrow-right'></div>
     }
   }
 
   render () {
     const startIndex = this.state.displayIndex;
-    const allProducts = this.props.products;
-    //console.log(this.props.products);
-    return(
+    const products = this.props.products;
+    const modal = this.state.displayModal ?
+                  <TableModal click={this.handleActionClick}/> : <div></div>
+    return (
       <React.Fragment>
-        {/* <Arrow direction='left'/> */}
+        {modal}
         {this.displayArrow('left')}
         <div className='card-container'>
-          {chooseCards(startIndex, allProducts)}
+          <ProductCards startIndex={startIndex} allProducts={products}
+          click={this.handleActionClick}/>
         </div>
         {this.displayArrow('right')}
-        {/* <Arrow direction='right'/> */}
       </React.Fragment>
     )
   }
-}
-
-var chooseCards = function(index, products) {
-  var displayCards = [];
-  var i = index;
-  var onDisplay = 0;
-  if (products.length === 0) {
-    return displayCards;
-  }
-  while (onDisplay < 4 && i <= products.length - 1) {
-    var currentProduct = products[i];
-    displayCards.push(
-      <div key={currentProduct.id} className='product-card'>
-        <p>{currentProduct.category}</p>
-        <p>{currentProduct.name}</p>
-        <p>{currentProduct.default_price}</p>
-      </div>
-    );
-    onDisplay++;
-    i++;
-  }
-  return displayCards;
 }
 
 export default RelatedCarousel;

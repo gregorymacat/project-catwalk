@@ -5,7 +5,40 @@
   margin: 0 auto;
   padding: 5px;
   width: 75%;
-  height: 100px;
+  height: 10%;
+}
+.modal-body {
+  margin: 0 15%;
+  position: fixed;
+  z-index: 1;
+  width: 40%;
+  height: 25%;
+  border: 1px solid;
+  border-radius: 5px;
+  background-color: darkgray;
+}
+.table {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.table #close {
+  margin: 0.5% 98%;
+}
+.table #close:hover {
+  color: rgba(207, 8, 8, 0.842);
+}
+.table table {
+  margin: 2% auto;
+  width: 80%;
+  height: 80%;
+}
+.table table, thead, td {
+  border: 2px solid #ddd;
+  border-collapse: collapse;
+  text-align: center;
+}
+.table thead, td {
+  padding: 4px;
 }
 .arrow-left {
   display: inline;
@@ -30,7 +63,15 @@
   border: 1px solid;
   border-radius: 5px;
   background-color: silver;
+}
+.product-card p {
   text-align: center;
+}
+.product-card .action {
+  margin: 0 90%;
+}
+.action:hover {
+  color: cyan;
 }
 .arrow-right {
   display: inline;
