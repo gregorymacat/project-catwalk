@@ -4,6 +4,7 @@ import ArrowLeft from './ArrowLeft.jsx';
 import ArrowRight from './ArrowRight.jsx';
 import TableModal from './TableModal.jsx';
 
+
 class RelatedCarousel extends React.Component {
   constructor(props) {
     super(props);
@@ -49,7 +50,7 @@ class RelatedCarousel extends React.Component {
   }
   handleActionClick(event) {
     var id = event.target.id;
-    console.log(id);
+    //console.log(id);
     if (id === 'compare') {
       this.setState({displayModal: true});
     } else if (id === 'close') {
@@ -67,10 +68,9 @@ class RelatedCarousel extends React.Component {
     }
   }
 
-
   render () {
     const startIndex = this.state.displayIndex;
-    const allProducts = this.props.products;
+    const products = this.props.products;
     const modal = this.state.displayModal ?
                   <TableModal click={this.handleActionClick}/> : <div></div>
     return (
@@ -78,7 +78,7 @@ class RelatedCarousel extends React.Component {
         {modal}
         {this.displayArrow('left')}
         <div className='card-container'>
-          <ProductCards startIndex={startIndex} allProducts={allProducts}
+          <ProductCards startIndex={startIndex} allProducts={products}
           click={this.handleActionClick}/>
         </div>
         {this.displayArrow('right')}

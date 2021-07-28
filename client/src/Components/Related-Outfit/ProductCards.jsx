@@ -1,13 +1,16 @@
 import React from 'react';
 
 var ProductCards = function(props) {
+  //console.log('Product cards rendering: ', props.allProducts);
   var cards = chooseCards(props.startIndex, props.allProducts);
+
   return (
     <React.Fragment>
       {
         cards.map((card) => {
           return (
-            <div key={card.id} className='product-card'>
+            <div key={card.id + (Math.floor(Math.random() * 100) + 1).toString()}
+             className='product-card'>
               <span id='compare' className='action fa fa-star'
                onClick={props.click}></span>
               <p>{card.category}</p>
