@@ -10,8 +10,7 @@ class RelatedOutfit extends React.Component {
     console.log(this.props.products);
     return(
       <div className='related'>
-        <RelatedCarousel products={this.props.products}
-          handleClick={this.handleClick}/>
+        <RelatedCarousel products={this.props.products}/>
       </div>
     )
   }
