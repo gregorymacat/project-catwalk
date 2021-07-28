@@ -4,7 +4,7 @@ import {getProducts} from '../Controllers/general.js';
 //import Overview from './Components/Overview';
 import RelatedOutfit from './Components/Related-Outfit/RelatedOutfit';
 //import QuestionsAnswers from './Components/Questions-Answers';
-//import RatingsReviews from './Components/Ratings-Reviews';
+import RatingsReviews from './Components/Shared/Stars';
 
 class App extends React.Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class App extends React.Component {
         {/* <Overview/> */}
         <RelatedOutfit products={this.state.products}/>
         {/* <QuestionsAnswers/> */}
-        {/* <RatingsReviews/> */}
+        <RatingsReviews/>
       </div>
     );
   }
