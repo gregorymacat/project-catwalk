@@ -8,6 +8,7 @@ var ProductCards = function(props) {
         cards.map((card) => {
           return (
             <div key={card.id} className='product-card'>
+              <span className="action fa fa-star"></span>
               <p>{card.category}</p>
               <p>{card.name}</p>
               <p>{card.default_price}</p>
