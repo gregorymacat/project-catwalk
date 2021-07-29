@@ -4,13 +4,15 @@ import {getProducts} from '../Controllers/general.js';
 //import Overview from './Components/Overview';
 import RelatedOutfit from './Components/Related-Outfit/RelatedOutfit';
 //import QuestionsAnswers from './Components/Questions-Answers';
-import RatingsReviews from './Components/Shared/Stars';
+import StarsForm from './Components/Shared/StarsForm';
+import StarsDisplay from './Components/Shared/StarsDisplay';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: []
+      products: [],
+      starsRating: 1.8
     }
   }
 
@@ -27,7 +29,8 @@ class App extends React.Component {
         {/* <Overview/> */}
         <RelatedOutfit products={this.state.products}/>
         {/* <QuestionsAnswers/> */}
-        <RatingsReviews/>
+        <StarsDisplay starsData={this.state.starsRating}/>
+        {/* <StarsForm/> */}
       </div>
     );
   }

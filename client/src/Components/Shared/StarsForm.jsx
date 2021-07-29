@@ -1,11 +1,11 @@
 import React from 'react';
 
-class Stars extends React.Component {
+class StarsForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: false,
-      numberOfStarts: undefined,
+      numberOfStars: 0,
+      starSelected: undefined,
       starOnHover: -1
     }
 
@@ -16,13 +16,13 @@ class Stars extends React.Component {
 
   setRating(stars) {
     this.setState({
-      numberOfStarts: stars,
-      starOnHover: stars - 1
+      starSelected: stars,
+      starOnHover: stars - 1,
+      numberOfStars: stars + 1
     });
   }
 
   setHover (index) {
-    console.log(index)
     this.setState({
       starOnHover: index
     });
@@ -34,15 +34,14 @@ class Stars extends React.Component {
     });
   }
 
-
   render() {
     return (
-      <div className="start-rating">
+      <div className="start-form">
         {[...Array(5)].map((star, index) => {
           return (
             <i
               key={index}
-              className={index <= (this.state.numberOfStarts || this.state.starOnHover) ? "fas fa-star": "far fa-star"}
+              className={index <= (this.state.starSelected || this.state.starOnHover) ? "fas fa-star": "far fa-star"}
               onClick={() => this.setRating(index)}
               onMouseOver={() => this.setHover(index)}
               onMouseOut={this.mouseOut}
@@ -54,4 +53,4 @@ class Stars extends React.Component {
   }
 }
 
-export default Stars;
+export default StarsForm;
