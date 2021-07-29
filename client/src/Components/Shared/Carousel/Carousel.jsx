@@ -91,7 +91,8 @@ class Carousel extends React.Component {
 export default Carousel;
 
 /*
-Put these in the proper spots in app if you want a small example of how this works
+Put these in the proper spots in app/here/Item if you want a
+small example of how this works
 
 import testStyle from './dummy-style.js';
 import Carousel from './Components/Shared/Carousel/Carousel.jsx';
