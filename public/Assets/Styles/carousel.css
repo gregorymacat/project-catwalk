@@ -1,0 +1,29 @@
+.carousel .left {
+  display: inline;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+.carousel .container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  width: 80%;
+  border: 2px solid;
+  background-color: aquamarine;
+}
+.carousel .right {
+  display: inline;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+.carousel .item {
+  display: inline-block;
+  margin: 0.75% 4%;
+  padding: 5px;
+  /* width: 15%;*/
+  border: 1px solid;
+  border-radius: 5px;
+  /* background-color: silver; */
+}

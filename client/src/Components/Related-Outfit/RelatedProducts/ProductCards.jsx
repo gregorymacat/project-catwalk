@@ -9,7 +9,7 @@ var ProductCards = function(props) {
         cards.map((card) => {
           return (
             <div key={card.id + (Math.floor(Math.random() * 100) + 1).toString()}
-             className='product-card'>
+             className='carousel item product-card'>
               <span id='compare' className='action fa fa-star'
                onClick={props.click}></span>
               <img src={getImage(card.id, props.allStyles)}></img>
