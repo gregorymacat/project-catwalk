@@ -1,7 +1,7 @@
 import React from 'react';
 import {getOneProduct} from '../Controllers/general.js';
 
-//import Overview from './Components/Overview';
+import Overview from './Components/Overview/index.jsx';
 import RelatedOutfit from './Components/Related-Outfit/RelatedOutfit';
 //import QuestionsAnswers from './Components/Questions-Answers';
 import RatingsReviews from './Components/Shared/Stars';
@@ -29,7 +29,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>Hello World!</h1>
-        {/* <Overview/> */}
+        <Overview product={this.state.product} />
         <RelatedOutfit product={this.state.product}/>
         {/* <QuestionsAnswers/> */}
         <RatingsReviews/>

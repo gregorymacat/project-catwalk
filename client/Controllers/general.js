@@ -22,5 +22,5 @@ module.exports = {
         throw err;
         return callback(err);
       });
-  }
+  },
 }
