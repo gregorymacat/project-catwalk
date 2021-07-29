@@ -5,7 +5,7 @@ import {getRelatedProductIds, getProductsByIds, getStylesByIds}
 import testStyle from '../../dummy-style.js';
 
 class RelatedOutfit extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       products: this.props.product,
