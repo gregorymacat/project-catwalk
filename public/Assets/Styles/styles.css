@@ -64,12 +64,20 @@
   border-radius: 5px;
   background-color: silver;
 }
-.product-card p {
-  text-align: center;
-}
 .product-card .action {
   margin: 0 90%;
 }
+.product-card img {
+  margin: 0 6%;
+  width: 150px;
+  height: 112.5px;
+  border: 1px solid;
+  overflow: hidden;
+}
+.product-card p {
+  text-align: center;
+}
+
 .action:hover {
   color: cyan;
 }
@@ -78,3 +86,25 @@
   padding-top: 25px;
   padding-bottom: 25px;
 }
+
+:root {
+  --star-size: 60px;
+  --star-color: #ddd;
+  --star-background: black;
+}
+
+.Stars {
+  --percent: calc(var(--rating) / 5 * 100%);
+  display: inline-block;
+  font-size: var(--star-size);
+  font-family: Times;
+  line-height: 1;
+}
+.Stars::before {
+  content: "★★★★★";
+  letter-spacing: 3px;
+  background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
