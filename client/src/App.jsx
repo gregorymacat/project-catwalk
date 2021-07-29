@@ -1,7 +1,7 @@
 import React from 'react';
 import {getOneProduct} from '../Controllers/general.js';
 
-import Overview from './Components/Overview';
+import Overview from './Components/Overview/index.jsx';
 import RelatedOutfit from './Components/Related-Outfit/RelatedOutfit';
 //import QuestionsAnswers from './Components/Questions-Answers';
 import RatingsReviews from './Components/Shared/Stars';
@@ -24,22 +24,14 @@ class App extends React.Component {
       //console.log('GOT NEW DATA FOR APP: ', results);
       this.setState({product: results});
     })
-    await getProduct((results) => {
-      console.log("RESULTS!!!", results)
-    }, product_id)
   }
 
   render() {
     return (
       <div>
         <h1>Hello World!</h1>
-<<<<<<< HEAD
-        <Overview/>
-        <RelatedOutfit products={this.state.products}/>
-=======
-        {/* <Overview/> */}
+        <Overview product={this.state.product} />
         <RelatedOutfit product={this.state.product}/>
->>>>>>> f9d56108789bab85c07596831d49e05bc6140500
         {/* <QuestionsAnswers/> */}
         <RatingsReviews/>
       </div>

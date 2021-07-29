@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default class Product Information extends React.Component {
+export default class Overview extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -8,13 +8,13 @@ export default class Product Information extends React.Component {
     return (
       <>
         <div>
-          Product Title
+        {this.props.product.name}
         </div>
         <div>
-          Product Description
+        {this.props.product.description}
         </div>
         <div>
-          Product Price
+        {this.props.product.default_price}
         </div>
       </>
     )
