@@ -1,7 +1,5 @@
 var axios = require('axios');
 const {url, API_KEY} = require('../../config.js');
-console.log(API_KEY);
-console.log(url);
 
 const options = {
   headers: {

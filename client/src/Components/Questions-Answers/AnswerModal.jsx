@@ -2,7 +2,12 @@ import React from 'react';
 
 class AnswerModal extends React.Component {
   constructor(props) {
-    super(props)
+    super(props),
+    this.state = {
+      name: '',
+      email: '',
+      answer: ''
+    }
   }
   render() {
     return (
