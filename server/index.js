@@ -5,7 +5,7 @@ const app = express();
 
 app.use(express.static('public'));
 app.use(express.json())
-const port = 3000;
+const port = 8080;
 
 app.use(router);
 app.use(logger('dev'));
