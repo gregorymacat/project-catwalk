@@ -7,7 +7,6 @@ import RelatedOutfit from './Components/Related-Outfit/RelatedOutfit';
 import RatingsReviews from './Components/Shared/Stars';
 import testProduct from './dummy-product.js';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
