@@ -1,11 +1,14 @@
 import React from 'react';
-import {getProducts} from '../Controllers/general.js';
+import {getOneProduct} from '../Controllers/general.js';
 
-//import Overview from './Components/Overview';
+import Overview from './Components/Overview/index.jsx';
 import RelatedOutfit from './Components/Related-Outfit/RelatedOutfit';
 //import QuestionsAnswers from './Components/Questions-Answers';
 import StarsForm from './Components/Shared/StarsForm';
 import StarsDisplay from './Components/Shared/StarsDisplay';
+import RatingsReviews from './Components/Shared/Stars';
+import testData from './dummy-data.js';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -13,12 +16,17 @@ class App extends React.Component {
     this.state = {
       products: [],
       starsRating: 1.8
+      product: [testData]
     }
   }
 
   componentDidMount(){
-    getProducts((results) => {
-      this.setState({products: results});
+    getOneProduct('19093', (err, results) => {
+      if (err) {
+        return console.log('Unable to get a product: ', err)
+      }
+      //console.log('GOT NEW DATA FOR APP: ', results);
+      this.setState({product: results});
     })
   }
 
@@ -26,8 +34,8 @@ class App extends React.Component {
     return (
       <div>
         <h1>Hello World!</h1>
-        {/* <Overview/> */}
-        <RelatedOutfit products={this.state.products}/>
+        <Overview product={this.state.product} />
+        <RelatedOutfit product={this.state.product}/>
         {/* <QuestionsAnswers/> */}
         <StarsDisplay starsData={this.state.starsRating}/>
         {/* <StarsForm/> */}
