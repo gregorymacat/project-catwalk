@@ -1,4 +1,4 @@
-var testData = {
+var testProduct = {
   "id": 19091,
   "campus": "hr-rfe",
   "name": "Morning Joggers",
@@ -20,4 +20,4 @@ var testData = {
   ]
 }
 
-export default testData;
+export default testProduct;

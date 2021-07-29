@@ -1,7 +1,6 @@
 import React from 'react';
 
 var ProductCards = function(props) {
-  //console.log('Product cards rendering: ', props.allProducts);
   var cards = chooseCards(props.startIndex, props.allProducts);
 
   return (
@@ -13,6 +12,7 @@ var ProductCards = function(props) {
              className='product-card'>
               <span id='compare' className='action fa fa-star'
                onClick={props.click}></span>
+              <img src={getImage(card.id, props.allStyles)}></img>
               <p>{card.category}</p>
               <p>{card.name}</p>
               <p>{card.default_price}</p>
@@ -36,6 +36,16 @@ var chooseCards = function(index, products) {
     i++;
   }
   return displayCards;
+}
+
+var getImage = function(productId, styles) {
+  for (var index = 0; index < styles.length; index++) {
+    if (styles[index].product_id === productId.toString()) {
+      return styles[index].results[0].photos[0].thumbnail_url;
+    }
+  }
+  return 'https://picsum.photos/seed/picsum/300/80';
+
 }
 
 export default ProductCards;

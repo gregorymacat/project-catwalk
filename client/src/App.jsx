@@ -7,16 +7,15 @@ import RelatedOutfit from './Components/Related-Outfit/RelatedOutfit';
 import StarsForm from './Components/Shared/StarsForm';
 import StarsDisplay from './Components/Shared/StarsDisplay';
 import RatingsReviews from './Components/Shared/Stars';
-import testData from './dummy-data.js';
-
+import testProduct from './dummy-product.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       products: [],
-      starsRating: 1.8
-      product: [testData]
+      starsRating: 1.8,
+      product: [testProduct]
     }
   }
 
@@ -25,7 +24,6 @@ class App extends React.Component {
       if (err) {
         return console.log('Unable to get a product: ', err)
       }
-      //console.log('GOT NEW DATA FOR APP: ', results);
       this.setState({product: results});
     })
   }

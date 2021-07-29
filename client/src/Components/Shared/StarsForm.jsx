@@ -23,6 +23,10 @@ class StarsForm extends React.Component {
   }
 
   setHover (index) {
+<<<<<<< HEAD:client/src/Components/Shared/StarsForm.jsx
+=======
+    //console.log(index)
+>>>>>>> 9ecad9a24a287274d5bee422332bb0e78eb90a65:client/src/Components/Shared/Stars.jsx
     this.setState({
       starOnHover: index
     });

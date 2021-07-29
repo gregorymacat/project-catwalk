@@ -64,12 +64,20 @@
   border-radius: 5px;
   background-color: silver;
 }
-.product-card p {
-  text-align: center;
-}
 .product-card .action {
   margin: 0 90%;
 }
+.product-card img {
+  margin: 0 6%;
+  width: 150px;
+  height: 112.5px;
+  border: 1px solid;
+  overflow: hidden;
+}
+.product-card p {
+  text-align: center;
+}
+
 .action:hover {
   color: cyan;
 }
