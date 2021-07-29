@@ -15,7 +15,7 @@ module.exports = {
         callback(null, response.data);
       })
       .catch((err) => {
-        console.log('!!!ERROR: axios get: \"/controllers.js find()\" ', err);
+        console.log('!!!ERROR: axios get: \"/controllers.js find()\" ', err.message);
         callback(err);
       });
   },
