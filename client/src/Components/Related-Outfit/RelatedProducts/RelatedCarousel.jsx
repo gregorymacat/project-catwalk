@@ -50,7 +50,6 @@ class RelatedCarousel extends React.Component {
   }
   handleActionClick(event) {
     var id = event.target.id;
-    //console.log(id);
     if (id === 'compare') {
       this.setState({displayModal: true});
     } else if (id === 'close') {
@@ -71,6 +70,7 @@ class RelatedCarousel extends React.Component {
   render () {
     const startIndex = this.state.displayIndex;
     const products = this.props.products;
+    const styles = this.props.styles;
     const modal = this.state.displayModal ?
                   <TableModal click={this.handleActionClick}/> : <div></div>
     return (
@@ -79,7 +79,7 @@ class RelatedCarousel extends React.Component {
         {this.displayArrow('left')}
         <div className='card-container'>
           <ProductCards startIndex={startIndex} allProducts={products}
-          click={this.handleActionClick}/>
+           allStyles={styles} click={this.handleActionClick}/>
         </div>
         {this.displayArrow('right')}
       </React.Fragment>

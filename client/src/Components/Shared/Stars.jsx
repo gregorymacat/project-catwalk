@@ -22,7 +22,7 @@ class Stars extends React.Component {
   }
 
   setHover (index) {
-    console.log(index)
+    //console.log(index)
     this.setState({
       starOnHover: index
     });
