@@ -60,10 +60,10 @@ class RelatedCarousel extends React.Component {
   displayArrow(direction) {
     if (direction === 'left') {
       if (this.state.leftVisible) { return <ArrowLeft click={this.handleArrowClick}/> }
-      return <div className='carousel left'></div>
+      return <div className='carousel-left'></div>
     } else if (direction === 'right') {
       if (this.state.rightVisible) { return <ArrowRight click={this.handleArrowClick}/> }
-      return <div className='carousel right'></div>
+      return <div className='carousel-right'></div>
     }
   }
 
@@ -77,7 +77,7 @@ class RelatedCarousel extends React.Component {
       <React.Fragment>
         {modal}
         {this.displayArrow('left')}
-        <div className='carousel container card-container'>
+        <div className='carousel container cards'>
           <ProductCards startIndex={startIndex} allProducts={products}
            allStyles={styles} click={this.handleActionClick}/>
         </div>
