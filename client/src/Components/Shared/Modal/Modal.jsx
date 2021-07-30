@@ -8,7 +8,6 @@ var Modal = function(props) {
           <span id='close' className='fa fa-times' onClick={props.click}></span>
           <span>Click on the "x" to close the modal</span>
         </div>
-
       </div>
     )
   }
