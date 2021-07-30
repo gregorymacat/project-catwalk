@@ -48,6 +48,7 @@ class RelatedCarousel extends React.Component {
       }
     }
   }
+
   handleActionClick(event) {
     var id = event.target.id;
     if (id === 'compare') {
