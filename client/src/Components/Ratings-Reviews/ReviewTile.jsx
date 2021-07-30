@@ -15,13 +15,11 @@ class Review extends React.Component {
   }
 
   handleShowMoreClick(reviewText, index) {
-    console.log(reviewText);
-    console.log(index);
-    console.log(this.props.data.results[0].body);
     reviewText = this.props.data.results[0].body;
   }
 
   render() {
+    console.log(this.props.data);
     return (
       <div className="reviews">
         {this.props.data.results.map((tile, index) => {
@@ -37,7 +35,6 @@ class Review extends React.Component {
           }
           //handling review body
           var reviewText;
-          console.log(index);
           if (tile.body.length > 250) {
             reviewText = tile.body.substr(0, 250) + '... ';
           } else {
