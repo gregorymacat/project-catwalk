@@ -19,36 +19,9 @@ class RelatedCarousel extends React.Component {
     this.handleActionClick = this.handleActionClick.bind(this);
   }
 
-  handleArrowClick(event) {
-    var id = event.target.id;
-    if (id === 'arrow-back') {
-      if (!(this.state.displayIndex - 1 > 0)) {
-        this.setState({
-            displayIndex: this.state.displayIndex - 1,
-            leftVisible: false
-          });
-      } else {
-        this.setState({
-          displayIndex: this.state.displayIndex - 1,
-          leftVisible: true,
-          rightVisible: true
-        });
-      }
-    } else if (id === 'arrow-forward') {
-      if (!(this.state.displayIndex + 1 < this.props.products.length - 1)) {
-        this.setState({
-          displayIndex: this.state.displayIndex + 1,
-          rightVisible: false
-        });
-      } else {
-        this.setState({
-          displayIndex: this.state.displayIndex + 1,
-          leftVisible: true,
-          rightVisible: true
-        });
-      }
-    }
-  }
+  handleArrowClick = (newState) => {
+    this.setState (newState);
+  };
 
   handleActionClick(event) {
     var id = event.target.id;
@@ -80,12 +53,12 @@ class RelatedCarousel extends React.Component {
     return (
       <React.Fragment>
         <TableModal click={this.handleActionClick} display={displayModal}/>
-        <ArrowLeft click={this.handleArrowClick} isDisplaying={displayLeft}/>
+        <ArrowLeft click={this.handleArrowClick} isDisplaying={displayLeft}  index={startIndex}/>
         <div className='carousel container cards'>
           <ProductCards startIndex={startIndex} allProducts={products}
            allStyles={styles} click={this.handleActionClick}/>
         </div>
-        <ArrowRight click={this.handleArrowClick} isDisplaying={displayRight}/>
+        <ArrowRight click={this.handleArrowClick} isDisplaying={displayRight}  index={startIndex} max={this.props.products.length}/>
       </React.Fragment>
     )
   }
