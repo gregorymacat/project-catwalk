@@ -19,7 +19,6 @@ class Review extends React.Component {
   }
 
   render() {
-    console.log(this.props.data);
     return (
       <div className="reviews">
         {this.props.data.results.map((tile, index) => {
