@@ -3,10 +3,8 @@ import {getOneProduct} from '../Controllers/general.js';
 
 import Overview from './Components/Overview/index.jsx';
 import RelatedOutfit from './Components/Related-Outfit/RelatedOutfit';
-import QuestionsAnswers from './Components/Questions-Answers'
-import StarsForm from './Components/Shared/StarsForm';
-import StarsDisplay from './Components/Shared/StarsDisplay';
-import RatingsReviews from './Components/Shared/Stars';
+// import QuestionsAnswers from './Components/Questions-Answers'
+import RatingsReviews from './Components/Ratings-Reviews/RatingsReviews';
 import testProduct from './dummy-product.js';
 
 class App extends React.Component {
@@ -34,9 +32,8 @@ class App extends React.Component {
         <h1>Hello World!</h1>
         <Overview product={this.state.product} />
         <RelatedOutfit product={this.state.product}/>
-        <QuestionsAnswers/>
+        {/* <QuestionsAnswers/> */}
         <RatingsReviews/>
-        <StarsDisplay starsData={this.state.starsRating}/>
         {/* <StarsForm/> */}
       </div>
     );
