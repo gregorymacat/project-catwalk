@@ -10,9 +10,10 @@ class RelatedCarousel extends React.Component {
     super(props);
     this.state = {
       displayIndex: 0,
-      displayModal: false,
       leftVisible: false,
-      rightVisible: true
+      rightVisible: true,
+      displayModal: false,
+      compareItem: []
     }
     this.handleArrowClick = this.handleArrowClick.bind(this);
     this.handleActionClick = this.handleActionClick.bind(this);
@@ -60,29 +61,31 @@ class RelatedCarousel extends React.Component {
 
   displayArrow(direction) {
     if (direction === 'left') {
-      if (this.state.leftVisible) { return <ArrowLeft click={this.handleArrowClick}/> }
+      if (this.state.leftVisible) { return  }
       return <div className='carousel left'></div>
     } else if (direction === 'right') {
-      if (this.state.rightVisible) { return <ArrowRight click={this.handleArrowClick}/> }
+      if (this.state.rightVisible) { return  }
       return <div className='carousel right'></div>
     }
   }
 
   render () {
     const startIndex = this.state.displayIndex;
+    const displayLeft = this.state.leftVisible;
+    const displayRight = this.state.rightVisible;
+    const displayModal = this.state.displayModal;
     const products = this.props.products;
     const styles = this.props.styles;
-    const modal = this.state.displayModal ?
-                  <TableModal click={this.handleActionClick}/> : <div></div>
+
     return (
       <React.Fragment>
-        {modal}
-        {this.displayArrow('left')}
+        <TableModal click={this.handleActionClick} display={displayModal}/>
+        <ArrowLeft click={this.handleArrowClick} isDisplaying={displayLeft}/>
         <div className='carousel container cards'>
           <ProductCards startIndex={startIndex} allProducts={products}
            allStyles={styles} click={this.handleActionClick}/>
         </div>
-        {this.displayArrow('right')}
+        <ArrowRight click={this.handleArrowClick} isDisplaying={displayRight}/>
       </React.Fragment>
     )
   }
