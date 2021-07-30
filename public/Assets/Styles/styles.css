@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .related {
   display: flex;
   justify-content: space-between;
@@ -87,6 +88,12 @@
   padding-bottom: 25px;
 }
 /* --------- Stars-Display ----------- */
+=======
+@import 'carousel.css';
+@import 'modal.css';
+@import 'related-products.css';
+
+>>>>>>> f47b48c19a974d4f3868f164a4a8b34c6eeb0b09
 :root {
   --star-size: 20px;
   --star-color: #ddd;

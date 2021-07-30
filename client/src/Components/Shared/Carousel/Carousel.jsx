@@ -1,21 +1,36 @@
 import React from 'react';
-import ProductCards from './ProductCards.jsx';
-import ArrowLeft from './ArrowLeft.jsx';
-import ArrowRight from './ArrowRight.jsx';
-import TableModal from './TableModal.jsx';
+import ArrowLeft from './Left.jsx';
+import ArrowRight from './Right.jsx';
+import Item from './Item.jsx'
 
+/*
+  Props:
+    items: Some array of items that will be displayed
 
-class RelatedCarousel extends React.Component {
+  State:
+    displayIndex: goes up and down by arrow clicks, decides
+      which item in the items array to display
+    leftVisible: if the display index is 0 the left arrow
+      won't display, otherwise it will
+    rightVisible: if the display index is at the length of
+      the items it won't display, otherwise it will
+
+  Methods:
+    handleArrowClick: determines if an arrow should increment
+      or decrement the display index, as well as if the arrow
+      should continue to display (in render displayArrow())
+
+  Example code to be inserted is at the bottom.
+*/
+class Carousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       displayIndex: 0,
-      displayModal: false,
       leftVisible: false,
       rightVisible: true
     }
     this.handleArrowClick = this.handleArrowClick.bind(this);
-    this.handleActionClick = this.handleActionClick.bind(this);
   }
 
   handleArrowClick(event) {
@@ -34,7 +49,7 @@ class RelatedCarousel extends React.Component {
         });
       }
     } else if (id === 'arrow-forward') {
-      if (!(this.state.displayIndex + 1 < this.props.products.length - 1)) {
+      if (!(this.state.displayIndex + 1 < this.props.items.length - 1)) {
         this.setState({
           displayIndex: this.state.displayIndex + 1,
           rightVisible: false
@@ -49,15 +64,6 @@ class RelatedCarousel extends React.Component {
     }
   }
 
-  handleActionClick(event) {
-    var id = event.target.id;
-    if (id === 'compare') {
-      this.setState({displayModal: true});
-    } else if (id === 'close') {
-      this.setState({displayModal: false});
-    }
-  }
-
   displayArrow(direction) {
     if (direction === 'left') {
       if (this.state.leftVisible) { return <ArrowLeft click={this.handleArrowClick}/> }
@@ -69,18 +75,12 @@ class RelatedCarousel extends React.Component {
   }
 
   render () {
-    const startIndex = this.state.displayIndex;
-    const products = this.props.products;
-    const styles = this.props.styles;
-    const modal = this.state.displayModal ?
-                  <TableModal click={this.handleActionClick}/> : <div></div>
+    console.log(this.props.items);
     return (
       <React.Fragment>
-        {modal}
         {this.displayArrow('left')}
-        <div className='carousel container cards'>
-          <ProductCards startIndex={startIndex} allProducts={products}
-           allStyles={styles} click={this.handleActionClick}/>
+        <div className='carousel container'>
+          <Item item={this.props.items[this.state.displayIndex]}/>
         </div>
         {this.displayArrow('right')}
       </React.Fragment>
@@ -88,4 +88,14 @@ class RelatedCarousel extends React.Component {
   }
 }
 
-export default RelatedCarousel;
+export default Carousel;
+
+/*
+Put these in the proper spots in app/here/Item if you want a
+small example of how this works
+
+import testStyle from './dummy-style.js';
+import Carousel from './Components/Shared/Carousel/Carousel.jsx';
+<Carousel items={testStyle.photos}/>
+<img src={props.item.thumbnail_url}></img>
+*/
