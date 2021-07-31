@@ -4,7 +4,7 @@ var ProductCards = function(props) {
   var cards = chooseCards(props.startIndex, props.allProducts);
   var handleClick = (event) => {
     var itemId = event.target.dataset.itemnum;
-    console.log(itemId);
+
     props.click('compare', itemId);
   }
 

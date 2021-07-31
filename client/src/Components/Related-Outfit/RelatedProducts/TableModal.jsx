@@ -21,9 +21,9 @@ var TableModal = function(props) {
             </thead>
             <tbody>
               <tr>
-                <td><p>First Item Details</p></td>
-                <td><p>Something</p></td>
-                <td><p>Second Item Details</p></td>
+                <td><p>{props.current.description}</p></td>
+                <td><p>Description</p></td>
+                <td><p>{props.compareTo.description}</p></td>
               </tr>
               <tr>
                 <td><p>More First Item Details</p></td>

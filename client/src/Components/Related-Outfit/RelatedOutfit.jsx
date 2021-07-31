@@ -40,7 +40,7 @@ class RelatedOutfit extends React.Component {
   render(){
     return(
       <div className='related'>
-        <RelatedCarousel products={this.state.products}
+        <RelatedCarousel currentProduct={this.props.product} products={this.state.products}
          styles={this.state.styles}/>
       </div>
     )

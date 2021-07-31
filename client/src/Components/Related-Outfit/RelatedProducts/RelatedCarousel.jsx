@@ -13,7 +13,7 @@ class RelatedCarousel extends React.Component {
       leftVisible: false,
       rightVisible: true,
       displayModal: false,
-      compareItem: []
+      compareItem: {}
     }
     this.handleArrowClick = this.handleArrowClick.bind(this);
     this.handleActionClick = this.handleActionClick.bind(this);
@@ -24,8 +24,18 @@ class RelatedCarousel extends React.Component {
   };
 
   handleActionClick(action, itemId) {
+    console.log(typeof itemId);
     if (action === 'compare') {
-      this.setState({displayModal: true});
+      var products = this.props.products
+      for (var index = 0; index < products.length; index++) {
+        if (products[index].id.toString() === itemId) {
+          this.setState({
+            displayModal: true,
+            compareItem: products[index]
+          });
+        }
+      }
+
     } else if (action === 'close') {
       this.setState({displayModal: false});
     }
@@ -51,7 +61,8 @@ class RelatedCarousel extends React.Component {
 
     return (
       <React.Fragment>
-        <TableModal click={this.handleActionClick} display={displayModal}/>
+        <TableModal click={this.handleActionClick} display={displayModal} current={this.props.currentProduct}
+        compareTo={this.state.compareItem}/>
         <ArrowLeft click={this.handleArrowClick} isDisplaying={displayLeft}  index={startIndex}/>
         <div className='carousel container cards'>
           <ProductCards startIndex={startIndex} allProducts={products}
