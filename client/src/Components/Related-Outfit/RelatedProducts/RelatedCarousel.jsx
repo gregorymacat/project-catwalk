@@ -20,14 +20,13 @@ class RelatedCarousel extends React.Component {
   }
 
   handleArrowClick = (newState) => {
-    this.setState (newState);
+    this.setState(newState);
   };
 
-  handleActionClick(event) {
-    var id = event.target.id;
-    if (id === 'compare') {
+  handleActionClick(action, itemId) {
+    if (action === 'compare') {
       this.setState({displayModal: true});
-    } else if (id === 'close') {
+    } else if (action === 'close') {
       this.setState({displayModal: false});
     }
   }

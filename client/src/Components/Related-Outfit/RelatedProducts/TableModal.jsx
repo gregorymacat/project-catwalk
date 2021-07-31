@@ -1,12 +1,16 @@
 import React from 'react';
 
 var TableModal = function(props) {
+  var handleClick = (event) => {
+    props.click('close');
+  }
+
   if (props.display) {
     return (
       <div className='modal-body'>
         <div className='modal-content table'>
           <span id='close' className="fa fa-times"
-            onClick={props.click}></span>
+            onClick={handleClick}></span>
           <table>
             <thead>
               <tr>

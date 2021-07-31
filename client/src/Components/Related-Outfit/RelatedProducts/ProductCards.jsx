@@ -2,6 +2,11 @@ import React from 'react';
 
 var ProductCards = function(props) {
   var cards = chooseCards(props.startIndex, props.allProducts);
+  var handleClick = (event) => {
+    var itemId = event.target.dataset.itemnum;
+    console.log(itemId);
+    props.click('compare', itemId);
+  }
 
   return (
     <React.Fragment>
@@ -10,8 +15,10 @@ var ProductCards = function(props) {
           return (
             <div key={card.id} className='carousel item product-card'>
               <span id='compare' className='action fa fa-star'
-               onClick={props.click}></span>
-              <img src={getImage(card.id, props.allStyles)}></img>
+               onClick={handleClick} data-itemNum={card.id}></span>
+              <div>
+                <img src={getImage(card.id, props.allStyles)}></img>
+              </div>
               <p>{card.category}</p>
               <p>{card.name}</p>
               <p>{card.default_price}</p>
