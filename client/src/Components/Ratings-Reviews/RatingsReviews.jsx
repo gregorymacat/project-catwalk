@@ -14,6 +14,7 @@ class RatingsReviews extends React.Component {
     super(props);
 
     this.state = {
+      product: this.props.product,
       reviewTileData: reviewExampleData,
       reviewMetaData: reviewMetaExampleData
 
@@ -29,8 +30,8 @@ class RatingsReviews extends React.Component {
   }
 
   getMetaReviews() {
-    var productId = '19093';
-    getAllMetaReviews(productId, (err, res) => {
+    console.log(this.state.product[0].id);
+    getAllMetaReviews(this.state.product[0].id, (err, res) => {
       if (err) {
         console.log(err)
       } else {
@@ -42,6 +43,7 @@ class RatingsReviews extends React.Component {
   }
 
   getReviews() {
+    //var productInfo = {}
     getAllReviews({}, (err, res) => {
       if (err) {
         console.log(err)

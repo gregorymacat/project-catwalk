@@ -27,56 +27,66 @@
 .ratings-reviews-dispay {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 20px
+  grid-gap: 40px
 }
+/* --------- Rating-Reiviews Breakdown ----------- */
 .rating-breakdown {
+  grid-column: 1 / 2;
   margin-left: 60%;
 }
+.rating-breakdown-header {
+  display: flex;
+  margin-left: 12%;
+}
 
+.rating-breakdown-star-display {
+  position: relative;
+  top: 23px;
+  left: 5px;
+}
+
+/* --------- Rating-Reiviews Tiles ----------- */
 .reviews {
   grid-column: 2 / 4;
 }
 
-.review-tile-header .stars-display {
+.review-tile {
+  margin-top: 2%;
+}
 
+.review-tile-header {
+  display: flex;
+}
+
+.review-tile-header .stars-display {
+  margin-right: 30%;
 }
 
 .review-tile-verified::before {
   content: '\2714';
 }
 
-.review-tile-header {
-
-}
-
 .review-tile-reviewSummary {
   font-weight: bold;
 }
+
 
 .review-tile-recommended {
   content: '\2714 I recommend this product';
 }
 
-.review-tile-footer {
-
-}
 .review-tile-reviewBodyButton {
   color: grey;
 }
 
+/* --------- Rating-Reiviews Buttons ----------- */
 .rating-reviews-buttons {
 
 }
 .rating-reviews-button-show-more {
 
 }
-.rating-breakdown-header {
 
-}
-
-.rating-breakdown-star-display {
-
-}
 
 
 

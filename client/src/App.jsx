@@ -13,7 +13,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      starsRating: 1.8,
       product: [testProduct]
     }
   }
@@ -34,7 +33,7 @@ class App extends React.Component {
         <Overview product={this.state.product} />
         <RelatedOutfit product={this.state.product}/>
         <QuestionsList/>
-        <RatingsReviews/>
+        <RatingsReviews product={this.state.product}/>
         {/* <StarsDisplay starsData={this.state.starsRating}/> */}
         {/* <StarsForm/> */}
       </div>
