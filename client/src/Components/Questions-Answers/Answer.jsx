@@ -54,7 +54,7 @@ class Answer extends React.Component {
     if (answerer === seller) {
       answerer = Seller;
     }
-    let time = new Date(answer.date);
+    let time = new Date(answer.date).toISOString().slice(0, 10);
 
     //const answerTag = `by ${answerer}, ${time} | Helpful? `;
 

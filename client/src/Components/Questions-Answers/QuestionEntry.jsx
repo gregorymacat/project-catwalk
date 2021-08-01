@@ -61,8 +61,8 @@ render() {
   return (
     <div className="question_wrapper">
       <hr></hr>
-      <div className="question_body"><h3>Q: {question.question_body}</h3></div>
-      <span className="question_tags">
+      <div className="question_body"><h5>Q: {question.question_body}</h5></div>
+      <span>
         <span><font size="1">Helpful?  </font></span>
         <button className="small-btn" onClick={this.callHelpful}>Yes</button>
       </span>
@@ -71,7 +71,6 @@ render() {
         <div className="allAnswers">
           {isCollapsed ? fullAnswerList : answerList}
         </div>
-        <br></br>
         {fullAnswerList.length > answerList.length && answersButton}
       </div>
     </div>
