@@ -3,7 +3,7 @@ import ProductCards from './ProductCards.jsx';
 import ArrowLeft from './ArrowLeft.jsx';
 import ArrowRight from './ArrowRight.jsx';
 import TableModal from './TableModal.jsx';
-
+import {getOneProduct} from '../../../../Controllers/general.js';
 
 class RelatedCarousel extends React.Component {
   constructor(props) {
@@ -29,6 +29,12 @@ class RelatedCarousel extends React.Component {
       var products = this.props.products
       for (var index = 0; index < products.length; index++) {
         if (products[index].id.toString() === itemId) {
+          // getOneProduct(itemId, (err, itemData) => {
+          //   this.setState({
+          //     displayModal: true,
+          //     compareItem: products[index]
+          //   });
+          // })
           this.setState({
             displayModal: true,
             compareItem: products[index]
