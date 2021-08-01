@@ -58,7 +58,7 @@ export default class Overview extends React.Component {
           <div style={styles.productInfo}>
             <div style={styles.rating}>
                 <StarsDisplay starsData={5}/>
-                {/* <a href="#RatingsReviews">Read All Reviews</a> */}
+                <a href="#RatingsReviews">Read All Reviews</a>
             </div>
             <p>{this.props.product.category}</p>
             <h1>{this.props.product.name}</h1>
