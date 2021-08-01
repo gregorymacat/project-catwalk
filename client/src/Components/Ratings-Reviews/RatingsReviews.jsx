@@ -59,7 +59,7 @@ class RatingsReviews extends React.Component {
 
   render() {
     return(
-      <div className="ratings-reviews">
+      <div className="ratings-reviews" id="RatingsReviews">
         <RatingsBreakdown metaData={this.state.reviewMetaData}/>
         <ReviewTile data={this.state.reviewTileData}/>
         <div className="rating-reviews-buttons">

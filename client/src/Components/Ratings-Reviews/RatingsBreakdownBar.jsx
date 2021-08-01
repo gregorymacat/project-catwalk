@@ -1,5 +1,5 @@
 import React from 'react';
-import Filler from './RatingbarFiller'
+import Filler from './RatingBarFiller'
 
 var RatingsBreakdownBar = (props) => {
 

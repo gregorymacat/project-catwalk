@@ -7,6 +7,7 @@ import {getAnswersByQuestionId, getQuestions} from '../../../Controllers/questio
 class QuestionList extends React.Component {
   constructor(props) {
     super(props);
+    //console.log(this.props.product)
     this.state = {
       savedQuestions: [],
       products: this.props.product,
@@ -14,15 +15,15 @@ class QuestionList extends React.Component {
       allQuestions: [],
       query: [],
       queryList: [],
-      product_id: this.props.product[0].id,
+      product_id: this.props.product,
       repeated: false,
     };
     this.onClick = this.onClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidUpdate() {
-    this.state.product_id = '17083'
+  componentDidMount() {
+    //this.state.product_id = '17083'
     if (!this.state.repeated) {
       getQuestions(this.state.product_id, (error, quests) => {
         if (error) { return console.log('Failure to get ID: ', error); }
