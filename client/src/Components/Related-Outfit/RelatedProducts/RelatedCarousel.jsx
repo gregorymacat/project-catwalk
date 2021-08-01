@@ -3,86 +3,78 @@ import ProductCards from './ProductCards.jsx';
 import ArrowLeft from './ArrowLeft.jsx';
 import ArrowRight from './ArrowRight.jsx';
 import TableModal from './TableModal.jsx';
-
+import {getOneProduct} from '../../../../Controllers/general.js';
 
 class RelatedCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       displayIndex: 0,
-      displayModal: false,
       leftVisible: false,
-      rightVisible: true
+      rightVisible: true,
+      displayModal: false,
+      compareItem: {}
     }
     this.handleArrowClick = this.handleArrowClick.bind(this);
     this.handleActionClick = this.handleActionClick.bind(this);
   }
 
-  handleArrowClick(event) {
-    var id = event.target.id;
-    if (id === 'arrow-back') {
-      if (!(this.state.displayIndex - 1 > 0)) {
-        this.setState({
-            displayIndex: this.state.displayIndex - 1,
-            leftVisible: false
-          });
-      } else {
-        this.setState({
-          displayIndex: this.state.displayIndex - 1,
-          leftVisible: true,
-          rightVisible: true
-        });
-      }
-    } else if (id === 'arrow-forward') {
-      if (!(this.state.displayIndex + 1 < this.props.products.length - 1)) {
-        this.setState({
-          displayIndex: this.state.displayIndex + 1,
-          rightVisible: false
-        });
-      } else {
-        this.setState({
-          displayIndex: this.state.displayIndex + 1,
-          leftVisible: true,
-          rightVisible: true
-        });
-      }
-    }
-  }
+  handleArrowClick = (newState) => {
+    this.setState(newState);
+  };
 
-  handleActionClick(event) {
-    var id = event.target.id;
-    if (id === 'compare') {
-      this.setState({displayModal: true});
-    } else if (id === 'close') {
+  handleActionClick(action, itemId) {
+    console.log(typeof itemId);
+    if (action === 'compare') {
+      var products = this.props.products
+      for (var index = 0; index < products.length; index++) {
+        if (products[index].id.toString() === itemId) {
+          // getOneProduct(itemId, (err, itemData) => {
+          //   this.setState({
+          //     displayModal: true,
+          //     compareItem: products[index]
+          //   });
+          // })
+          this.setState({
+            displayModal: true,
+            compareItem: products[index]
+          });
+        }
+      }
+
+    } else if (action === 'close') {
       this.setState({displayModal: false});
     }
   }
 
   displayArrow(direction) {
     if (direction === 'left') {
-      if (this.state.leftVisible) { return <ArrowLeft click={this.handleArrowClick}/> }
+      if (this.state.leftVisible) { return  }
       return <div className='carousel left'></div>
     } else if (direction === 'right') {
-      if (this.state.rightVisible) { return <ArrowRight click={this.handleArrowClick}/> }
+      if (this.state.rightVisible) { return  }
       return <div className='carousel right'></div>
     }
   }
 
   render () {
     const startIndex = this.state.displayIndex;
+    const displayLeft = this.state.leftVisible;
+    const displayRight = this.state.rightVisible;
+    const displayModal = this.state.displayModal;
     const products = this.props.products;
     const styles = this.props.styles;
-    const modal = this.state.displayModal ?
-                  <TableModal click={this.handleActionClick}/> : <div></div>
+
     return (
       <React.Fragment>
-        {modal}
-        {this.displayArrow('left')}
+        <TableModal click={this.handleActionClick} display={displayModal} current={this.props.currentProduct}
+        compareTo={this.state.compareItem}/>
+        <ArrowLeft click={this.handleArrowClick} isDisplaying={displayLeft}  index={startIndex}/>
         <div className='carousel container cards'>
           <ProductCards startIndex={startIndex} allProducts={products}
            allStyles={styles} click={this.handleActionClick}/>
         </div>
-        {this.displayArrow('right')}
+        <ArrowRight click={this.handleArrowClick} isDisplaying={displayRight}  index={startIndex} max={this.props.products.length}/>
       </React.Fragment>
     )
   }

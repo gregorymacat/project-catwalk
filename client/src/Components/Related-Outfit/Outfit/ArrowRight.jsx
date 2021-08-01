@@ -5,7 +5,7 @@ var ArrowRight = function(props) {
   var handleClick = () => {
     var index = props.index;
     // console.log(index);
-    if (index + 1 < props.max - 1) {
+    if (index + 1 < props.max) {
       props.click({
         displayIndex: index + 1,
         leftVisible: true,
@@ -23,7 +23,7 @@ var ArrowRight = function(props) {
     return (
         <div className='carousel right'>
           <img src='Assets/Icons/ArrowForward/2x/outline_arrow_forward_black_24dp.png'
-          onClick={handleClick} id="arrow-forward"></img>
+          onClick={handleClick}></img>
         </div>
     )
   }
