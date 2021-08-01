@@ -30,7 +30,6 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello World!</h1>
         <Overview product={this.state.product} />
         <RelatedOutfit product={this.state.product}/>
         <QuestionsList/>
