@@ -1,0 +1,53 @@
+.outfit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 5px;
+  width: 85%;
+  height: 10%;
+}
+
+/*
+*********************
+** CAROUSEL STYLES **
+*********************
+*/
+.carousel.item.add-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+  min-width: 15vw;
+  margin: 0.75% 1%;
+  background-color: silver;
+}
+.carousel.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15%;
+  min-width: 15vw;
+  margin: 0.75% 1%;
+  background-color: silver;
+}
+/*
+*****************
+** CARD STYLES **
+*****************
+*/
+.product-card .action {
+  padding: 2% 0 0 88%;
+}
+.product-card img {
+  width: 150px;
+  height: 150px;
+  border: 1px solid;
+  overflow: hidden;
+}
+.product-card p {
+  text-align: center;
+}
+.action:hover {
+  color: cyan;
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import RelatedCarousel from './RelatedProducts/RelatedCarousel.jsx';
+import OutfitCarousel from './Outfit/OutfitCarousel.jsx';
 import {getRelatedProductIds, getProductsByIds, getStylesByIds}
   from '../../../Controllers/related-outfit.js';
 import testStyle from '../../dummy-style.js';
@@ -39,10 +40,17 @@ class RelatedOutfit extends React.Component {
 
   render(){
     return(
-      <div className='related'>
-        <RelatedCarousel products={this.state.products}
-         styles={this.state.styles}/>
-      </div>
+      <React.Fragment>
+        <div className='related'>
+          <RelatedCarousel currentProduct={this.props.product} products={this.state.products}
+          styles={this.state.styles}/>
+        </div>
+        <div className='outfit'>
+          <OutfitCarousel currentProduct={this.props.product}/>
+        </div>
+
+      </React.Fragment>
+
     )
   }
 }
