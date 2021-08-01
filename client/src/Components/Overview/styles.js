@@ -5,9 +5,32 @@ export default {
     height: "100vh",
     flexDirection: "column"
   },
+  addToCartButton: {
+    width: '250px',
+    height: '50px',
+    backgroundColor: 'transparent',
+    border: '1px solid black',
+    display: 'block',
+    fontSize: '20px',
+    fontWeight: 'bold'
+  },
+  addedToCart: {
+    width: '250px',
+    height: '50px',
+    backgroundColor: 'transparent',
+    border: '1px solid black',
+    display: 'block',
+    fontSize: '20px',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    lineHeight: '50px'
+  },
   row: {
     display: "flex",
     flexDirection: "row"
+  },
+  rating:{
+
   },
   carousel: {
     backgroundColor: "grey",

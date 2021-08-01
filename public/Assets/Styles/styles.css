@@ -3,7 +3,7 @@
 @import 'related-products.css';
 
 :root {
-  --star-size: 60px;
+  --star-size: 20px;
   --star-color: #ddd;
   --star-background: black;
 }
