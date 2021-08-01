@@ -6,6 +6,7 @@ import {getOneProduct} from '../../../Controllers/general.js';
 // import testStyle from './dummy-style.js';
 // import Carousel from './components/Shared/Carousel/Carousel.jsx';
 import testProduct from '../../dummy-product.js';
+import {stylesArray} from '../../dummy-style.js';
 
 export default class Overview extends React.Component {
   constructor(props) {
@@ -14,11 +15,14 @@ export default class Overview extends React.Component {
       addedToCart: false,
       quantity: 1,
       selectedSize: 'Select Size',
-      product: [testProduct]
+      product: testProduct,
+      styles: stylesArray,
+      selectedStyle: {}
     }
     this.addToCart = this.addToCart.bind(this)
     this.changeQuantity = this.changeQuantity.bind(this)
     this.changeSelectedSize = this.changeSelectedSize.bind(this)
+    this.changeSelectedStyle = this.changeSelectedStyle.bind(this)
   }
   componentDidMount(){
     getOneProduct(this.props.product.toString(), (err, results) => {
@@ -54,8 +58,14 @@ export default class Overview extends React.Component {
       selectedSize: event.target.value
     })
   }
+  changeSelectedStyle(index) {
+    this.setState({
+      selectedStyle: stylesArray[index]
+    })
+  }
   render() {
     // console.log("PRODUCT", this.state.product)
+    console.log("STYLE", this.state.selectedStyle)
     return (
       // overview is the container component, flex direction is set to column, so the page reads top to bottom
       <div style={styles.overview}>
@@ -65,7 +75,9 @@ export default class Overview extends React.Component {
           flex direction set to "row" to read from left to right, carousel and info each taking 50% width
         */}
         <div style={styles.row}>
-          <div style={styles.carousel}>Carousel</div>
+          <div style={styles.carousel}>
+          {this.state.selectedStyle.photos && <img src={this.state.selectedStyle.photos[0].thumbnail_url}></img>}
+          </div>
           <div style={styles.productInfo}>
             <div style={styles.rating}>
                 <StarsDisplay starsData={5}/>
@@ -73,17 +85,22 @@ export default class Overview extends React.Component {
             </div>
             <p>{this.state.product.category}</p>
             <h1>{this.state.product.name}</h1>
-            <p>${this.state.product.default_price}</p>
+            <p>${this.state.selectedStyle.original_price || this.state.product.default_price}</p>
             <div style={styles.productStyle}>
               <div>
-                <p>style &gt; selected style</p>
+                <p>Style &gt; {this.state.selectedStyle.name || "Selected Style"}</p>
               </div>
               <div style={styles.colorCircles}>
+                {this.state.styles.map((styleObj, index) => {
+                  return <div onClick={() => this.changeSelectedStyle(index)}>
+                    <img style={styles.circle} src={styleObj.photos[0].thumbnail_url}></img>
+                  </div>
+                })}
+                {/* <div style={styles.circle}></div>
                 <div style={styles.circle}></div>
                 <div style={styles.circle}></div>
                 <div style={styles.circle}></div>
-                <div style={styles.circle}></div>
-                <div style={styles.circle}></div>
+                <div style={styles.circle}></div> */}
               </div>
               <div>
                 <select
