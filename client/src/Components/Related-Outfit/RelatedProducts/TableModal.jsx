@@ -4,8 +4,8 @@ var TableModal = function(props) {
   var handleClick = (event) => {
     props.click('close');
   }
-  console.log('Main item ', props.current);
-  console.log('Comparing to ', props.compareTo);
+  //console.log('Main item ', props.current);
+  //console.log('Comparing to ', props.compareTo);
 
   if (props.display) {
     return (
@@ -51,7 +51,7 @@ var compareFeatures = (firstFeatures, secondFeatures) => {
   var sharedFeats = [];
   firstFeatures.forEach((itemFeat) => {
     secondFeatures.forEach((itemTwoFeat) => {
-      console.log(itemTwoFeat);
+      //console.log(itemTwoFeat);
       if (itemFeat.feature === itemTwoFeat.feature) {
         sharedFeats.push([itemFeat.value, itemFeat.feature, itemTwoFeat.value]);
       }
