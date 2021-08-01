@@ -22,7 +22,7 @@ class QuestionList extends React.Component {
   }
 
   componentDidUpdate() {
-    //this.state.product_id = '17083'
+    this.state.product_id = '17083'
     if (!this.state.repeated) {
       getQuestions(this.state.product_id, (error, quests) => {
         if (error) { return console.log('Failure to get ID: ', error); }
