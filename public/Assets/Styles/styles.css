@@ -24,14 +24,21 @@
   -webkit-text-fill-color: transparent;
 }
 /* --------- Rating-Reiviews ----------- */
-.review-tile {
-  margin-left: 30%;
-  margin-right: 30%;
-  margin-top: 2%;
+.ratings-reviews-dispay {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px
+}
+.rating-breakdown {
+  margin-left: 60%;
+}
+
+.reviews {
+  grid-column: 2 / 4;
 }
 
 .review-tile-header .stars-display {
-  margin-right: 40%;
+
 }
 
 .review-tile-verified::before {
@@ -39,7 +46,7 @@
 }
 
 .review-tile-header {
-  display: flex;
+
 }
 
 .review-tile-reviewSummary {
@@ -51,30 +58,28 @@
 }
 
 .review-tile-footer {
-  display: flex;
+
 }
 .review-tile-reviewBodyButton {
   color: grey;
 }
 
 .rating-reviews-buttons {
-  margin-left: 40%;
-  margin-top: 3%;
-  display: flex;
+
 }
 .rating-reviews-button-show-more {
-  margin-right: 5%;
+
 }
 .rating-breakdown-header {
-  display: flex;
-  margin-left: 12%;
+
 }
 
 .rating-breakdown-star-display {
-  position: relative;
-  top: 23px;
-  left: 5px;
+
 }
+
+
+
 
 .progress-bar {
   margin-left: 1%;
@@ -94,4 +99,3 @@
   display: flex;
   margin-left: 12%;
 }
-

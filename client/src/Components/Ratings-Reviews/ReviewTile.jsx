@@ -20,7 +20,7 @@ class Review extends React.Component {
 
   render() {
     return (
-      <div className="reviews">
+      <div className="grid-item reviews">
         {this.props.data.results.map((tile, index) => {
           //handling summary length
           var reviewSummaryCut = tile.summary;

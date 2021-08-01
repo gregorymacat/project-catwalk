@@ -20,7 +20,7 @@ class RatingsBreakdown extends React.Component {
     }
     var rating = (totalStars / numberOfReviews).toFixed(1);
     return(
-      <div className="rating-breakdown">
+      <div className="grid-item rating-breakdown">
         <div className="rating-breakdown-header">
           <div className="rating-breakdown-number">
             <h1>{rating}</h1>

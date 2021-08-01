@@ -60,8 +60,10 @@ class RatingsReviews extends React.Component {
   render() {
     return(
       <div className="ratings-reviews">
-        <RatingsBreakdown metaData={this.state.reviewMetaData}/>
-        <ReviewTile data={this.state.reviewTileData}/>
+        <div className="grid-container ratings-reviews-dispay">
+          <RatingsBreakdown metaData={this.state.reviewMetaData}/>
+          <ReviewTile data={this.state.reviewTileData}/>
+        </div>
         <div className="rating-reviews-buttons">
           <div className="rating-reviews-button-show-more">
             <button>More Reviews</button>
