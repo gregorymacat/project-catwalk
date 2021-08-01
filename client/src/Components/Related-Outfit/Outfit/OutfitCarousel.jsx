@@ -30,7 +30,7 @@ class OutfitCarousel extends React.Component {
   };
 
   handleActionClick(action, itemId) {
-    console.log(typeof itemId);
+    // console.log(typeof itemId);
     if (action === 'remove') {
       var outfit = this.state.outfitItems;
       for (var index = 0; index < outfit.length; index++) {
@@ -44,7 +44,7 @@ class OutfitCarousel extends React.Component {
   }
 
   handleAddClick(event) {
-    console.log('Should be adding ', this.props.currentProduct);
+    //console.log('Should be adding ', this.props.currentProduct);
     var outfitCopy = this.state.outfitItems.slice();
     outfitCopy.push(this.props.currentProduct);
     this.setState({

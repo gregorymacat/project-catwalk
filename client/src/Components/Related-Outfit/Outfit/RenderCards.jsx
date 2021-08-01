@@ -14,7 +14,7 @@ var chooseCards = function(index, products, addCard) {
   var displayCards = [];
   var i = index;
   var onDisplay = 0;
-  console.log('Cards before picking', displayCards);
+  //console.log('Cards before picking', displayCards);
   while (onDisplay < 4 && i <= products.length) {
     if (i === 0) {
       displayCards.push(addCard);
@@ -25,7 +25,7 @@ var chooseCards = function(index, products, addCard) {
     i++;
   }
 
-  console.log('Cards after picking', displayCards);
+  //console.log('Cards after picking', displayCards);
 
   return displayCards;
 }

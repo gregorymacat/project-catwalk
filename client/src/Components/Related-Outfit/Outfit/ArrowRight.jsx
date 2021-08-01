@@ -1,7 +1,7 @@
 import React from 'react';
 
 var ArrowRight = function(props) {
-  console.log(props.index);
+  // console.log(props.index);
   var handleClick = () => {
     var index = props.index;
     // console.log(index);
