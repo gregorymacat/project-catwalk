@@ -1,17 +1,27 @@
 import React from 'react';
 import RelatedCarousel from './RelatedProducts/RelatedCarousel.jsx';
 import OutfitCarousel from './Outfit/OutfitCarousel.jsx';
+import {getOneProduct} from '../../../Controllers/general.js';
 import {getRelatedProductIds, getProductsByIds, getStylesByIds}
   from '../../../Controllers/related-outfit.js';
+import testProduct from '../../dummy-product.js';
 import testStyle from '../../dummy-style.js';
 
 class RelatedOutfit extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      products: this.props.product,
+      products: [testProduct],
       styles: [testStyle]
     }
+  }
+  componentDidMount(){
+    getOneProduct(this.props.product.toString(), (err, results) => {
+      if (err) {
+        return console.log('Unable to get a product: ', err)
+      }
+      this.setState({product: results});
+    })
   }
 
   componentDidUpdate(prevProps, prevState) {

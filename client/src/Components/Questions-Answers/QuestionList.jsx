@@ -14,7 +14,7 @@ class QuestionList extends React.Component {
       allQuestions: [],
       query: [],
       queryList: [],
-      product_id: this.props.product[0].id,
+      product_id: this.props.product,
       repeated: false,
     };
     this.onClick = this.onClick.bind(this);
