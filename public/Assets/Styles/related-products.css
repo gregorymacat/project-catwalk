@@ -4,7 +4,7 @@
   align-items: center;
   margin: 0 auto;
   padding: 5px;
-  width: 75%;
+  width: 85%;
   height: 10%;
 }
 /*
@@ -43,11 +43,21 @@
 ** CAROUSEL STYLES **
 *********************
 */
+.carousel.right {
+  margin-left: -25%;
+}
 .carousel.container.cards {
-  background-color: aquamarine;
+  width: 90vw;
+  border: 0px;
+  /* background-color: aquamarine; */
 }
 .carousel.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 15%;
+  min-width: 15vw;
+  margin: 0.75% 1%;
   background-color: silver;
 }
 /*
@@ -56,12 +66,14 @@
 *****************
 */
 .product-card .action {
-  margin: 0 90%;
+  padding: 2% 0 0 88%;
 }
 .product-card img {
-  margin: 0 6%;
+  /* margin: 0 6%;
   width: 150px;
-  height: 112.5px;
+  height: 112.5px; */
+  width: 150px;
+  height: 150px;
   border: 1px solid;
   overflow: hidden;
 }
