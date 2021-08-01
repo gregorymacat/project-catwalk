@@ -1,6 +1,7 @@
 @import 'carousel.css';
 @import 'modal.css';
 @import 'related-products.css';
+@import 'questions-answers.css'
 
 :root {
   --star-size: 20px;
