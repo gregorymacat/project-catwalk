@@ -31,7 +31,7 @@ class App extends React.Component {
         <Overview product={this.state.product} />
         <RelatedOutfit product={this.state.product}/>
         <QuestionsList product={this.state.product}/>
-        <RatingsReviews/>
+        <RatingsReviews product={this.state.product}/>
         {/* <StarsDisplay starsData={this.state.starsRating}/> */}
         {/* <StarsForm/> */}
       </div>

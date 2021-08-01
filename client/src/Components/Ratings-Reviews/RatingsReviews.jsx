@@ -3,8 +3,9 @@ import moment from 'moment';
 import axios from 'axios';
 
 import {reviewExampleData, reviewMetaExampleData}from './example.data'
-import ReviewTile from './ReviewTile';
+import ReviewList from './ReviewList';
 import ReviewForm from './ReviewForm';
+import RatingsSort from './RatingsSort'
 import RatingsBreakdown from './RatingsBreakdown'
 import {getAllReviews, getAllMetaReviews} from '../../../Controllers/ratings-reviews';
 import Modal from '../Shared/Modal/Modal';
@@ -15,7 +16,7 @@ class RatingsReviews extends React.Component {
 
     this.state = {
       product: this.props.product,
-      reviewTileData: reviewExampleData,
+      reviewListData: reviewExampleData,
       reviewMetaData: reviewMetaExampleData
 
     };
@@ -30,8 +31,7 @@ class RatingsReviews extends React.Component {
   }
 
   getMetaReviews() {
-    console.log(this.state.product[0].id);
-    getAllMetaReviews(this.state.product[0].id, (err, res) => {
+    getAllMetaReviews(this.state.product, (err, res) => {
       if (err) {
         console.log(err)
       } else {
@@ -49,7 +49,7 @@ class RatingsReviews extends React.Component {
         console.log(err)
       } else {
         this.setState({
-          reviewTileData: res.data
+          reviewListData: res.data
         })
       }
     })
@@ -63,8 +63,9 @@ class RatingsReviews extends React.Component {
     return(
       <div className="ratings-reviews">
         <div className="grid-container ratings-reviews-dispay">
+          <RatingsSort metaData={this.state.reviewMetaData} />
           <RatingsBreakdown metaData={this.state.reviewMetaData}/>
-          <ReviewTile data={this.state.reviewTileData}/>
+          <ReviewList data={this.state.reviewListData}/>
         </div>
         <div className="rating-reviews-buttons">
           <div className="rating-reviews-button-show-more">
