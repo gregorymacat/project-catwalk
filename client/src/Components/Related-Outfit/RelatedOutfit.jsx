@@ -15,20 +15,33 @@ class RelatedOutfit extends React.Component {
       styles: [testStyle]
     }
   }
-  componentDidMount(){
-    getOneProduct(this.props.product.toString(), (err, results) => {
-      if (err) {
-        return console.log('Unable to get a product: ', err)
-      }
-      this.setState({product: results});
-    })
+  componentDidMount() {
+    getRelatedProductIds(this.props.product, (err, ids) => {
+      if (err) { return console.log('Unable to get IDs: ', err); }
+      var relatedItemIds = ids;
+      getProductsByIds(relatedItemIds, (err, responses) => {
+        if (err) { return console.log('Unable to get IDs: ', err); }
+        var items = responses.map((response) => {
+          return response.data;
+        })
+        this.setState({products: items});
+      });
+      getStylesByIds(relatedItemIds, (err, responses) => {
+        if (err) { return console.log('Unable to get styles: ', err); }
+        var photos = responses.map((response) => {
+          return response.data;
+        })
+        this.setState({styles: photos});
+      })
+    });
   }
 
   componentDidUpdate(prevProps, prevState) {
+    console.log(this.props.product)
     if (this.props.product === prevProps.product) {
       return;
     }
-    getRelatedProductIds(this.props.product.id, (err, ids) => {
+    getRelatedProductIds(this.props.product, (err, ids) => {
       if (err) { return console.log('Unable to get IDs: ', err); }
       var relatedItemIds = ids;
       getProductsByIds(relatedItemIds, (err, responses) => {
