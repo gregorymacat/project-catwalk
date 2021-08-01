@@ -3,6 +3,7 @@ import RenderCards from './RenderCards.jsx';
 import ArrowLeft from './ArrowLeft.jsx';
 import ArrowRight from './ArrowRight.jsx';
 import AddCard from './AddCard.jsx';
+import testOutfit from '../../../dummy-outfit.js';
 
 class OutfitCarousel extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class OutfitCarousel extends React.Component {
       displayIndex: 0,
       leftVisible: false,
       rightVisible: true,
-      outfitItems: []
+      outfitItems: testOutfit
     }
     this.handleArrowClick = this.handleArrowClick.bind(this);
     this.handleActionClick = this.handleActionClick.bind(this);

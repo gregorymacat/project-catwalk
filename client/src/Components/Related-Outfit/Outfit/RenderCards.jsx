@@ -14,22 +14,19 @@ var chooseCards = function(index, products, addCard) {
   var displayCards = [];
   var i = index;
   var onDisplay = 0;
-
-  if (index === 0) {
-    displayCards.push(addCard);
-    while (onDisplay < 3 && i <= products.length - 1) {
-      displayCards.push(formatCard(products[i]));
-      onDisplay++;
-      i++;
+  console.log('Cards before picking', displayCards);
+  while (onDisplay < 4 && i <= products.length) {
+    if (i === 0) {
+      displayCards.push(addCard);
+    } else {
+      displayCards.push(formatCard(products[i - 1]));
     }
-  } else {
-    i = i - 1;
-    while (onDisplay < 4 && i <= products.length - 1) {
-      displayCards.push(formatCard(products[i]));
-      onDisplay++;
-      i++;
-    }
+    onDisplay++;
+    i++;
   }
+
+  console.log('Cards after picking', displayCards);
+
   return displayCards;
 }
 

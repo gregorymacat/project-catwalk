@@ -5,7 +5,7 @@ var ArrowRight = function(props) {
   var handleClick = () => {
     var index = props.index;
     // console.log(index);
-    if (index + 1 < props.max - 1) {
+    if (index + 1 < props.max) {
       props.click({
         displayIndex: index + 1,
         leftVisible: true,
