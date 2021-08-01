@@ -15,7 +15,7 @@ var ProductCards = function(props) {
           return (
             <div key={card.id} className='carousel item product-card'>
               <span id='compare' className='action fa fa-star'
-               onClick={handleClick} data-itemNum={card.id}></span>
+               onClick={handleClick} data-itemnum={card.id}></span>
               <div>
                 <img src={getImage(card.id, props.allStyles)}></img>
               </div>

@@ -3,6 +3,10 @@
 @import 'related-products.css';
 @import 'outfit.css';
 
+body {
+  background-color: #d3d3d3;
+}
+
 :root {
   --star-size: 20px;
   --star-color: #ddd;
