@@ -55,7 +55,7 @@ export default class Overview extends React.Component {
     })
   }
   render() {
-    console.log("PRODUCT", this.props)
+    // console.log("PRODUCT", this.state.product)
     return (
       // overview is the container component, flex direction is set to column, so the page reads top to bottom
       <div style={styles.overview}>
@@ -125,10 +125,16 @@ export default class Overview extends React.Component {
                     Add To Bag
                   </button>
                 }
-
+{/*
                 <button>
                   *
-                </button>
+                </button> */}
+                <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                <a class="twitter-share-button"
+                href="https://twitter.com/intent/tweet?text=Hello%20world">
+                Tweet</a>
+                <a href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark">
+                </a>
               </div>
             </div>
           </div>
