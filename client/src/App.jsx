@@ -33,7 +33,7 @@ class App extends React.Component {
         <h1>Hello World!</h1>
         <Overview product={this.state.product} />
         <RelatedOutfit product={this.state.product}/>
-        <QuestionsList/>
+        <QuestionsList product={this.state.product}/>
         <RatingsReviews/>
         {/* <StarsDisplay starsData={this.state.starsRating}/> */}
         {/* <StarsForm/> */}
