@@ -18,7 +18,6 @@ class App extends React.Component {
   }
 
   clickHandler(newProductID) {
-    console.log('NEW ID ', newProductID);
     this.setState({
       product: newProductID
     });

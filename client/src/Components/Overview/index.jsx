@@ -64,7 +64,6 @@ export default class Overview extends React.Component {
   }
   render() {
     // console.log("PRODUCT", this.state.product)
-    console.log("STYLE", this.state.selectedStyle)
     return (
       // overview is the container component, flex direction is set to column, so the page reads top to bottom
       <div style={styles.overview}>
