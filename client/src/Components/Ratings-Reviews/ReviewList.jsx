@@ -6,23 +6,17 @@ import StarsDisplay from '../Shared/StarsDisplay';
 class Review extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      shownReviews: []
+    }
 
-    this.onShowMoreClick = this.handleShowMoreClick.bind(this);
   }
 
-  componentDidMount() {
-    this.handleShowMoreClick();
-  }
-
-  handleShowMoreClick(reviewText, index) {
-    reviewText = this.props.data.results[0].body;
-  }
 
   render() {
-    console.log(this.props);
     return (
       <div className="grid-item reviews">
-        {this.props.data.results.map((tile, index) => {
+        {this.props.data.map((tile, index) => {
           //handling summary length
           var reviewSummaryCut = tile.summary;
           if (tile.summary > 60) {
@@ -56,7 +50,7 @@ class Review extends React.Component {
                   }
                 </div>
                 <div className="review-tile-reviewBodyImg">
-                  {tile.photos.map((image, index) => {
+                  {tile.photos.map((image, key) => {
                     return <img className="review-tile-Img" src={image.url}></img>;
                   })}
                 </div>

@@ -18,12 +18,15 @@ class RatingsReviews extends React.Component {
       product: this.props.product,
       reviewListData: reviewExampleData,
       reviewMetaData: reviewMetaExampleData,
-      writeReview: false
+      writeReview: false,
+      shownReviews: [],
+      numberOfShownReviews: 2,
 
     };
     this.getReviews = this.getReviews.bind(this);
     this.getMetaReviews = this.getMetaReviews.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleMoreReviews = this.handleMoreReviews.bind(this);
   }
 
   componentDidMount() {
@@ -44,13 +47,13 @@ class RatingsReviews extends React.Component {
   }
 
   getReviews() {
-    //var productInfo = {}
     getAllReviews({}, (err, res) => {
       if (err) {
         console.log(err)
       } else {
         this.setState({
-          reviewListData: res.data
+          reviewListData: res.data,
+          shownReviews: (res.data.results).slice(0, this.state.numberOfShownReviews)
         })
       }
     })
@@ -62,16 +65,24 @@ class RatingsReviews extends React.Component {
     })
   }
 
+  handleMoreReviews(e) {
+    this.setState({
+      numberOfShownReviews: this.state.numberOfShownReviews + 2,
+      shownReviews: (this.state.reviewListData.results).slice(0, this.state.numberOfShownReviews + 2)
+    })
+  }
+
   render() {
+    console.log(this.state.shownReviews);
     return(
       <div className="ratings-reviews">
         <div className="grid-container ratings-reviews-dispay">
           <RatingsSort metaData={this.state.reviewMetaData} />
           <RatingsBreakdown metaData={this.state.reviewMetaData}/>
-          <ReviewList data={this.state.reviewListData}/>
+          <ReviewList moreReviews={() => this.handleMoreReviews()} data={this.state.shownReviews}/>
           <div className="grid-item rating-reviews-buttons">
             <div className="rating-reviews-button-show-more">
-              <button>More Reviews</button>
+              <button onClick={this.handleMoreReviews}>More Reviews</button>
             </div>
             <div className="rating-reviews-button-form">
              <  ModalViewer/>

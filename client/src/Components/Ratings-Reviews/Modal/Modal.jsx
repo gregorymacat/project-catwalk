@@ -33,6 +33,8 @@ class Modal extends React.Component {
   }
 
   handleSubmit(e) {
+    cosnsole.log('submit was pressed');
+    alert('Review Has been Submitted!');
     e.preventDefault();
   }
 
@@ -42,9 +44,7 @@ class Modal extends React.Component {
       return (
         <div className='modal-body'>
           <div className='modal-content'>
-            <span id='close' className='fa fa-times' onClick={this.props.click}></span>
-            <span>Click on the "x" to close the modal</span>
-            <div className="modal-body-content">
+            <form onSubmit={this.handleSubmit}>
               <div className="modal-body-overall-rating">
                 Please select your rating (1 star = "Poor", 5 stars = "Great")
                 <StarsForm />
@@ -52,7 +52,7 @@ class Modal extends React.Component {
               <div className="modal-body-recommended">
                 <p>Would you recommended this product?</p>
                 <input type="radio" id="yes" name="recommended" value={true} onChange={this.handleChange}></input> Yes
-                <input type="radio" id="yes" name="recommended" value={false} onChange={this.handleChange}></input> No
+                <input type="radio" id="no" name="recommended" value={false} onChange={this.handleChange}></input> No
               </div>
               <div className="modal-body-summary">
                 <label for="summary">Review:</label><br></br>
@@ -74,8 +74,8 @@ class Modal extends React.Component {
                 <label for="email">Email:</label><br></br>
                 <input type="email" id="email" name="email" placeholder="Example: jackson11@email.com" maxlength="60" value={this.state.value} onChange={this.handleChange}></input>
               </div>
-              <button onSubmit={this.handleSubmit}>Submit</button>
-            </div>
+              <button type="button" value="Submit" id='close'onClick={this.props.click}>Submit</button>
+            </form>
           </div>
         </div>
       )
