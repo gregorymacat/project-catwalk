@@ -38,6 +38,9 @@ var chooseCards = function(index, products, addCard) {
 }
 
 var formatCard = function(card) {
+  if (card.id === undefined) {
+    return card;
+  }
   return (
     <div key={card.id} className='carousel item product-card'>
       <span id='compare' className='action fa fa-star'
