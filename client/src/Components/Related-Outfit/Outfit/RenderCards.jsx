@@ -1,7 +1,7 @@
 import React from 'react';
 
 var RenderCards = function(props) {
-  var cards = chooseCards(props.startIndex, props.allProducts, props.add);
+  var cards = chooseCards(props.startIndex, props.allProducts, props.add, props.atStart);
   return (
     <React.Fragment>
       {cards}
@@ -9,7 +9,7 @@ var RenderCards = function(props) {
   )
 }
 
-var chooseCards = function(index, products, addCard) {
+var chooseCards = function(index, products, addCard, atStart) {
   var displayCards = [];
   var onDisplay = 0;
   //console.log('Cards before picking', displayCards);
@@ -23,15 +23,18 @@ var chooseCards = function(index, products, addCard) {
   //   i++;
   // }
   var itemCount = products.length;
-  if (index === 0) {
+  if (atStart) {
     displayCards.push(addCard);
-    //oitemCount += 1;
+    while (index < 3 && index < itemCount) {
+      displayCards.push(formatCard(products[index]));
+      index++;
+    }
+  } else {
+    while (index < 4 && index < itemCount) {
+      displayCards.push(formatCard(products[index]));
+      index++;
+    }
   }
-  for (var i = 0; i < itemCount; i++) {
-    displayCards.push(formatCard(products[i]));
-  }
-
-
   //console.log('Cards after picking', displayCards);
 
   return displayCards;

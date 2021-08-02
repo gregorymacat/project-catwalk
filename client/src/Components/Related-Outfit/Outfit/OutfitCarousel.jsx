@@ -44,9 +44,16 @@ class OutfitCarousel extends React.Component {
     //console.log('Should be adding ', this.props.currentProduct);
     var outfitCopy = this.state.outfitItems.slice();
     outfitCopy.push(this.props.currentProduct);
-    this.setState({
-      outfitItems: outfitCopy
-    });
+    if (this.state.outfitItems.length === 0) {
+      this.setState({
+        outfitItems: outfitCopy,
+        rightVisible: true
+      });
+    } else {
+      this.setState({
+        outfitItems: outfitCopy,
+      });
+    }
   }
 
   displayArrow(direction) {
@@ -72,8 +79,8 @@ class OutfitCarousel extends React.Component {
         atStart={this.state.atStart}/>
         <div className='carousel container cards'>
           <RenderCards startIndex={startIndex} allProducts={products}
-           allStyles={styles} click={this.handleActionClick}
-           add={<AddCard click={this.handleAddClick}/>}/>
+           allStyles={styles} click={this.handleActionClick} atStart={this.state.atStart}
+           add={<AddCard click={this.handleAddClick} atStart={this.state.atStart}/>}/>
         </div>
         <ArrowRight click={this.handleArrowClick} isDisplaying={displayRight} index={startIndex}
         atStart={this.state.atStart} max={this.state.outfitItems.length}/>
