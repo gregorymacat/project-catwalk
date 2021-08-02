@@ -127,5 +127,39 @@ body {
 .progress-bar-contents {
   margin-bottom: 5%;
   display: flex;
+}
 
+.char-progress-bar {
+  margin-top: 2%;
+  margin-left: 1%;
+  margin-right: 1%;
+  position: relative;
+  height: 10px;
+  width: 150px;
+  background-color: grey;
+}
+.char-filler {
+  background-color: green;
+  height: 100%;
+  /* transition: width .2s ease-in; */
+}
+
+.ratings-breakdown-chars-item {
+  margin-bottom: 10%;
+}
+.char-range {
+  display: flex;
+  font-size: 10px;
+}
+.char-range-small {
+  padding-right: 102px;
+}
+.char-range-narrow {
+  padding-right: 80px;
+}
+.char-range-soft {
+  padding-right: 100px;
+}
+.char-range-poor {
+  padding-right: 98px;
 }

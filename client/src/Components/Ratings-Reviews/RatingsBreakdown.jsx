@@ -1,7 +1,7 @@
 import React from 'react';
 import StarsDisplay from '../Shared/StarsDisplay';
 import RatingsBreakdownBar from './RatingsBreakdownBar';
-import RatingsSize from './RatingsSize';
+import RatingsChars from './RatingsChars';
 
 var RatingsBreakdown = (props) => {
   //Star Displau and breakdown progress bars
@@ -43,16 +43,7 @@ var RatingsBreakdown = (props) => {
           </div>
         </div>
         <div className="rating-breakdown-footer">
-          <div className="ratings-breakdown-size-rating">
-            Size
-            <RatingsBreakdownBar percentage={sizeRating}/>
-            Too small
-          </div>
-          <div className="ratings-breakdown-comfort-rating">
-            Comfort
-            <RatingsBreakdownBar percentage={sizeRating}/>
-            Poor
-          </div>
+        <RatingsChars characteristics={props.metaData.characteristics} />
         </div>
       </div>
     )
