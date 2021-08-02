@@ -12,7 +12,6 @@ export default class Overview extends React.Component {
     super(props)
     this.state = {
       addedToCart: false,
-      quantity: 1,
       selectedSize: 'Select Size',
       product: {},
       styles: [],
@@ -27,7 +26,7 @@ export default class Overview extends React.Component {
     this.getSizeQuantity = this.getSizeQuantity.bind(this)
   }
   componentDidMount(){
-    getOneProduct("17067", (err, results) => {
+    getOneProduct("17071", (err, results) => {
       if (err) {
         return console.log('Unable to get a product: ', err)
       }
@@ -54,7 +53,7 @@ export default class Overview extends React.Component {
     }
     axios.post('/cart', {
       "sku_id": this.state.product.id,
-      "count": this.state.quantity,
+      "count": this.state.selectedQuantity,
       "size": this.state.selectedSize
     })
     .then((data)=>{
@@ -69,44 +68,36 @@ export default class Overview extends React.Component {
   }
   changeQuantity(event) {
     this.setState({
-      quantity: Number(event.target.value)
+      selectedQuantity: Number(event.target.value)
     })
   }
   changeSelectedSize(event) {
     this.setState({
-      selectedSize: event.target.value
+      selectedSize: event.target.value,
+      selectedQuantity: 1
     })
   }
   getSizeQuantity(inventory) {
-    //make sure skus is defined
-    // const inventory = this.state.selectedStyle.skus ? Object.values(this.state.selectedStyle.skus) : []
-    // if (inventory.length) {
-    //   return inventory.filter((sku) => {
-    //     return sku.size === this.state.selectedSize
-    //   })
-    // }
     for (var i = 0; i < inventory.length; i++) {
       if (inventory[i].size === this.state.selectedSize) {
         return inventory[i].quantity
       }
     }
     return 0
-    // console.log("INVENTORY:::", inventory)
-    // console.log("SELECTED SIZE", this.state.selectedSize)
   }
   changeSelectedStyle(index) {
     this.setState({
       selectedStyle: this.state.styles[index],
-      sizeQuantity: 1
+      selectedQuantity: 1,
+      selectedSize: 'Select Size'
     })
   }
   render() {
-    // console.log("SELECTED STYLE::::", this.state.selectedStyle)
-    // console.log("STATE::::::", this.state)
+    console.log('selected sizez::', this.state.selectedQuantity)
     var inventory = this.state.selectedStyle.skus ? Object.values(this.state.selectedStyle.skus) : []
-    const sizeQuantity = Array.from(Array(this.getSizeQuantity(inventory)).keys())
-    // console.log("SIZE QUANTITY", sizeQuantity)
-    // console.log("INVENTORY::::::", inventory)
+    const sizeQuantity = Array.from(Array(this.getSizeQuantity(inventory)).keys()).slice(0, 16)
+    // console.log('whats goin onnn', sizeQuantity)
+    // console.log("INVENTORY:::::", inventory, "SIZE QUANTITY:::::", sizeQuantity)
       return (
         // overview is the container component, flex direction is set to column, so the page reads top to bottom
         <div style={styles.overview}>
@@ -137,11 +128,6 @@ export default class Overview extends React.Component {
                       <img style={styles.circle} src={styleObj.photos[0].thumbnail_url}></img>
                     </div>
                   })}
-                  {/* <div style={styles.circle}></div>
-                  <div style={styles.circle}></div>
-                  <div style={styles.circle}></div>
-                  <div style={styles.circle}></div>
-                  <div style={styles.circle}></div> */}
                 </div>
                 <div>
                   {this.state.styleSelectError ? <p style={styles.errorMsg}>Please Select A Size</p> : <></>}
@@ -149,17 +135,18 @@ export default class Overview extends React.Component {
                     value={this.state.selectedSize}
                     style={styles.select}
                     onChange={this.changeSelectedSize}>
-                    <option value="Select A Size">Select A Size</option>
+                    <option value="Select Size">Select Size</option>
                     {inventory.map((style, index) => {
                       return (style.quantity > 0 ? <option value={style.size}>{style.size}</option> : <></>
                         )})}
                   </select>
                   <select
                     name="quantity"
-                    value={this.state.quantity}
+                    value={this.state.selectedQuantity}
                     style={styles.select}
                     onChange={this.changeQuantity}
                   >
+                  <option value="Quantity">-</option>
                     {sizeQuantity.map((quantity, index) => {
                       return <option value={quantity}>{quantity}</option>
                     })}
