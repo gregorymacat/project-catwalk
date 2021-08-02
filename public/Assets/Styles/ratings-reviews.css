@@ -1,0 +1,146 @@
+/* --------- Rating-Reiviews ----------- */
+.ratings-reviews-dispay {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 40px
+}
+/* --------- Rating-Reiviews Breakdown ----------- */
+.rating-breakdown {
+  grid-column: 1 / 2;
+  margin-left: 60%;
+}
+.rating-breakdown-header {
+  display: flex;
+
+}
+
+.rating-breakdown-star-display {
+  position: relative;
+  top: 23px;
+  left: 5px;
+}
+
+.rating-breakdown-footer {
+
+  margin-top: 10%;
+}
+
+.ratings-breakdown-comfort-rating {
+  margin-top: 10%;
+}
+
+/* --------- Rating-Reiviews Tiles ----------- */
+.reviews {
+  grid-column: 2 / 4;
+}
+
+.review-tile {
+  margin-top: 2%;
+}
+
+.review-tile-header {
+  display: flex;
+}
+
+.review-tile-header .stars-display {
+  margin-right: 30%;
+}
+
+.review-tile-verified::before {
+  content: '\2714';
+}
+
+.review-tile-reviewSummary {
+  font-weight: bold;
+}
+
+
+.review-tile-recommended {
+  content: '\2714 I recommend this product';
+}
+
+.review-tile-reviewBodyButton {
+  color: grey;
+}
+
+.review-tile-Img  {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 100px;
+}
+
+/* --------- Rating-Reiviews Buttons ----------- */
+.rating-reviews-buttons {
+  grid-column: 2 / 4;
+  display: flex;
+  margin: 2%
+
+}
+.rating-reviews-button-show-more {
+  margin-right: 2%
+}
+
+/* --------- Rating-Reiviews Sort ----------- */
+.ratings-sort {
+  grid-column: 2 / 4;
+  margin-top: 5%;
+  font-size: 20px;
+}
+
+
+
+.progress-bar {
+  margin-top: 2%;
+  margin-left: 1%;
+  margin-right: 1%;
+  position: relative;
+  height: 10px;
+  width: 150px;
+  background-color: grey;
+}
+.filler {
+  background-color: green;
+  height: 100%;
+  transition: width .2s ease-in;
+}
+
+.progress-bar-contents {
+  margin-bottom: 5%;
+  display: flex;
+}
+
+.char-progress-bar {
+  margin-top: 2%;
+  margin-left: 1%;
+  margin-right: 1%;
+  position: relative;
+  height: 10px;
+  width: 150px;
+  background-color: grey;
+}
+.char-filler {
+  background-color: green;
+  height: 100%;
+  /* transition: width .2s ease-in; */
+}
+
+.ratings-breakdown-chars-item {
+  margin-bottom: 10%;
+}
+.char-range {
+  display: flex;
+  font-size: 10px;
+}
+.char-range-small {
+  padding-right: 102px;
+}
+.char-range-narrow {
+  padding-right: 80px;
+}
+.char-range-soft {
+  padding-right: 100px;
+}
+.char-range-poor {
+  padding-right: 98px;
+}

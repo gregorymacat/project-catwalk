@@ -1,26 +1,22 @@
 import React from 'react';
 import StarsDisplay from '../Shared/StarsDisplay';
 import RatingsBreakdownBar from './RatingsBreakdownBar';
+import RatingsChars from './RatingsChars';
 
-class RatingsBreakdown extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
+var RatingsBreakdown = (props) => {
+  //Star Displau and breakdown progress bars
     var numberOfReviews = 0;
     var totalStars = 0;
-    var largestReview = 0;
-    for (var key in this.props.metaData.ratings) {
-      if(parseInt(this.props.metaData.ratings[key]) > largestReview) {
-        largestReview = parseInt(this.props.metaData.ratings[key]);
-      }
-      totalStars += parseInt(this.props.metaData.ratings[key]) * key;
-      numberOfReviews += parseInt(this.props.metaData.ratings[key]);
+    for (var key in props.metaData.ratings) {
+      totalStars += parseFloat(props.metaData.ratings[key]) * key;
+      numberOfReviews += parseFloat(props.metaData.ratings[key]);
     }
     var rating = (totalStars / numberOfReviews).toFixed(1);
+    //Size and Comfort
+    var sizeRating = parseFloat(props.metaData.characteristics.Size.value).toFixed(1) * 10;
+
     return(
-      <div className="rating-breakdown">
+      <div className="grid-item rating-breakdown">
         <div className="rating-breakdown-header">
           <div className="rating-breakdown-number">
             <h1>{rating}</h1>
@@ -31,24 +27,26 @@ class RatingsBreakdown extends React.Component {
         </div>
         <div className="rating-breakdown-body">
           <div className="progress-bar-contents">
-            5 Stars: <RatingsBreakdownBar percentage={(parseInt(this.props.metaData.ratings["5"]).toFixed(2)/largestReview) * 100}/>
+            5 Stars: <RatingsBreakdownBar percentage={(parseFloat(props.metaData.ratings["5"]).toFixed(2)/numberOfReviews) * 100}/> ({props.metaData.ratings["5"]})
           </div>
           <div className="progress-bar-contents">
-            4 Stars: <RatingsBreakdownBar percentage={(parseInt(this.props.metaData.ratings["4"]).toFixed(2)/largestReview) * 100}/>
+            4 Stars: <RatingsBreakdownBar percentage={(parseFloat(props.metaData.ratings["4"]).toFixed(2)/numberOfReviews) * 100}/> ({props.metaData.ratings["4"]})
           </div>
           <div className="progress-bar-contents">
-            3 Stars: <RatingsBreakdownBar percentage={(parseInt(this.props.metaData.ratings["3"]).toFixed(2)/largestReview) * 100}/>
+            3 Stars: <RatingsBreakdownBar percentage={(parseFloat(props.metaData.ratings["3"]).toFixed(2)/numberOfReviews) * 100}/> ({props.metaData.ratings["3"]})
           </div>
           <div className="progress-bar-contents">
-            2 Stars: <RatingsBreakdownBar percentage={(parseInt(this.props.metaData.ratings["2"]).toFixed(2)/largestReview) * 100}/>
+            2 Stars: <RatingsBreakdownBar percentage={(parseFloat(props.metaData.ratings["2"]).toFixed(2)/numberOfReviews) * 100}/> ({props.metaData.ratings["2"]})
           </div>
           <div className="progress-bar-contents">
-            1 Stars: <RatingsBreakdownBar percentage={(parseInt(this.props.metaData.ratings["1"]).toFixed(2)/largestReview) * 100}/>
+            1 Stars: <RatingsBreakdownBar percentage={(parseFloat(props.metaData.ratings["1"]).toFixed(2)/numberOfReviews) * 100}/> ({props.metaData.ratings["1"]})
           </div>
+        </div>
+        <div className="rating-breakdown-footer">
+        <RatingsChars characteristics={props.metaData.characteristics} />
         </div>
       </div>
     )
-  }
 }
 
 export default RatingsBreakdown;

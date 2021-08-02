@@ -2,8 +2,10 @@ import React from 'react'
 import styles from './styles.js'
 import StarsDisplay from '../Shared/StarsDisplay.jsx'
 import axios from 'axios'
+import {getOneProduct} from '../../../Controllers/general.js';
 // import testStyle from './dummy-style.js';
 // import Carousel from './components/Shared/Carousel/Carousel.jsx';
+import testProduct from '../../dummy-product.js';
 
 export default class Overview extends React.Component {
   constructor(props) {
@@ -11,15 +13,24 @@ export default class Overview extends React.Component {
     this.state = {
       addedToCart: false,
       quantity: 1,
-      selectedSize: 'Select Size'
+      selectedSize: 'Select Size',
+      product: [testProduct]
     }
     this.addToCart = this.addToCart.bind(this)
     this.changeQuantity = this.changeQuantity.bind(this)
     this.changeSelectedSize = this.changeSelectedSize.bind(this)
   }
+  componentDidMount(){
+    getOneProduct(this.props.product.toString(), (err, results) => {
+      if (err) {
+        return console.log('Unable to get a product: ', err)
+      }
+      this.setState({product: results});
+    })
+  }
   addToCart() {
     axios.post('/cart', {
-      "sku_id": this.props.product.id,
+      "sku_id": this.state.product.id,
       "count": this.state.quantity,
       "size": this.state.selectedSize
     })
@@ -27,7 +38,7 @@ export default class Overview extends React.Component {
       this.setState({
         addedToCart: true
       })
-      console.log('data::', data)
+      // console.log('data::', data)
     })
     .catch(()=>{
       console.log('Error')
@@ -44,7 +55,7 @@ export default class Overview extends React.Component {
     })
   }
   render() {
-    console.log("PRODUCT", this.props)
+    // console.log("PRODUCT", this.props)
     return (
       // overview is the container component, flex direction is set to column, so the page reads top to bottom
       <div style={styles.overview}>
@@ -60,9 +71,9 @@ export default class Overview extends React.Component {
                 <StarsDisplay starsData={5}/>
                 <a href="#RatingsReviews">Read All Reviews</a>
             </div>
-            <p>{this.props.product.category}</p>
-            <h1>{this.props.product.name}</h1>
-            <p>${this.props.product.default_price}</p>
+            <p>{this.state.product.category}</p>
+            <h1>{this.state.product.name}</h1>
+            <p>${this.state.product.default_price}</p>
             <div style={styles.productStyle}>
               <div>
                 <p>style &gt; selected style</p>
@@ -127,8 +138,8 @@ export default class Overview extends React.Component {
         */}
         <div style={styles.row}>
           <div style={styles.productDetails}>
-            <h1>{this.props.product.slogan}</h1>
-            <p>{this.props.product.description}</p>
+            <h1>{this.state.product.slogan}</h1>
+            <p>{this.state.product.description}</p>
           </div>
         </div>
       </div>
