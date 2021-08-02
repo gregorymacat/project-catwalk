@@ -8,7 +8,7 @@ import ReviewForm from './ReviewForm';
 import RatingsSort from './RatingsSort'
 import RatingsBreakdown from './RatingsBreakdown'
 import {getAllReviews, getAllMetaReviews} from '../../../Controllers/ratings-reviews';
-import Modal from '../Shared/Modal/Modal';
+import ModalViewer from './Modal/ModalViewer';
 
 class RatingsReviews extends React.Component {
   constructor(props) {
@@ -17,7 +17,8 @@ class RatingsReviews extends React.Component {
     this.state = {
       product: this.props.product,
       reviewListData: reviewExampleData,
-      reviewMetaData: reviewMetaExampleData
+      reviewMetaData: reviewMetaExampleData,
+      writeReview: false
 
     };
     this.getReviews = this.getReviews.bind(this);
@@ -56,7 +57,9 @@ class RatingsReviews extends React.Component {
   }
 
   handleClick() {
-    return <Modal />;
+    this.setState({
+      writeReview: true
+    })
   }
 
   render() {
@@ -66,13 +69,13 @@ class RatingsReviews extends React.Component {
           <RatingsSort metaData={this.state.reviewMetaData} />
           <RatingsBreakdown metaData={this.state.reviewMetaData}/>
           <ReviewList data={this.state.reviewListData}/>
-        </div>
-        <div className="rating-reviews-buttons">
-          <div className="rating-reviews-button-show-more">
-            <button>More Reviews</button>
-          </div>
-          <div className="rating-reviews-button-form">
-            <button onClick={() => this.handleClick()}>Add A Review</button>
+          <div className="grid-item rating-reviews-buttons">
+            <div className="rating-reviews-button-show-more">
+              <button>More Reviews</button>
+            </div>
+            <div className="rating-reviews-button-form">
+             <  ModalViewer/>
+            </div>
           </div>
         </div>
       </div>

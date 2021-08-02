@@ -19,6 +19,7 @@ class Review extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="grid-item reviews">
         {this.props.data.results.map((tile, index) => {
@@ -55,7 +56,9 @@ class Review extends React.Component {
                   }
                 </div>
                 <div className="review-tile-reviewBodyImg">
-
+                  {tile.photos.map((image, index) => {
+                    return <img className="review-tile-Img" src={image.url}></img>;
+                  })}
                 </div>
               </div>
               <div className="review-tile-recommended">{recommendedDisplay}</div>
