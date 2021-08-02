@@ -8,6 +8,9 @@ var ProductCards = function(props) {
   }
   var handleItemClick = (event) => {
     var itemId = event.target.dataset.itemnum;
+    if (itemId === undefined) {
+      return console.log('!!!ERROR: This item has no ID');
+    }
     props.itemClick(itemId);
   }
 
@@ -17,7 +20,7 @@ var ProductCards = function(props) {
         cards.map((card) => {
           return (
             <div key={card.id} className='carousel item product-card'
-              itemClick={handleItemClick}>
+              onClick={handleItemClick}>
               <span id='compare' className='action fa fa-star'
                onClick={handleActionClick} data-itemnum={card.id}></span>
               <div>

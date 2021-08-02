@@ -14,12 +14,14 @@ class App extends React.Component {
       starsRating: 1.8,
       product: 19093,
     }
+    this.clickHandler = this.clickHandler.bind(this);
   }
 
   clickHandler(newProductID) {
-    // this.setState({
-    //   product: newProductID
-    // });
+    console.log('NEW ID ', newProductID);
+    this.setState({
+      product: newProductID
+    });
   }
 
   // componentDidMount(){
@@ -35,7 +37,7 @@ class App extends React.Component {
     return (
       <div>
         <Overview product={this.state.product} />
-        <RelatedOutfit appClick={this.state.clickHandler} product={this.state.product}/>
+        <RelatedOutfit appClick={this.clickHandler} product={this.state.product}/>
         <QuestionsList product={this.state.product}/>
         <RatingsReviews product={this.state.product}/>
         {/* <StarsDisplay starsData={this.state.starsRating}/> */}

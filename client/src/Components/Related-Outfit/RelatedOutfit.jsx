@@ -16,6 +16,7 @@ class RelatedOutfit extends React.Component {
       styles: [testStyle]
     }
   }
+
   componentDidMount() {
     getOneProduct(this.props.product.toString(), (err, results) => {
       if (err) {
