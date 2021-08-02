@@ -14,7 +14,6 @@ var ProductCards = function(props) {
     props.itemClick(itemId);
   }
 
-  console.log('These are the current cards to print ', cards);
   return (
     <React.Fragment>
       {
@@ -43,14 +42,10 @@ var chooseCards = function(index, products) {
   if (products.length === 0) {
     return displayCards;
   }
-  console.log('Shouldn\'t be any products ', displayCards)
   while (onDisplay < 4 && i <= products.length - 1) {
-    console.log('Amount displaying ', onDisplay);
-    console.log('Going to display ', products[i].name, ' from index ', i);
     displayCards.push(products[i]);
     onDisplay++;
     i++;
-    console.log('Should be accumulating cards ', displayCards)
   }
   return displayCards;
 }
