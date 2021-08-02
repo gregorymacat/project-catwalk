@@ -57,5 +57,6 @@ var testStyle = {
         }
     }
 }
-
+var testStyle2 = {...testStyle, style_id: 1234, photos: [{thumbnail_url: "https://images.unsplash.com/photo-1554921148-83d8ceda2095?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80"}]}
+export const stylesArray = [testStyle, testStyle2]
 export default testStyle;
