@@ -32,9 +32,9 @@ var chooseCards = function(index, products, addCard) {
 
 var formatCard = function(card) {
   return (
-    <div key={card.id} className='carousel item product-card'>
+    <div key={generateId()} className='carousel item product-card'>
       <span id='compare' className='action fa fa-star'
-       onClick={handleClick} data-itemNum={card.id}></span>
+       onClick={handleClick} data-itemnum={card.id}></span>
       <p>{card.category}</p>
       <p>{card.name}</p>
       <p>{card.default_price}</p>
@@ -55,6 +55,15 @@ var getImage = function(productId, styles) {
   }
   return 'https://picsum.photos/seed/picsum/300/80';
 
+}
+
+var generateId = function() {
+  var id = '';
+  var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0987654321';
+  for (var i = 0; i < 10; i++) {
+    id += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return id;
 }
 
 export default RenderCards;

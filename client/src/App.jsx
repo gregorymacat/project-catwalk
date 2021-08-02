@@ -12,7 +12,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       starsRating: 1.8,
-      product: 19093,
+      product: 17071,
     }
     this.clickHandler = this.clickHandler.bind(this);
   }

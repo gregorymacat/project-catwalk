@@ -18,6 +18,7 @@ class RelatedOutfit extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props.product)
     getOneProduct(this.props.product.toString(), (err, results) => {
       if (err) {
         return console.log('Unable to get a product: ', err)
