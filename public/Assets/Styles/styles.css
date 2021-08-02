@@ -2,6 +2,7 @@
 @import 'modal.css';
 @import 'related-products.css';
 @import 'outfit.css';
+@import 'ratings-reviews.css';
 
 body {
   background-color: #d3d3d3;
@@ -27,75 +28,3 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-/* --------- Rating-Reiviews ----------- */
-.review-tile {
-  margin-left: 30%;
-  margin-right: 30%;
-  margin-top: 2%;
-}
-
-.review-tile-header .stars-display {
-  margin-right: 40%;
-}
-
-.review-tile-verified::before {
-  content: '\2714';
-}
-
-.review-tile-header {
-  display: flex;
-}
-
-.review-tile-reviewSummary {
-  font-weight: bold;
-}
-
-.review-tile-recommended {
-  content: '\2714 I recommend this product';
-}
-
-.review-tile-footer {
-  display: flex;
-}
-.review-tile-reviewBodyButton {
-  color: grey;
-}
-
-.rating-reviews-buttons {
-  margin-left: 40%;
-  margin-top: 3%;
-  display: flex;
-}
-.rating-reviews-button-show-more {
-  margin-right: 5%;
-}
-.rating-breakdown-header {
-  display: flex;
-  margin-left: 12%;
-}
-
-.rating-breakdown-star-display {
-  position: relative;
-  top: 23px;
-  left: 5px;
-}
-
-.progress-bar {
-  margin-left: 1%;
-  position: relative;
-  height: 10px;
-  width: 100px;
-  border: 1px solid;
-}
-.filler {
-  background-color: black;
-  height: 100%;
-  transition: width .2s ease-in;
-}
-
-.progress-bar-contents {
-  margin-bottom: 1%;
-  display: flex;
-  margin-left: 12%;
-}
-

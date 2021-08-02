@@ -4,6 +4,8 @@ import ArrowLeft from './ArrowLeft.jsx';
 import ArrowRight from './ArrowRight.jsx';
 import AddCard from './AddCard.jsx';
 import testOutfit from '../../../dummy-outfit.js';
+import testProduct from '../../../dummy-product.js';
+import {getOneProduct} from '../../../../Controllers/general.js';
 
 class OutfitCarousel extends React.Component {
   constructor(props) {
@@ -11,19 +13,14 @@ class OutfitCarousel extends React.Component {
     this.state = {
       displayIndex: 0,
       leftVisible: false,
-      rightVisible: true,
-      outfitItems: testOutfit
+      rightVisible: false,
+      outfitItems: [],
+      atStart: true
     }
     this.handleArrowClick = this.handleArrowClick.bind(this);
     this.handleActionClick = this.handleActionClick.bind(this);
     this.handleAddClick = this.handleAddClick.bind(this);
   }
-
-  // componentDidMount() {
-  //   this.setState({
-  //   outfitItems: <AddCard click={this.handleAddClick}/>
-  //   });
-  // }
 
   handleArrowClick = (newState) => {
     this.setState(newState);
@@ -47,9 +44,16 @@ class OutfitCarousel extends React.Component {
     //console.log('Should be adding ', this.props.currentProduct);
     var outfitCopy = this.state.outfitItems.slice();
     outfitCopy.push(this.props.currentProduct);
-    this.setState({
-      outfitItems: outfitCopy
-    });
+    if (this.state.outfitItems.length === 0) {
+      this.setState({
+        outfitItems: outfitCopy,
+        rightVisible: true
+      });
+    } else {
+      this.setState({
+        outfitItems: outfitCopy,
+      });
+    }
   }
 
   displayArrow(direction) {
@@ -71,15 +75,26 @@ class OutfitCarousel extends React.Component {
 
     return (
       <React.Fragment>
-        <ArrowLeft click={this.handleArrowClick} isDisplaying={displayLeft}  index={startIndex}/>
+        <ArrowLeft click={this.handleArrowClick} isDisplaying={displayLeft} index={startIndex}
+        atStart={this.state.atStart}/>
         <div className='carousel container cards'>
           <RenderCards startIndex={startIndex} allProducts={products}
-           allStyles={styles} click={this.handleActionClick} add={<AddCard click={this.handleAddClick}/>}/>
+           allStyles={styles} click={this.handleActionClick} atStart={this.state.atStart}
+           add={<AddCard click={this.handleAddClick} atStart={this.state.atStart}/>}/>
         </div>
-        <ArrowRight click={this.handleArrowClick} isDisplaying={displayRight}  index={startIndex} max={this.state.outfitItems.length}/>
+        <ArrowRight click={this.handleArrowClick} isDisplaying={displayRight} index={startIndex}
+        atStart={this.state.atStart} max={this.state.outfitItems.length}/>
       </React.Fragment>
     )
   }
 }
 
 export default OutfitCarousel;
+
+
+
+/*
+{
+  outfitItems: <AddCard click={this.handleAddClick}/>
+}
+*/
