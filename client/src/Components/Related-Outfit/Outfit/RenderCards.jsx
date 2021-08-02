@@ -1,8 +1,7 @@
 import React from 'react';
 
 var RenderCards = function(props) {
-  var cards = chooseCards(props.startIndex, props.allProducts, props.add);
-
+  var cards = chooseCards(props.startIndex, props.allProducts, props.add, props.atStart);
   return (
     <React.Fragment>
       {cards}
@@ -10,31 +9,45 @@ var RenderCards = function(props) {
   )
 }
 
-var chooseCards = function(index, products, addCard) {
+var chooseCards = function(index, products, addCard, atStart) {
   var displayCards = [];
-  var i = index;
   var onDisplay = 0;
   //console.log('Cards before picking', displayCards);
-  while (onDisplay < 4 && i <= products.length) {
-    if (i === 0) {
-      displayCards.push(addCard);
-    } else {
-      displayCards.push(formatCard(products[i - 1]));
+  // while (onDisplay < 4 && i <= products.length) {
+  //   if (i === 0) {
+  //     displayCards.push(addCard);
+  //   } else {
+  //     displayCards.push(formatCard(products[i--]));
+  //   }
+  //   onDisplay++;
+  //   i++;
+  // }
+  var itemCount = products.length;
+  if (atStart) {
+    displayCards.push(addCard);
+    while (index < 3 && index < itemCount) {
+      displayCards.push(formatCard(products[index]));
+      index++;
     }
-    onDisplay++;
-    i++;
+  } else {
+    while (index < 4 && index < itemCount) {
+      displayCards.push(formatCard(products[index]));
+      index++;
+    }
   }
-
   //console.log('Cards after picking', displayCards);
 
   return displayCards;
 }
 
 var formatCard = function(card) {
+  if (card.id === undefined) {
+    return card;
+  }
   return (
-    <div key={card.id} className='carousel item product-card'>
+    <div key={generateId()} className='carousel item product-card'>
       <span id='compare' className='action fa fa-star'
-       onClick={handleClick} data-itemNum={card.id}></span>
+       onClick={handleClick} data-itemnum={card.id}></span>
       <p>{card.category}</p>
       <p>{card.name}</p>
       <p>{card.default_price}</p>
@@ -55,6 +68,15 @@ var getImage = function(productId, styles) {
   }
   return 'https://picsum.photos/seed/picsum/300/80';
 
+}
+
+var generateId = function() {
+  var id = '';
+  var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0987654321';
+  for (var i = 0; i < 10; i++) {
+    id += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return id;
 }
 
 export default RenderCards;

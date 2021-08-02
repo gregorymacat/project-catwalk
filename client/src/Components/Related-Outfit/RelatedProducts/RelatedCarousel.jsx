@@ -72,7 +72,7 @@ class RelatedCarousel extends React.Component {
         <ArrowLeft click={this.handleArrowClick} isDisplaying={displayLeft}  index={startIndex}/>
         <div className='carousel container cards'>
           <ProductCards startIndex={startIndex} allProducts={products}
-           allStyles={styles} click={this.handleActionClick}/>
+           allStyles={styles} actionClick={this.handleActionClick} itemClick={this.props.appClick}/>
         </div>
         <ArrowRight click={this.handleArrowClick} isDisplaying={displayRight}  index={startIndex} max={this.props.products.length}/>
       </React.Fragment>
