@@ -63,8 +63,9 @@ export default class Overview extends React.Component {
     })
   }
   render() {
+    var sku = 599567
     // console.log("PRODUCT", this.state.product)
-    console.log("STYLE", this.state.selectedStyle)
+    console.log("STYLES", this.state.selectedStyle.skus)
     return (
       // overview is the container component, flex direction is set to column, so the page reads top to bottom
       <div style={styles.overview}>
@@ -129,10 +130,12 @@ export default class Overview extends React.Component {
                   style={styles.select}
                   onChange={this.changeSelectedSize}>
                   <option value="Select A Size">Select A Size</option>
-                  <option value="S">S</option>
-                  <option value="M">M</option>
-                  <option value="L">L</option>
-                  <option value="XL">XL</option>
+                  {/* <option value="XS">{this.state.selectedStyle.skus[599567].size || "XS"}</option>
+                  <option value="S">{this.state.selectedStyle.skus[599568].size || "S"}</option>
+                  <option value="M">{this.state.selectedStyle.skus[599569].size || "M"}</option>
+                  <option value="L">{this.state.selectedStyle.skus[599570].size || "L"}</option>
+                  <option value="XL">{this.state.selectedStyle.skus[599571].size || "XL"}</option>
+                  <option value="XXL">{this.state.selectedStyle.skus[599572].size || "XXL"}</option> */}
                 </select>
                 {
                   this.state.addedToCart ?
