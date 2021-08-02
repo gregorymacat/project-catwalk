@@ -1,5 +1,5 @@
 import React from 'react';
-import RatingsCharBreakdownBar from './RatingsCharBreakdownBar';
+import RatingsCharBreakdownBar from './RatingsCharBreakdownbar';
 
 var RatingsChars = (props) => {
   return(
