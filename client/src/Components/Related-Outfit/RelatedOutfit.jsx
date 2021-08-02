@@ -18,7 +18,6 @@ class RelatedOutfit extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.product)
     getOneProduct(this.props.product.toString(), (err, results) => {
       if (err) {
         return console.log('Unable to get a product: ', err)
@@ -75,7 +74,11 @@ class RelatedOutfit extends React.Component {
       <React.Fragment>
         <div className='related'>
           <RelatedCarousel currentProduct={this.state.currentProduct} products={this.state.products}
+<<<<<<< HEAD
           styles={this.state.styles} appClick={this.props.appClick}/>
+=======
+          styles={this.state.styles}/>
+>>>>>>> b7be0b14d3964f59f4f40b299031cb1c6a83006f
         </div>
         <div className='outfit'>
           <OutfitCarousel currentProduct={this.state.currentProduct}/>

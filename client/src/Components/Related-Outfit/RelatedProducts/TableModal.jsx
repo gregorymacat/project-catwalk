@@ -48,23 +48,31 @@ var TableModal = function(props) {
 }
 
 var compareFeatures = (firstFeatures, secondFeatures) => {
-  var sharedFeats = [];
+  var allFeats = [];
+  // var allFeats = new Set();
+
   firstFeatures.forEach((itemFeat) => {
     secondFeatures.forEach((itemTwoFeat) => {
+      console.log(itemTwoFeat)
       //console.log(itemTwoFeat);
       if (itemFeat.feature === itemTwoFeat.feature) {
-        sharedFeats.push([itemFeat.value, itemFeat.feature, itemTwoFeat.value]);
+        allFeats.push([itemFeat.value, itemFeat.feature, itemTwoFeat.value]);
       }
     })
   })
-  // firstFeatures.forEach((feat) => {
-  //   var common = secondFeatures.find((secondFeat) => {
-  //     Object.keys(secondFeat).includes(feat.feature);
+
+  // firstFeatures.forEach((itemFeat) => {
+  //   secondFeatures.forEach((itemTwoFeat) => {
+  //     console.log(itemTwoFeat)
+  //     //console.log(itemTwoFeat);
+  //     if (itemFeat.feature === itemTwoFeat.feature) {
+  //       allFeats.add(itemFeat.feature, [itemFeat.value, itemTwoFeat.value]);
+  //     } else if (!allFeats.has(itemFeat.feature)){
+  //     }
   //   })
-  //   sharedFeats.push([feat.value, feat.feature, common]);
   // })
-  // console.log(sharedFeats);
-  return sharedFeats.map((features) => {
+
+  return allFeats.map((features) => {
     return (
       <tr>
         <td><p>{features[0]}</p></td>

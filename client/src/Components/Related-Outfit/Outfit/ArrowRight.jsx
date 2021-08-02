@@ -5,7 +5,21 @@ var ArrowRight = function(props) {
   var handleClick = () => {
     var index = props.index;
     // console.log(index);
-    if (index + 1 < props.max) {
+    // if (props.atStart && props.max === 0) {
+    //   props.click({
+    //     displayIndex: 0,
+    //     leftVisible: false,
+    //     rightVisible: false,
+    //     atStart: true
+    //   });
+    if (props.atStart) {
+      props.click({
+        displayIndex: 0,
+        leftVisible: true,
+        rightVisible: true,
+        atStart: false
+      });
+    } else if (index + 1 < props.max) {
       props.click({
         displayIndex: index + 1,
         leftVisible: true,

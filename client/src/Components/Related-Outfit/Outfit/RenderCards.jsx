@@ -1,8 +1,7 @@
 import React from 'react';
 
 var RenderCards = function(props) {
-  var cards = chooseCards(props.startIndex, props.allProducts, props.add);
-
+  var cards = chooseCards(props.startIndex, props.allProducts, props.add, props.atStart);
   return (
     <React.Fragment>
       {cards}
@@ -10,27 +9,41 @@ var RenderCards = function(props) {
   )
 }
 
-var chooseCards = function(index, products, addCard) {
+var chooseCards = function(index, products, addCard, atStart) {
   var displayCards = [];
-  var i = index;
   var onDisplay = 0;
   //console.log('Cards before picking', displayCards);
-  while (onDisplay < 4 && i <= products.length) {
-    if (i === 0) {
-      displayCards.push(addCard);
-    } else {
-      displayCards.push(formatCard(products[i - 1]));
+  // while (onDisplay < 4 && i <= products.length) {
+  //   if (i === 0) {
+  //     displayCards.push(addCard);
+  //   } else {
+  //     displayCards.push(formatCard(products[i--]));
+  //   }
+  //   onDisplay++;
+  //   i++;
+  // }
+  var itemCount = products.length;
+  if (atStart) {
+    displayCards.push(addCard);
+    while (index < 3 && index < itemCount) {
+      displayCards.push(formatCard(products[index]));
+      index++;
     }
-    onDisplay++;
-    i++;
+  } else {
+    while (index < 4 && index < itemCount) {
+      displayCards.push(formatCard(products[index]));
+      index++;
+    }
   }
-
   //console.log('Cards after picking', displayCards);
 
   return displayCards;
 }
 
 var formatCard = function(card) {
+  if (card.id === undefined) {
+    return card;
+  }
   return (
     <div key={generateId()} className='carousel item product-card'>
       <span id='compare' className='action fa fa-star'
