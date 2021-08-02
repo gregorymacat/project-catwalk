@@ -73,7 +73,7 @@ class RelatedOutfit extends React.Component {
       <React.Fragment>
         <div className='related'>
           <RelatedCarousel currentProduct={this.state.currentProduct} products={this.state.products}
-          styles={this.state.styles}/>
+          styles={this.state.styles} appClick={this.props.appClick}/>
         </div>
         <div className='outfit'>
           <OutfitCarousel currentProduct={this.state.currentProduct}/>

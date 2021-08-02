@@ -2,10 +2,13 @@ import React from 'react';
 
 var ProductCards = function(props) {
   var cards = chooseCards(props.startIndex, props.allProducts);
-  var handleClick = (event) => {
+  var handleActionClick = (event) => {
     var itemId = event.target.dataset.itemnum;
-
-    props.click('compare', itemId);
+    props.actionClick('compare', itemId);
+  }
+  var handleItemClick = (event) => {
+    var itemId = event.target.dataset.itemnum;
+    props.itemClick(itemId);
   }
 
   return (
@@ -13,9 +16,10 @@ var ProductCards = function(props) {
       {
         cards.map((card) => {
           return (
-            <div key={card.id} className='carousel item product-card'>
+            <div key={card.id} className='carousel item product-card'
+              itemClick={handleItemClick}>
               <span id='compare' className='action fa fa-star'
-               onClick={handleClick} data-itemnum={card.id}></span>
+               onClick={handleActionClick} data-itemnum={card.id}></span>
               <div>
                 <img src={getImage(card.id, props.allStyles)}></img>
               </div>

@@ -16,6 +16,12 @@ class App extends React.Component {
     }
   }
 
+  clickHandler(newProductID) {
+    // this.setState({
+    //   product: newProductID
+    // });
+  }
+
   // componentDidMount(){
   //   getOneProduct('19093', (err, results) => {
   //     if (err) {
@@ -29,7 +35,7 @@ class App extends React.Component {
     return (
       <div>
         <Overview product={this.state.product} />
-        <RelatedOutfit product={this.state.product}/>
+        <RelatedOutfit appClick={this.state.clickHandler} product={this.state.product}/>
         <QuestionsList product={this.state.product}/>
         <RatingsReviews product={this.state.product}/>
         {/* <StarsDisplay starsData={this.state.starsRating}/> */}
