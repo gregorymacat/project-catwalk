@@ -1,4 +1,5 @@
 import React from 'react';
+import StarsDisplay from '../../Shared/StarsDisplay.jsx';
 
 var ProductCard = function(props) {
   var handleActionClick = (event) => {

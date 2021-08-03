@@ -13,7 +13,8 @@ class RelatedOutfit extends React.Component {
     this.state = {
       currentProduct: [testProduct],
       products: [testProduct],
-      styles: [testStyle]
+      styles: [testStyle],
+      ratings: []
     }
   }
 
@@ -41,6 +42,11 @@ class RelatedOutfit extends React.Component {
         })
         this.setState({styles: photos});
       })
+      for (var key in props.metaData.ratings) {
+        totalStars += parseFloat(props.metaData.ratings[key]) * key;
+        numberOfReviews += parseFloat(props.metaData.ratings[key]);
+      }
+      var rating = (totalStars / numberOfReviews).toFixed(1);
     });
   }
 
