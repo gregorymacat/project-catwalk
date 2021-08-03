@@ -14,6 +14,10 @@ export default {
     fontSize: '20px',
     fontWeight: 'bold'
   },
+  errorMsg: {
+    color: "red",
+    padding: "0px"
+  },
   addedToCart: {
     width: '250px',
     height: '50px',
