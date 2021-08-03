@@ -1,7 +1,15 @@
 import React from 'react';
 
 var RenderCards = function(props) {
-  var cards = chooseCards(props.startIndex, props.allProducts, props.add, props.atStart);
+  var handleActionClick = (event) => {
+    var itemId = event.target.dataset.itemnum;
+    console.log('Clicked on x ')
+    props.actionClick('remove', itemId);
+  }
+
+  var argArray = [props.startIndex, props.allProducts, props.add,
+    props.atStart, handleActionClick];
+  var cards = chooseCards(...argArray);
   return (
     <React.Fragment>
       {cards}
@@ -9,7 +17,7 @@ var RenderCards = function(props) {
   )
 }
 
-var chooseCards = function(index, products, addCard, atStart) {
+var chooseCards = function(index, products, addCard, atStart, func) {
   var displayCards = [];
   var onDisplay = 0;
   //console.log('Cards before picking', displayCards);
@@ -26,12 +34,12 @@ var chooseCards = function(index, products, addCard, atStart) {
   if (atStart) {
     displayCards.push(addCard);
     while (index < 3 && index < itemCount) {
-      displayCards.push(formatCard(products[index]));
+      displayCards.push(formatCard(products[index]), func);
       index++;
     }
   } else {
     while (index < 4 && index < itemCount) {
-      displayCards.push(formatCard(products[index]));
+      displayCards.push(formatCard(products[index]), func);
       index++;
     }
   }
@@ -40,24 +48,19 @@ var chooseCards = function(index, products, addCard, atStart) {
   return displayCards;
 }
 
-var formatCard = function(card) {
+var formatCard = function(card, clickFunc) {
   if (card.id === undefined) {
     return card;
   }
   return (
     <div key={generateId()} className='carousel item product-card'>
-      <span id='compare' className='action fa fa-star'
-       onClick={handleClick} data-itemnum={card.id}></span>
+      <span id='remove' className="action fa fa-times"
+        onClick={clickFunc} data-itemnum={card.id}></span>
       <p>{card.category}</p>
       <p>{card.name}</p>
       <p>{card.default_price}</p>
     </div>
   )
-}
-
-var handleClick = (event) => {
-  var itemId = event.target.dataset.itemnum;
-  props.click('compare', itemId);
 }
 
 var getImage = function(productId, styles) {
