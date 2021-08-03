@@ -93,7 +93,6 @@ export default class Overview extends React.Component {
     })
   }
   render() {
-    console.log('selected sizez::', this.state.selectedQuantity)
     var inventory = this.state.selectedStyle.skus ? Object.values(this.state.selectedStyle.skus) : []
     const sizeQuantity = Array.from(Array(this.getSizeQuantity(inventory)).keys()).slice(0, 16)
     // console.log('whats goin onnn', sizeQuantity)

@@ -53,7 +53,6 @@ var compareFeatures = (firstFeatures, secondFeatures) => {
 
   firstFeatures.forEach((itemFeat) => {
     secondFeatures.forEach((itemTwoFeat) => {
-      console.log(itemTwoFeat)
       //console.log(itemTwoFeat);
       if (itemFeat.feature === itemTwoFeat.feature) {
         allFeats.push([itemFeat.value, itemFeat.feature, itemTwoFeat.value]);
