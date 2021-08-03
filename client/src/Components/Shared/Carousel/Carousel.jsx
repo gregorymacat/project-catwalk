@@ -75,7 +75,6 @@ class Carousel extends React.Component {
   }
 
   render () {
-    //console.log(this.props.items);
     return (
       <React.Fragment>
         {this.displayArrow('left')}

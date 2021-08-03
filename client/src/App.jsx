@@ -23,20 +23,11 @@ class App extends React.Component {
     });
   }
 
-  // componentDidMount(){
-  //   getOneProduct('19093', (err, results) => {
-  //     if (err) {
-  //       return console.log('Unable to get a product: ', err)
-  //     }
-  //     this.setState({product: results});
-  //   })
-  // }
-
   render() {
     return (
       <div>
         <Overview product={this.state.product} />
-        <RelatedOutfit appClick={this.clickHandler} product={this.state.product}/>
+        <RelatedOutfit product={this.state.product} appClick={this.clickHandler}/>
         <QuestionsList product={this.state.product}/>
         <RatingsReviews product={this.state.product}/>
         {/* <StarsDisplay starsData={this.state.starsRating}/> */}

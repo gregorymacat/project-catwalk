@@ -20,7 +20,6 @@ module.exports = {
     var requests = idArray.map((id) => {
       return axios.get('/products/' + id);
     })
-
     Promise.all(requests)
       .then((responses) => {
         callback(null, responses);
@@ -36,11 +35,9 @@ module.exports = {
     if (!Array.isArray(idArray) || idArray.length === 0) {
       return callback('!!!ERROR: Unable to process invalid array.');
     }
-
     var requests = idArray.map((id) => {
       return axios.get('/products/' + id + '/styles');
     })
-
     Promise.all(requests)
       .then((responses) => {
         callback(null, responses);
@@ -50,5 +47,24 @@ module.exports = {
         throw err;
         callback(err)
       });
-  }
+  },
+
+  getMetadataByIds: function(idArray, callback) {
+    if (!Array.isArray(idArray) || idArray.length === 0) {
+      return callback('!!!ERROR: Unable to process invalid array.');
+    }
+
+    var requests = idArray.map((id) => {
+      return axios.get(`http://localhost:8080/reviews/meta/?product_id=` + id)
+    });
+    Promise.all(requests)
+      .then((responses) => {
+        callback(null, responses);
+      })
+      .catch((err) => {
+        console.log('!!!ERROR retrieving rating metadata from API');
+        throw err;
+        callback(err)
+      });
+  },
 }

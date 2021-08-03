@@ -4,8 +4,6 @@ var TableModal = function(props) {
   var handleClick = (event) => {
     props.click('close');
   }
-  //console.log('Main item ', props.current);
-  //console.log('Comparing to ', props.compareTo);
 
   if (props.display) {
     return (
@@ -49,27 +47,14 @@ var TableModal = function(props) {
 
 var compareFeatures = (firstFeatures, secondFeatures) => {
   var allFeats = [];
-  // var allFeats = new Set();
 
   firstFeatures.forEach((itemFeat) => {
     secondFeatures.forEach((itemTwoFeat) => {
-      //console.log(itemTwoFeat);
       if (itemFeat.feature === itemTwoFeat.feature) {
         allFeats.push([itemFeat.value, itemFeat.feature, itemTwoFeat.value]);
       }
     })
   })
-
-  // firstFeatures.forEach((itemFeat) => {
-  //   secondFeatures.forEach((itemTwoFeat) => {
-  //     console.log(itemTwoFeat)
-  //     //console.log(itemTwoFeat);
-  //     if (itemFeat.feature === itemTwoFeat.feature) {
-  //       allFeats.add(itemFeat.feature, [itemFeat.value, itemTwoFeat.value]);
-  //     } else if (!allFeats.has(itemFeat.feature)){
-  //     }
-  //   })
-  // })
 
   return allFeats.map((features) => {
     return (

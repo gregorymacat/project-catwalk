@@ -1,25 +1,23 @@
 import React from 'react';
 
 var ArrowRight = function(props) {
-  // console.log(props.index);
   var handleClick = () => {
     var index = props.index;
-    // console.log(index);
-    // if (props.atStart && props.max === 0) {
-    //   props.click({
-    //     displayIndex: 0,
-    //     leftVisible: false,
-    //     rightVisible: false,
-    //     atStart: true
-    //   });
-    if (props.atStart) {
+    if (props.atStart && props.max === 1) {
+      props.click({
+        displayIndex: 0,
+        leftVisible: true,
+        rightVisible: false,
+        atStart: false
+      });
+    } else if (props.atStart) {
       props.click({
         displayIndex: 0,
         leftVisible: true,
         rightVisible: true,
         atStart: false
       });
-    } else if (index + 1 < props.max) {
+    } else if (index + 1 < props.max - 1) {
       props.click({
         displayIndex: index + 1,
         leftVisible: true,
