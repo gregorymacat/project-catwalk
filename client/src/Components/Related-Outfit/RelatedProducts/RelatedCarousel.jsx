@@ -71,8 +71,8 @@ class RelatedCarousel extends React.Component {
         compareTo={this.state.compareItem}/>
         <ArrowLeft click={this.handleArrowClick} isDisplaying={displayLeft}  index={startIndex}/>
         <div className='carousel container cards'>
-          <ProductCards startIndex={startIndex} allProducts={products}
-           allStyles={styles} actionClick={this.handleActionClick} itemClick={this.props.appClick}/>
+          <ProductCards startIndex={startIndex} allProducts={products} allStyles={styles} ratings={this.props.ratings}
+          actionClick={this.handleActionClick} itemClick={this.props.appClick}/>
         </div>
         <ArrowRight click={this.handleArrowClick} isDisplaying={displayRight}  index={startIndex} max={this.props.products.length}/>
       </React.Fragment>

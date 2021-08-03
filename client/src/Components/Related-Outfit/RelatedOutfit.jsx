@@ -2,10 +2,12 @@ import React from 'react';
 import RelatedCarousel from './RelatedProducts/RelatedCarousel.jsx';
 import OutfitCarousel from './Outfit/OutfitCarousel.jsx';
 import {getOneProduct} from '../../../Controllers/general.js';
-import {getRelatedProductIds, getProductsByIds, getStylesByIds}
+import {getRelatedProductIds, getProductsByIds,
+        getStylesByIds, getMetadataByIds}
   from '../../../Controllers/related-outfit.js';
 import testProduct from '../../dummy-product.js';
 import testStyle from '../../dummy-style.js';
+import testMetadata from './dummy-metadata.js';
 
 class RelatedOutfit extends React.Component {
   constructor(props) {
@@ -14,7 +16,7 @@ class RelatedOutfit extends React.Component {
       currentProduct: [testProduct],
       products: [testProduct],
       styles: [testStyle],
-      ratings: []
+      ratings: [testMetadata]
     }
   }
 
@@ -41,12 +43,23 @@ class RelatedOutfit extends React.Component {
           return response.data;
         })
         this.setState({styles: photos});
+      });
+      getMetadataByIds(relatedItemIds, (err, responses) => {
+        if (err) { return console.log('Unable to get all review data: ', err); }
+        var allReviewData = responses.map((response) => {
+          return response.data;
+        })
+        allReviewData = allReviewData.map((oneReview) => {
+          var totalStars = 0;
+          var numberOfReviews = 0;
+          for (var key in oneReview.ratings) {
+            totalStars += parseInt(oneReview.ratings[key]) * key;
+            numberOfReviews += parseInt(oneReview.ratings[key]);
+          }
+          return (totalStars / numberOfReviews).toFixed(1);
+        })
+        this.setState({ratings: allReviewData});
       })
-      for (var key in props.metaData.ratings) {
-        totalStars += parseFloat(props.metaData.ratings[key]) * key;
-        numberOfReviews += parseFloat(props.metaData.ratings[key]);
-      }
-      var rating = (totalStars / numberOfReviews).toFixed(1);
     });
   }
 
@@ -68,16 +81,32 @@ class RelatedOutfit extends React.Component {
         if (err) { return console.log('Unable to get IDs: ', err); }
         var items = responses.map((response) => {
           return response.data;
-        })
+        });
         this.setState({products: items});
       });
       getStylesByIds(relatedItemIds, (err, responses) => {
         if (err) { return console.log('Unable to get styles: ', err); }
         var photos = responses.map((response) => {
           return response.data;
-        })
+        });
         this.setState({styles: photos});
-      })
+      });
+      getMetadataByIds(relatedItemIds, (err, responses) => {
+        if (err) { return console.log('Unable to get all review data: ', err); }
+        var allReviewData = responses.map((response) => {
+          return response.data;
+        });
+        allReviewData = allReviewData.map((oneReview) => {
+          var totalStars = 0;
+          var numberOfReviews = 0;
+          for (var key in oneReview.ratings) {
+            totalStars += parseInt(oneReview.ratings[key]) * key;
+            numberOfReviews += parseInt(oneReview.ratings[key]);
+          }
+          return (totalStars / numberOfReviews).toFixed(1);
+        });
+        this.setState({ratings: allReviewData});
+      });
     });
   }
 
@@ -86,7 +115,8 @@ class RelatedOutfit extends React.Component {
       <React.Fragment>
         <div className='related'>
           <RelatedCarousel currentProduct={this.state.currentProduct} products={this.state.products}
-          styles={this.state.styles} appClick={this.props.appClick} productId={this.props.product}/>
+          styles={this.state.styles} appClick={this.props.appClick} productId={this.props.product}
+          ratings={this.state.ratings}/>
         </div>
         <div className='outfit'>
           <OutfitCarousel currentProduct={this.state.currentProduct} productId={this.props.product}/>

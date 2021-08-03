@@ -1,4 +1,5 @@
 import React from 'react';
+import StarsDisplay from '../../Shared/StarsDisplay.jsx';
 
 var ProductCards = function(props) {
   var cards = chooseCards(props.startIndex, props.allProducts);
@@ -21,13 +22,14 @@ var ProductCards = function(props) {
           return (
             <div key={generateId()} className='carousel item product-card'>
               <span id='compare' className='action fa fa-star'
-               onClick={handleActionClick} data-itemnum={card.id}></span>
+               onClick={handleActionClick} data-itemnum={card[0].id}></span>
               <div>
-                <img src={getImage(card.id, props.allStyles)}></img>
+                <img src={getImage(card[0].id, props.allStyles)}></img>
               </div>
-              <p>{card.category}</p>
-              <p onClick={handleItemClick} data-itemnum={card.id}>{card.name}</p>
-              <p>{card.default_price}</p>
+              <p>{card[0].category}</p>
+              <p onClick={handleItemClick} data-itemnum={card[0].id}>{card[0].name}</p>
+              <p>{card[0].default_price}</p>
+              <StarsDisplay starsData={parseFloat(props.ratings[card[1]])}/>
             </div>
         )})
       }
@@ -43,7 +45,7 @@ var chooseCards = function(index, products) {
     return displayCards;
   }
   while (onDisplay < 4 && i <= products.length - 1) {
-    displayCards.push(products[i]);
+    displayCards.push([products[i], i]);
     onDisplay++;
     i++;
   }
