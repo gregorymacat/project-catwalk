@@ -3,7 +3,6 @@ import React from 'react';
 var ProductCard = function(props) {
   var handleActionClick = (event) => {
     var itemId = event.target.dataset.itemnum;
-    console.log('Clicked on x ')
     props.click('remove', itemId);
   }
 

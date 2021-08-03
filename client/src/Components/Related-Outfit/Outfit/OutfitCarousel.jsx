@@ -29,12 +29,16 @@ class OutfitCarousel extends React.Component {
   handleActionClick(action, itemId) {
     // console.log(typeof itemId);
     if (action === 'remove') {
+      console.log('Clicked on x ')
       var outfit = this.state.outfitItems;
+
       for (var index = 0; index < outfit.length; index++) {
         if (outfit[index].id.toString() === itemId) {
+          outfit.splice(index, 1)
           this.setState({
-            outfitItems: outfit.splice(index, 1)
+            outfitItems: outfit
           });
+          break;
         }
       }
     }
@@ -43,6 +47,13 @@ class OutfitCarousel extends React.Component {
   handleAddClick(event) {
     //console.log('Should be adding ', this.props.currentProduct);
     var outfitCopy = this.state.outfitItems.slice();
+    var isUnique = outfitCopy.every((item) => {
+      item.id !== this.props.currentProduct.id;
+    })
+    if (!isUnique) {
+      alert('You already added this item');
+      return;
+    }
     outfitCopy.push(this.props.currentProduct);
     if (this.state.outfitItems.length === 0) {
       this.setState({
