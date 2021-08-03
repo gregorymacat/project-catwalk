@@ -19,7 +19,7 @@ var RenderCards = function(props) {
       <React.Fragment>
         {props.add}
         {items.map((item) => {
-          return <ProductCard product={item} click={props.click}/>
+          return <ProductCard styles={props.allStyles} product={item} click={props.click}/>
         })}
       </React.Fragment>
     )
@@ -31,7 +31,7 @@ var RenderCards = function(props) {
     return (
       <React.Fragment>
         {items.map((item) => {
-          return <ProductCard product={item} click={props.click}/>
+          return <ProductCard styles={props.allStyles} product={item} click={props.click}/>
         })}
       </React.Fragment>
     )

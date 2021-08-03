@@ -6,13 +6,23 @@ var ProductCard = function(props) {
     props.click('remove', itemId);
   }
 
-  var getImage = function(productId, styles) {
-    for (var index = 0; index < styles.length; index++) {
-      if (styles[index].product_id === productId.toString()) {
-        return styles[index].results[0].photos[0].thumbnail_url;
+  var getImage = function() {
+    console.log(props.styles);
+    if (props.styles === undefined) {
+      return 'https://1080motion.com/wp-content/uploads/2018/06/NoImageFound.jpg.png';
+    }
+    for (var index = 0; index < props.styles.length; index++) {
+      if (props.styles[index].product_id === props.product.id.toString()) {
+        var styleIndex = props.styles[index].results.findIndex((style) => {
+          return style['default?'] === true;
+        });
+        if (styleIndex === -1) {
+          return props.styles[index].results[0].photos[0].thumbnail_url;
+        }
+        return props.styles[index].results[styleIndex].photos[0].thumbnail_url;
       }
     }
-    return 'https://picsum.photos/seed/picsum/300/80';
+    return 'https://1080motion.com/wp-content/uploads/2018/06/NoImageFound.jpg.png';
   }
 
   var generateId = function() {
@@ -24,16 +34,15 @@ var ProductCard = function(props) {
     return id;
   }
   if (props.product === undefined) {
-    return (
-      <div key={generateId()} className='carousel item product-card'>
-
-      </div>
-    )
+    return <div key={generateId()} className='carousel item product-card'></div>;
   }
   return (
       <div key={generateId()} className='carousel item product-card'>
         <span id='remove' className="action fa fa-times"
           onClick={handleActionClick} data-itemnum={props.product.id}></span>
+        <div>
+          <img src={getImage()}></img>
+        </div>
         <p>{props.product.category}</p>
         <p>{props.product.name}</p>
         <p>{props.product.default_price}</p>

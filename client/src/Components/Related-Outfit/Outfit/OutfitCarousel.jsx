@@ -6,6 +6,7 @@ import AddCard from './AddCard.jsx';
 import testOutfit from '../../../dummy-outfit.js';
 import testProduct from '../../../dummy-product.js';
 import {getOneProduct} from '../../../../Controllers/general.js';
+import {getStylesByIds} from '../../../../Controllers/related-outfit.js';
 
 class OutfitCarousel extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class OutfitCarousel extends React.Component {
     this.state = {
       displayIndex: 0,
       outfitItems: [],
+      styles: [],
       leftVisible: false,
       rightVisible: false,
       atStart: true
@@ -30,32 +32,45 @@ class OutfitCarousel extends React.Component {
         rightVisible:  outfits.length === 0 ? false : true
       });
     }
+    var outfitIds = this.state.outfitItems.map((item) => {
+      return item.id;
+    })
+    getStylesByIds(outfitIds, (err, responses) => {
+      if (err) { return console.log('Unable to get styles: ', err); }
+      var photos = responses.map((response) => {
+        return response.data;
+      })
+      this.setState({styles: photos});
+    })
   }
   componentDidUpdate(prevProps, prevState) {
-    console.log('Component updating');
     if (JSON.stringify(this.state.outfitItems) === JSON.stringify(prevState.outfitItems)) {
-      console.log('States are the same ', this.state.outfitItems, ' and ', prevState.outfitItems);
       return;
     }
     window.localStorage.setItem('cachedClothes', JSON.stringify(this.state.outfitItems));
-    console.log('Number of items in outfit ', this.state.outfitItems.length);
     if (this.state.outfitItems.length === 0) {
-      console.log('No items in outfit ', this.state.outfitItems.length);
       this.setState({
         rightVisible: false
       });
     }
+    var outfitIds = this.state.outfitItems.map((item) => {
+      return item.id;
+    })
+    getStylesByIds(outfitIds, (err, responses) => {
+      if (err) { return console.log('Unable to get styles: ', err); }
+      var photos = responses.map((response) => {
+        return response.data;
+      })
+      this.setState({styles: photos});
+    })
   }
-
 
   handleArrowClick = (newState) => {
     this.setState(newState);
   };
 
   handleActionClick(action, itemId) {
-    // console.log(typeof itemId);
     if (action === 'remove') {
-      console.log('Clicked on x ')
       var outfit = this.state.outfitItems;
 
       for (var index = 0; index < outfit.length; index++) {
@@ -88,7 +103,6 @@ class OutfitCarousel extends React.Component {
   }
 
   handleAddClick(event) {
-    //console.log('Should be adding ', this.props.currentProduct);
     var outfitCopy = this.state.outfitItems.slice();
     var isUnique = outfitCopy.every((item) => {
       return item.id !== this.props.currentProduct.id;
@@ -126,7 +140,7 @@ class OutfitCarousel extends React.Component {
     const displayLeft = this.state.leftVisible;
     const displayRight = this.state.rightVisible;
     const products = this.state.outfitItems;
-    const styles = this.props.styles;
+    const styles = this.state.styles;
 
     return (
       <React.Fragment>

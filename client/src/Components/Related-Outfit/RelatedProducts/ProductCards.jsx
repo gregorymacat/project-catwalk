@@ -53,11 +53,19 @@ var chooseCards = function(index, products) {
 var getImage = function(productId, styles) {
   for (var index = 0; index < styles.length; index++) {
     if (styles[index].product_id === productId.toString()) {
-      return styles[index].results[0].photos[0].thumbnail_url;
+      var styleIndex = styles[index].results.findIndex((style) => {
+        return style['default?'] === true;
+      });
+      if (styleIndex === -1) {
+        return styles[index].results[0].photos[0].thumbnail_url;
+      }
+      if (styles[index].results[styleIndex].photos[0].thumbnail_url === null) {
+        return 'https://1080motion.com/wp-content/uploads/2018/06/NoImageFound.jpg.png';
+      }
+      return styles[index].results[styleIndex].photos[0].thumbnail_url;
     }
   }
-  return 'https://picsum.photos/seed/picsum/300/80';
-
+  return 'https://1080motion.com/wp-content/uploads/2018/06/NoImageFound.jpg.png';
 }
 
 var generateId = function() {
