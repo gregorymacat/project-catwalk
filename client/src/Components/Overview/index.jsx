@@ -2,15 +2,10 @@ import React from 'react'
 import styles from './styles.js'
 import StarsDisplay from '../Shared/StarsDisplay.jsx'
 import axios from 'axios'
-import {getOneProduct, getProductStyle} from '../../../Controllers/general.js';
-// import testStyle from './dummy-style.js';
-// import Carousel from './components/Shared/Carousel/Carousel.jsx';
-// import testProduct from '../../dummy-product.js';
-// import {stylesArray} from '../../dummy-style.js';
+import {getOneProduct, getProductStyle} from '../../../Controllers/general.js'
 export default class Overview extends React.Component {
   constructor(props) {
     super(props)
-    // console.log("PROPS", this.props.product)
     this.state = {
       addedToCart: false,
       selectedSize: 'Select Size',
@@ -25,15 +20,14 @@ export default class Overview extends React.Component {
     this.changeSelectedSize = this.changeSelectedSize.bind(this)
     this.changeSelectedStyle = this.changeSelectedStyle.bind(this)
     this.getSizeQuantity = this.getSizeQuantity.bind(this)
+    this.getProductAndStyles = this.getProductAndStyles.bind(this)
   }
-  componentDidMount(){
+  getProductAndStyles() {
     getOneProduct(this.props.product, (err, results) => {
-      console.log("PRODUCT::::", this.props.product)
       if (err) {
         return console.log('Unable to get a product: ', err)
       }
       getProductStyle(results.id, (err, styles) => {
-        // console.log("STYYYYYYYYLES", styles)
         if (err) {
           return console.log('Unable to get styles', err)
         }
@@ -44,7 +38,12 @@ export default class Overview extends React.Component {
         });
       })
     })
-
+  }
+  componentDidMount() {
+    this.getProductAndStyles()
+  }
+  componentDidUpdate() {
+    this.getProductAndStyles()
   }
   addToCart() {
     if (this.state.selectedSize === 'Select Size') {
@@ -62,7 +61,6 @@ export default class Overview extends React.Component {
       this.setState({
         addedToCart: true
       })
-      // console.log('data::', data)
     })
     .catch(()=>{
       console.log('Error')
@@ -97,8 +95,6 @@ export default class Overview extends React.Component {
   render() {
     var inventory = this.state.selectedStyle.skus ? Object.values(this.state.selectedStyle.skus) : []
     const sizeQuantity = Array.from(Array(this.getSizeQuantity(inventory)).keys()).slice(0, 16)
-    // console.log('whats goin onnn', sizeQuantity)
-    // console.log("INVENTORY:::::", inventory, "SIZE QUANTITY:::::", sizeQuantity)
       return (
         // overview is the container component, flex direction is set to column, so the page reads top to bottom
         <div style={styles.overview}>
@@ -125,7 +121,7 @@ export default class Overview extends React.Component {
                 </div>
                 <div style={styles.colorCircles}>
                   {this.state.styles.map((styleObj, index) => {
-                    return <div onClick={() => this.changeSelectedStyle(index)}>
+                    return <div key={index} onClick={() => this.changeSelectedStyle(index)}>
                       <img style={styles.circle} src={styleObj.photos[0].thumbnail_url}></img>
                     </div>
                   })}
@@ -138,7 +134,7 @@ export default class Overview extends React.Component {
                     onChange={this.changeSelectedSize}>
                     <option value="Select Size">Select Size</option>
                     {inventory.map((style, index) => {
-                      return (style.quantity > 0 ? <option value={style.size}>{style.size}</option> : <></>
+                      return (style.quantity > 0 ? <option key={index} value={style.size}>{style.size}</option> : <></>
                         )})}
                   </select>
                   <select
@@ -149,7 +145,7 @@ export default class Overview extends React.Component {
                   >
                   <option value="Quantity">-</option>
                     {sizeQuantity.map((quantity, index) => {
-                      return <option value={quantity}>{quantity}</option>
+                      return <option key={index} value={quantity}>{quantity}</option>
                     })}
                   </select>
                 </div>
