@@ -54,6 +54,7 @@ class OutfitCarousel extends React.Component {
           this.setState({
             outfitItems: outfit
           });
+          window.localStorage.setItem('cachedClothes', JSON.stringify(this.state.outfitItems));
           break;
         }
       }
@@ -64,8 +65,10 @@ class OutfitCarousel extends React.Component {
     //console.log('Should be adding ', this.props.currentProduct);
     var outfitCopy = this.state.outfitItems.slice();
     var isUnique = outfitCopy.every((item) => {
-      item.id !== this.props.currentProduct.id;
+      console.log('Outfit Item ', item.id, ' versus ', this.props.currentProduct.id);
+      return item.id !== this.props.currentProduct.id;
     })
+    console.log(isUnique)
     if (!isUnique) {
       alert('You already added this item');
       return;
@@ -107,8 +110,8 @@ class OutfitCarousel extends React.Component {
         atStart={this.state.atStart}/>
         <div className='carousel container cards'>
           <RenderCards startIndex={startIndex} allProducts={products}
-           allStyles={styles} click={this.handleActionClick} atStart={this.state.atStart}
-           add={<AddCard click={this.handleAddClick} atStart={this.state.atStart}/>}/>
+          allStyles={styles} click={this.handleActionClick} atStart={this.state.atStart}
+          add={<AddCard click={this.handleAddClick}/>}/>
         </div>
         <ArrowRight click={this.handleArrowClick} isDisplaying={displayRight} index={startIndex}
         atStart={this.state.atStart} max={this.state.outfitItems.length}/>

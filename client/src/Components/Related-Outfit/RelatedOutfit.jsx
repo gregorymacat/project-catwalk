@@ -49,6 +49,12 @@ class RelatedOutfit extends React.Component {
     if (this.props.product === prevProps.product) {
       return;
     }
+    getOneProduct(this.props.product.toString(), (err, results) => {
+      if (err) {
+        return console.log('Unable to get a product: ', err)
+      }
+      this.setState({currentProduct: results});
+    });
     getRelatedProductIds(this.props.product, (err, ids) => {
       if (err) { return console.log('Unable to get IDs: ', err); }
       var relatedItemIds = ids;
@@ -74,10 +80,10 @@ class RelatedOutfit extends React.Component {
       <React.Fragment>
         <div className='related'>
           <RelatedCarousel currentProduct={this.state.currentProduct} products={this.state.products}
-          styles={this.state.styles} appClick={this.props.appClick}/>
+          styles={this.state.styles} appClick={this.props.appClick} productId={this.props.product}/>
         </div>
         <div className='outfit'>
-          <OutfitCarousel currentProduct={this.state.currentProduct}/>
+          <OutfitCarousel currentProduct={this.state.currentProduct} productId={this.props.product}/>
         </div>
 
       </React.Fragment>
