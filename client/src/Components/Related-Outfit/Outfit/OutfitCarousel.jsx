@@ -21,6 +21,22 @@ class OutfitCarousel extends React.Component {
     this.handleActionClick = this.handleActionClick.bind(this);
     this.handleAddClick = this.handleAddClick.bind(this);
   }
+  componentDidMount() {
+    var outfits = window.localStorage.getItem('cachedClothes');
+    if (outfits !== null) {
+      outfits = JSON.parse(outfits);
+      this.setState({
+        outfitItems: outfits
+      })
+    }
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (JSON.stringify(this.state.outfitItems) === JSON.stringify(prevState.outfitItems)) {
+      return;
+    }
+    window.localStorage.setItem('cachedClothes', JSON.stringify(this.state.outfitItems));
+  }
+
 
   handleArrowClick = (newState) => {
     this.setState(newState);
@@ -65,6 +81,7 @@ class OutfitCarousel extends React.Component {
         outfitItems: outfitCopy,
       });
     }
+
   }
 
   displayArrow(direction) {
