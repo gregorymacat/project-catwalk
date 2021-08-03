@@ -24,7 +24,7 @@ var ProductCards = function(props) {
               <span id='compare' className='action fa fa-star'
                onClick={handleActionClick} data-itemnum={card[0].id}></span>
               <div>
-                <img src={getImage(card[0].id, props.allStyles)}></img>
+                <img src={getImage(card[0].id, props.allStyles)} alt="Image of the product" alt="Image of the product"></img>
               </div>
               <p>{card[0].category}</p>
               <p onClick={handleItemClick} data-itemnum={card[0].id}>{card[0].name}</p>

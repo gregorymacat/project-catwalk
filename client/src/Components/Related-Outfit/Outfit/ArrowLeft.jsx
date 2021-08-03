@@ -30,7 +30,7 @@ var ArrowLeft = function(props) {
     return (
       <div className='carousel left'>
         <img src='Assets/Icons/ArrowBack/2x/outline_arrow_back_black_24dp.png'
-        onClick={handleClick}></img>
+        onClick={handleClick} alt="Image of the left arrow"></img>
       </div>
     )
   }

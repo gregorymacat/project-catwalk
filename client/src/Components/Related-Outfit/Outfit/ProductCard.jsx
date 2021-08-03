@@ -45,7 +45,7 @@ var ProductCard = function(props) {
         <span id='remove' className="action fa fa-times"
           onClick={handleActionClick} data-itemnum={props.product.id}></span>
         <div>
-          <img src={getImage()}></img>
+          <img src={getImage()} alt="Image of the product"></img>
         </div>
         <p>{props.product.category}</p>
         <p>{props.product.name}</p>
