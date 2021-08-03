@@ -8,7 +8,6 @@ var ProductCard = function(props) {
   }
 
   var getImage = function() {
-    console.log(props.styles);
     if (props.styles === undefined) {
       return 'https://1080motion.com/wp-content/uploads/2018/06/NoImageFound.jpg.png';
     }
@@ -34,6 +33,10 @@ var ProductCard = function(props) {
     }
     return id;
   }
+
+  var getStars = function() {
+    //if () {}
+  }
   if (props.product === undefined) {
     return <div key={generateId()} className='carousel item product-card'></div>;
   }
@@ -47,6 +50,7 @@ var ProductCard = function(props) {
         <p>{props.product.category}</p>
         <p>{props.product.name}</p>
         <p>{props.product.default_price}</p>
+        <StarsDisplay starsData={parseFloat(props.ratings)}/>
       </div>
   )
 }

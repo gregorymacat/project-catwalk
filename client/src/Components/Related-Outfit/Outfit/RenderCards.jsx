@@ -6,32 +6,36 @@ var RenderCards = function(props) {
   //   props.atStart];
   //var items = chooseItems(...argArray);
   var index = props.startIndex;
+  var rating = props.ratings;
   var prodCount = props.allProducts.length;
-  var items = [];
+  var itemsTuple = [];
   var onDisplay = 0;
 
   if (props.atStart) {
     while (index < 3 && index < prodCount) {
-      items.push(props.allProducts[index]);
+      itemsTuple.push([props.allProducts[index], index]);
       index++;
     }
+
     return (
       <React.Fragment>
         {props.add}
-        {items.map((item) => {
-          return <ProductCard styles={props.allStyles} product={item} click={props.click}/>
+        {itemsTuple.map((item) => {
+          return <ProductCard styles={props.allStyles} ratings={props.ratings[item[1]]}
+          product={item[0]} click={props.click}/>
         })}
       </React.Fragment>
     )
   } else {
     while (index < 4 && index < prodCount) {
-      items.push(props.allProducts[index]);
+      itemsTuple.push([props.allProducts[index], index]);
       index++;
     }
     return (
       <React.Fragment>
-        {items.map((item) => {
-          return <ProductCard styles={props.allStyles} product={item} click={props.click}/>
+        {itemsTuple.map((item) => {
+          return <ProductCard styles={props.allStyles} ratings={props.ratings[item[1]]}
+                  product={item[0]} click={props.click}/>
         })}
       </React.Fragment>
     )

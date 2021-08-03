@@ -7,11 +7,11 @@ var StarsDisplay = (props) => {
   if (starsDecimal >= 0 && starsDecimal <= .125) {
     stars = starsWholeNum;
   } else if (starsDecimal >= .125 && starsDecimal <= .375) {
-    stars = 2.25;
+    stars = starsWholeNum + .25;
   } else if (starsDecimal >= .375 && starsDecimal <= .625) {
-    stars = 2.5;
+    stars = starsWholeNum + .5;
   } else if (starsDecimal >= .625 && starsDecimal <= .875) {
-    stars = 2.5;
+    stars = starsWholeNum + .75;
   } else {
     stars = starsWholeNum + 1;
   }

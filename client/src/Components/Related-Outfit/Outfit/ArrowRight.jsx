@@ -1,17 +1,8 @@
 import React from 'react';
 
 var ArrowRight = function(props) {
-  // console.log(props.index);
   var handleClick = () => {
     var index = props.index;
-    // console.log(index);
-    // if (props.atStart && props.max === 0) {
-    //   props.click({
-    //     displayIndex: 0,
-    //     leftVisible: false,
-    //     rightVisible: false,
-    //     atStart: true
-    //   });
     if (props.atStart && props.max === 1) {
       props.click({
         displayIndex: 0,
@@ -33,7 +24,6 @@ var ArrowRight = function(props) {
         rightVisible: true
       });
     } else {
-      console.log('Should be invisible')
       props.click({
         displayIndex: index + 1,
         rightVisible: false

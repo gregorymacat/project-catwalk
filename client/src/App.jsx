@@ -23,15 +23,6 @@ class App extends React.Component {
     });
   }
 
-  // componentDidMount(){
-  //   getOneProduct('19093', (err, results) => {
-  //     if (err) {
-  //       return console.log('Unable to get a product: ', err)
-  //     }
-  //     this.setState({product: results});
-  //   })
-  // }
-
   render() {
     return (
       <div>

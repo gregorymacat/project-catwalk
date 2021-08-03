@@ -64,7 +64,6 @@ class RelatedOutfit extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    //console.log(this.props.product)
     if (this.props.product === prevProps.product) {
       return;
     }
