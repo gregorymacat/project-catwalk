@@ -42,8 +42,10 @@ export default class Overview extends React.Component {
   componentDidMount() {
     this.getProductAndStyles()
   }
-  componentDidUpdate() {
-    this.getProductAndStyles()
+  componentDidUpdate(prevProps) {
+    if (Number(this.props.product) !== Number(prevProps.product)) {
+      this.getProductAndStyles()
+    }
   }
   addToCart() {
     if (this.state.selectedSize === 'Select Size') {
