@@ -12,9 +12,9 @@ class OutfitCarousel extends React.Component {
     super(props);
     this.state = {
       displayIndex: 0,
+      outfitItems: [],
       leftVisible: false,
       rightVisible: false,
-      outfitItems: [],
       atStart: true
     }
     this.handleArrowClick = this.handleArrowClick.bind(this);
@@ -26,15 +26,25 @@ class OutfitCarousel extends React.Component {
     if (outfits !== null) {
       outfits = JSON.parse(outfits);
       this.setState({
-        outfitItems: outfits
-      })
+        outfitItems: outfits,
+        rightVisible:  outfits.length === 0 ? false : true
+      });
     }
   }
   componentDidUpdate(prevProps, prevState) {
+    console.log('Component updating');
     if (JSON.stringify(this.state.outfitItems) === JSON.stringify(prevState.outfitItems)) {
+      console.log('States are the same ', this.state.outfitItems, ' and ', prevState.outfitItems);
       return;
     }
     window.localStorage.setItem('cachedClothes', JSON.stringify(this.state.outfitItems));
+    console.log('Number of items in outfit ', this.state.outfitItems.length);
+    if (this.state.outfitItems.length === 0) {
+      console.log('No items in outfit ', this.state.outfitItems.length);
+      this.setState({
+        rightVisible: false
+      });
+    }
   }
 
 
@@ -51,11 +61,27 @@ class OutfitCarousel extends React.Component {
       for (var index = 0; index < outfit.length; index++) {
         if (outfit[index].id.toString() === itemId) {
           outfit.splice(index, 1)
-          this.setState({
-            outfitItems: outfit
-          });
+          if (outfit.length === 0) {
+            this.setState({
+              displayIndex: 0,
+              outfitItems: [],
+              leftVisible: false,
+              rightVisible: false,
+              atStart: true
+            });
+          } else if (this.state.displayIndex > 0) {
+            var index = this.state.displayIndex;
+            this.setState({
+              displayIndex: index - 1,
+              outfitItems: outfit
+            });
+          } else {
+            this.setState({
+              outfitItems: outfit
+            });
+          }
+
           window.localStorage.setItem('cachedClothes', JSON.stringify(this.state.outfitItems));
-          break;
         }
       }
     }
@@ -65,10 +91,8 @@ class OutfitCarousel extends React.Component {
     //console.log('Should be adding ', this.props.currentProduct);
     var outfitCopy = this.state.outfitItems.slice();
     var isUnique = outfitCopy.every((item) => {
-      console.log('Outfit Item ', item.id, ' versus ', this.props.currentProduct.id);
       return item.id !== this.props.currentProduct.id;
     })
-    console.log(isUnique)
     if (!isUnique) {
       alert('You already added this item');
       return;

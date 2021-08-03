@@ -23,7 +23,13 @@ var ProductCard = function(props) {
     }
     return id;
   }
+  if (props.product === undefined) {
+    return (
+      <div key={generateId()} className='carousel item product-card'>
 
+      </div>
+    )
+  }
   return (
       <div key={generateId()} className='carousel item product-card'>
         <span id='remove' className="action fa fa-times"
