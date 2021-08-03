@@ -10,6 +10,7 @@ import {getOneProduct, getProductStyle} from '../../../Controllers/general.js';
 export default class Overview extends React.Component {
   constructor(props) {
     super(props)
+    // console.log("PROPS", this.props.product)
     this.state = {
       addedToCart: false,
       selectedSize: 'Select Size',
@@ -26,12 +27,13 @@ export default class Overview extends React.Component {
     this.getSizeQuantity = this.getSizeQuantity.bind(this)
   }
   componentDidMount(){
-    getOneProduct("17071", (err, results) => {
+    getOneProduct(this.props.product, (err, results) => {
+      console.log("PRODUCT::::", this.props.product)
       if (err) {
         return console.log('Unable to get a product: ', err)
       }
       getProductStyle(results.id, (err, styles) => {
-        console.log("STYYYYYYYYLES", styles)
+        // console.log("STYYYYYYYYLES", styles)
         if (err) {
           return console.log('Unable to get styles', err)
         }
@@ -159,8 +161,8 @@ export default class Overview extends React.Component {
                       Add To Bag
                     </button>
                   }
-                  <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
-                  <a class="twitter-share-button"
+                  <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Share</a></div>
+                  <a className="twitter-share-button"
                   href="https://twitter.com/intent/tweet?text=Hello%20world">
                   Tweet</a>
                   <a href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark">

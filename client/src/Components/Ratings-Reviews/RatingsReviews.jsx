@@ -75,7 +75,7 @@ class RatingsReviews extends React.Component {
   render() {
     console.log(this.state.shownReviews);
     return(
-      <div className="ratings-reviews">
+      <div className="ratings-reviews" id="RatingsReviews">
         <div className="grid-container ratings-reviews-dispay">
           <RatingsSort metaData={this.state.reviewMetaData} />
           <RatingsBreakdown metaData={this.state.reviewMetaData}/>
