@@ -5,7 +5,11 @@ var CharBarFiller = (props) => {
     <div
       className="char-filler"
       style={{ width: `${props.percentage}%` }}
-    ></div>
+    >
+      <div className="char-symbol">
+        ▼
+      </div>
+    </div>
   );
 };
 
