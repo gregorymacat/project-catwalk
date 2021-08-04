@@ -1,6 +1,9 @@
 import React from 'react';
 import Answer from './Answer';
 import {reportQuestionsById, putHelpfulQuestionsById} from '../../../Controllers/questions-answers.js';
+import AnswerModal from './AnswerModal';
+import QuestionModal from './QuestionModal';
+import AnswerForm from './AnswerForm';
 
 class QuestionEntry extends React.Component {
 constructor(props) {
@@ -10,6 +13,7 @@ constructor(props) {
     answerList: [],
     isCollapsed: false,
     helpfulStatus: false,
+    showModal: false,
   };
   this.onClick = this.onClick.bind(this);
   this.callHelpful = this.callHelpful.bind(this);
@@ -31,6 +35,14 @@ componentDidMount() {
   ));
   const answerList = fullAnswerList.slice(0, 1);
   this.setState({ fullAnswerList, answerList });
+}
+
+handleToggleModal() {
+  let { showModal } = this.state;
+  console.log(this.state.showModal);
+
+  showModal = !showModal;
+  this.setState({ showModal });
 }
 
 onClick() {
@@ -66,6 +78,16 @@ render() {
         <span><font size="1">Helpful?  </font></span>
         <button className="small-btn" onClick={this.callHelpful}>Yes</button>
       </span>
+      <button className="tag qa_button" onClick={this.handleToggleModal}>Add Answer</button>
+          {(
+            <AnswerModal submit={this.handleToggleModal}>
+              <AnswerForm
+                productName={product}
+                questionBody={question}
+                questionId={product}
+              />
+            </AnswerModal>
+          )}
       <span className="qa_label" id="a_label"><br></br></span>
       <div className="answers">
         <div className="allAnswers">

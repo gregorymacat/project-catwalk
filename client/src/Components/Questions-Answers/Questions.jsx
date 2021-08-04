@@ -1,12 +1,23 @@
 import React from 'react';
 import AnswerModal from './AnswerModal';
 import QuestionEntry from './QuestionEntry';
+import QuestionModal from './QuestionModal';
+import QuestionForm from './QuestionForm';
+
 
 class Questions extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      addQuestion: false,
     };
+    this.addQuestions = this.addQuestions.bind(this);
+  }
+
+  addQuestions() {
+    let { addQuestion } = this.state;
+    addQuestion = !addQuestion;
+    this.setState({ addQuestion });
   }
 
   render() {
@@ -35,6 +46,12 @@ class Questions extends React.Component {
         <div className="question_body">
           {questionBody}
           {moreQuestionsButton}
+          <button className="qa_button" onClick={this.addQuestions}>Add a Question +</button>
+        {
+          <QuestionModal submit={this.addQuestions}>
+            <QuestionForm productName={product} productId={product.product_id} />
+          </QuestionModal>
+        }
         </div>
       );
     }

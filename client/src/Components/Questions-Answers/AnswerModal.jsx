@@ -1,20 +1,17 @@
 import React from 'react';
 
 class AnswerModal extends React.Component {
-  constructor(props) {
-    super(props),
-    this.state = {
-      name: '',
-      email: '',
-      answer: ''
-    }
-  }
   render() {
+    const { submit, children } = this.props;
+
     return (
-        <div>
-          <p>Answer Modal</p>
+      <div className="modal">
+        <div className="modal-content">
+          <button className="answerModal close" onClick={submit}>&times;</button>
+          {children}
         </div>
-    )
+      </div>
+    );
   }
 }
 

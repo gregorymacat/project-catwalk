@@ -29,9 +29,6 @@ class App extends React.Component {
         <Overview product={this.state.product} />
         <RelatedOutfit product={this.state.product} appClick={this.clickHandler}/>
         <QuestionsList product={this.state.product}/>
-        <RatingsReviews product={this.state.product}/>
-        {/* <StarsDisplay starsData={this.state.starsRating}/> */}
-        {/* <StarsForm/> */}
       </div>
     );
   }
