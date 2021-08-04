@@ -27,7 +27,7 @@ module.exports = {
     ]
   },
   reviewMetaExampleData: {
-    product_id: 19093,
+    product_id: 19089,
     ratings: {
         1: 7,
         2: 4,

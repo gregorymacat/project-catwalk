@@ -4,16 +4,14 @@ import axios from 'axios';
 
 import {reviewExampleData, reviewMetaExampleData}from './example.data'
 import ReviewList from './ReviewList';
-import ReviewForm from './ReviewForm';
-import RatingsSort from './RatingsSort'
-import RatingsBreakdown from './RatingsBreakdown'
+//import RatingsSort from './RatingsSort';
+import RatingsBreakdown from './RatingsBreakdown';
 import {getAllReviews, getAllMetaReviews} from '../../../Controllers/ratings-reviews';
 import ModalViewer from './Modal/ModalViewer';
 
 class RatingsReviews extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       product: this.props.product,
       reviewListData: reviewExampleData,
@@ -47,7 +45,7 @@ class RatingsReviews extends React.Component {
   }
 
   getReviews() {
-    getAllReviews({}, (err, res) => {
+    getAllReviews(this.state.product, (err, res) => {
       if (err) {
         console.log(err)
       } else {
@@ -76,16 +74,11 @@ class RatingsReviews extends React.Component {
     return(
       <div id="RatingsReviews" className="ratings-reviews">
         <div className="grid-container ratings-reviews-dispay">
-          <RatingsSort metaData={this.state.reviewMetaData} />
           <RatingsBreakdown metaData={this.state.reviewMetaData}/>
-          <ReviewList moreReviews={() => this.handleMoreReviews()} data={this.state.shownReviews}/>
+          <ReviewList metaData={this.state.reviewMetaData}  moreReviews={() => this.handleMoreReviews()} data={this.state.shownReviews}/>
           <div className="grid-item rating-reviews-buttons">
-            <div className="rating-reviews-button-show-more">
-              <button onClick={this.handleMoreReviews}>More Reviews</button>
-            </div>
-            <div className="rating-reviews-button-form">
-             <  ModalViewer/>
-            </div>
+            <button className="button-RR rating-reviews-button-show-more" onClick={this.handleMoreReviews}>More Reviews</button>
+            <ModalViewer data={this.state.product} metaData={this.state.reviewMetaData}/>
           </div>
         </div>
       </div>
