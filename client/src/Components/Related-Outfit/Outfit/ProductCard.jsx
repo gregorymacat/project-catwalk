@@ -20,6 +20,9 @@ var ProductCard = function(props) {
         if (styleIndex === -1) {
           return props.styles[index].results[0].photos[0].thumbnail_url;
         }
+        if (props.styles[index].results[styleIndex].photos[0].thumbnail_url === null) {
+          return 'https://1080motion.com/wp-content/uploads/2018/06/NoImageFound.jpg.png';
+        }
         return props.styles[index].results[styleIndex].photos[0].thumbnail_url;
       }
     }
