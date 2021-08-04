@@ -18,7 +18,7 @@ var RenderCards = function(props) {
         {props.add}
         {itemsTuple.map((item) => {
           return <ProductCard key={generateId()} styles={props.allStyles} ratings={props.ratings[item[1]]}
-          product={item[0]} click={props.click}/>
+          product={item[0]} click={props.click} appClick={props.appClick}/>
         })}
       </React.Fragment>
     )
@@ -31,7 +31,7 @@ var RenderCards = function(props) {
       <React.Fragment>
         {itemsTuple.map((item) => {
           return <ProductCard styles={props.allStyles} ratings={props.ratings[item[1]]}
-                  product={item[0]} click={props.click}/>
+                  product={item[0]} click={props.click} appClick={props.appClick}/>
         })}
       </React.Fragment>
     )

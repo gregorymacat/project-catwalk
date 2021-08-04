@@ -7,6 +7,10 @@ var ProductCard = function(props) {
     var itemId = event.target.dataset.itemnum;
     props.click('remove', itemId);
   }
+  var handleItemClick = (event) => {
+    var itemId = event.target.dataset.itemnum;
+    props.appClick(itemId);
+  }
 
   var getImage = function() {
     if (props.styles === undefined) {
@@ -40,7 +44,9 @@ var ProductCard = function(props) {
           <img src={getImage()} alt="Image of the product"></img>
         </div>
         <p>{props.product.category}</p>
-        <p>{props.product.name}</p>
+        <p onClick={handleItemClick} data-itemnum={props.product.id}>
+          {props.product.name}
+        </p>
         <p>{props.product.default_price}</p>
         <StarsDisplay starsData={parseFloat(props.ratings)}/>
       </div>
