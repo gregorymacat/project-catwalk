@@ -2,6 +2,7 @@ import React from 'react';
 import Answer from './Answer';
 import {reportQuestionsById, putHelpfulQuestionsById} from '../../../Controllers/questions-answers.js';
 import AnswerModal from './AnswerModal';
+import axios from 'axios';
 import QuestionModal from './QuestionModal';
 import AnswerForm from './AnswerForm';
 
@@ -54,14 +55,29 @@ onClick() {
 callHelpful() {
   const { helpfulStatus } = this.state;
   if (!helpfulStatus) {
-        //AXIOS PUT REQUEST FOR HELPFUL
+    axios.put(`/qa/questions/${question.id}/helpful`)
+      .then((res) => {
+        this.setState({ helpfulStatus: true });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    // putHelpfulAnswersById(answer.id, (error, quests) => {
+    //   if (error) { return console.log('Failure to get ID: ', error); }
+    //   var quests1 = quests.results;
+    //   //console.log(quests);
+    //   console.log("called helpful");
+    //   this.setState({
+    //     helpfulStatus: true
+    //   })
+    // });
   }
 }
 
 render() {
   const { question, product} = this.props;
   const {
-    answerList, fullAnswerList, isCollapsed, helpfulStatus,
+    answerList, fullAnswerList, isCollapsed, helpfulStatus, showModal
   } = this.state;
   const buttonText = isCollapsed ? 'Collapse Answers' : 'See More Answers';
   const answersButton = (
@@ -79,7 +95,7 @@ render() {
         <button className="small-btn" onClick={this.callHelpful}>Yes</button>
       </span>
       <button className="tag qa_button" onClick={this.handleToggleModal}>Add Answer</button>
-          {(
+      {(
             <AnswerModal submit={this.handleToggleModal}>
               <AnswerForm
                 productName={product}

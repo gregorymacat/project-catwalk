@@ -5,9 +5,9 @@ class QuestionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      answer: 'Hello',
-      name: '-',
-      email: 'bobsmith1@gmail.com'
+      answer: '',
+      name: '',
+      email: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,10 +34,9 @@ class QuestionForm extends React.Component {
     } = this.state;
     const { questionId } = this.props;
     axios.post(`/qa/questions/${questionId}/answers`, {
-      body: answerBody,
-      name: 'hello',
-      email,
-      photos: images,
+      body: this.state.answer,
+      name: this.state.name,
+      email: this.state.email,
     })
       .then((response) => {
         this.setState({
@@ -54,7 +53,6 @@ class QuestionForm extends React.Component {
       questionBody
     } = this.state;
     const { productName } = this.props;
-
     return (
       <div className="form question">
         <form className="form-submit" onSubmit={this.handleSubmit}>
@@ -62,10 +60,12 @@ class QuestionForm extends React.Component {
           <textarea id="form-body" name="body" value={questionBody} onChange={this.handleQuestionChange} maxLength="1000" />
           <br></br>
           <label htmlFor="name" id="name-label">What is your name?: </label>
-          <input type="text" id="name" name="name" value={name} onChange={this.handleNameChange} placeholder="Bob Smith" maxLength="50" />
+          <input type="text" id="name" name="name" value={name} onChange={this.handleNameChange} placeholder="Example: jackson11!" maxLength="50" />
           <br></br>
           <label htmlFor="name" id="name-label">What is your email?: </label>
-          <input type="text" id="email" name="name" value={name} onChange={this.handleEmailChange} placeholder="bobsmith1@gmail.com" maxLength="50" />
+          <input type="text" id="email" name="name" value={name} onChange={this.handleEmailChange} placeholder="Why did you like the product or not?" maxLength="60" />
+          <br></br>
+          <label htmlFor="auth" id="auth">For authentication reasons, you will not be emailed</label>
           <input type="submit" value="Submit" id="a-form-submit" />
         </form>
       </div>

@@ -17,11 +17,15 @@ class Questions extends React.Component {
   addQuestions() {
     let { addQuestion } = this.state;
     addQuestion = !addQuestion;
+    console.log(this.props);
+    console.log(this.state);
     this.setState({ addQuestion });
   }
 
   render() {
     const { questions, allQuestions, product, onClick } = this.props;
+    const { addQuestions } = this.state;
+
     //console.log(questions);
     if (!questions) {
       questions = questionList.results;
@@ -47,11 +51,11 @@ class Questions extends React.Component {
           {questionBody}
           {moreQuestionsButton}
           <button className="qa_button" onClick={this.addQuestions}>Add a Question +</button>
-        {
+        {(
           <QuestionModal submit={this.addQuestions}>
             <QuestionForm productName={product} productId={product.product_id} />
           </QuestionModal>
-        }
+        )}
         </div>
       );
     }

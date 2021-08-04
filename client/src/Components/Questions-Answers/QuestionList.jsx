@@ -1,7 +1,7 @@
 import React from 'react';
 import Questions from './Questions';
 import QuestionModal from './QuestionModal';
-//import axios from 'axios';
+import axios from 'axios';
 import {getAnswersByQuestionId, getQuestions} from '../../../Controllers/questions-answers.js';
 
 class QuestionList extends React.Component {
@@ -17,6 +17,7 @@ class QuestionList extends React.Component {
       queryList: [],
       product_id: this.props.product,
       repeated: false,
+      prevID: '',
     };
     this.onClick = this.onClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -24,16 +25,16 @@ class QuestionList extends React.Component {
 
   componentDidMount() {
     //this.state.product_id = '17068'
-    this.state.product_id = this.props.product;
-      getQuestions(this.props.product, (error, quests) => {
+    //this.state.product_id = this.props.product;
+      getQuestions(this.state.product_id, (error, quests) => {
         if (error) { return console.log('Failure to get ID: ', error); }
         var quests1 = quests.results;
         if (quests1) {
-
         this.setState({
           questionList: quests1.slice(0,2),
           queryList: quests1,
           allQuestions: quests1,
+          prevID: this.state.product_id
         }) }
       });
       this.state.repeated = true;
@@ -41,11 +42,10 @@ class QuestionList extends React.Component {
   }
 
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     //this.state.product_id = '17068'
-    this.state.product_id = this.props.product;
-    //console.log('hello')
-    //console.log(this.props.product);
+    if (prevProps.product !== this.props.product) {
+      this.state.product_id = this.props.product;
       getQuestions(this.props.product, (error, quests) => {
         if (error) { return console.log('Failure to get ID: ', error); }
         var quests1 = quests.results;
@@ -57,6 +57,28 @@ class QuestionList extends React.Component {
           })
         }
       });
+    }
+    //const {prev} = this.state.prevID;
+    // console.log('CCCCCCCC')
+    // console.log(prev);
+    // console.log(this.props.product)
+    // console.log('AAAAAAA')
+    // if (this.props.product === prev) {
+    //   console.log('repeated');
+    // } else {
+    //   this.state.product_id = this.props.product;
+    //   getQuestions(this.props.product, (error, quests) => {
+    //     if (error) { return console.log('Failure to get ID: ', error); }
+    //     var quests1 = quests.results;
+    //     if (quests1) {
+    //       this.setState({
+    //         questionList: quests1.slice(0,2),
+    //         queryList: quests1,
+    //         allQuestions: quests1,
+    //       })
+    //     }
+    //   });
+    // }
   }
 
   handleChange(e) {
@@ -101,10 +123,10 @@ class QuestionList extends React.Component {
     const { questionList, query, allQuestions, queryList, products } = this.state;
 
     return (
-      <div id="main">
+      <div id="qacontainer">
         <div id="qaheading"><h4>Questions and Answers</h4></div>
         <div id="qa"></div>
-        <div className="sbar">
+        <div className="searchbarwrapper">
         <input className="search" type="text" placeholder="Search for Questions" value={query} onChange={this.handleChange} />
         <img className="search_image" src="https://img.icons8.com/material-outlined/24/000000/search--v1.png"/>
         </div>

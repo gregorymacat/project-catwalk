@@ -158,8 +158,8 @@ export default class Overview extends React.Component {
                       Add To Bag
                     </button>
                   }
-                  <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
-                  <a class="twitter-share-button"
+                  <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Share</a></div>
+                  <a className="twitter-share-button"
                   href="https://twitter.com/intent/tweet?text=Hello%20world">
                   Tweet</a>
                   <a href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark">

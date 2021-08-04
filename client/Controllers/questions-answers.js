@@ -3,7 +3,7 @@ var axios = require('axios');
 module.exports = {
 //GET REQUESTS
   getQuestions: function(req, callback) {
-    axios.get('/qa/questions/?page=1&count=5&sort=newest&product_id=' + req)
+    axios.get('/qa/questions/?page=1&count=200&sort=newest&product_id=' + req)
       .then((response) => {
         callback(null, response.data);
       })
