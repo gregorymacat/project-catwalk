@@ -6,7 +6,6 @@ class RatingsSort extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     var numberOfReviews = 0;
     for (var key in this.props.metaData.ratings) {
       numberOfReviews += parseFloat(this.props.metaData.ratings[key]);

@@ -73,7 +73,6 @@ class RatingsReviews extends React.Component {
   }
 
   render() {
-    console.log(this.state.shownReviews);
     return(
       <div id="RatingsReviews" className="ratings-reviews">
         <div className="grid-container ratings-reviews-dispay">

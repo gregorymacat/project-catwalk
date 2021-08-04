@@ -1,5 +1,6 @@
 import React from 'react';
 import StarsDisplay from '../../Shared/StarsDisplay.jsx';
+import {generateId} from '../Helpers/helpers.js';
 
 var ProductCards = function(props) {
   var cards = chooseCards(props.startIndex, props.allProducts);
@@ -68,15 +69,6 @@ var getImage = function(productId, styles) {
     }
   }
   return 'https://1080motion.com/wp-content/uploads/2018/06/NoImageFound.jpg.png';
-}
-
-var generateId = function() {
-  var id = '';
-  var chars = 'abcdefghijklmnopqrstuvwxyz1234567890';
-  for (var i = 0; i < 10; i++) {
-    id += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return id;
 }
 
 export default ProductCards;

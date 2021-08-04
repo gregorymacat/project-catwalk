@@ -31,7 +31,6 @@ export default class Overview extends React.Component {
         return console.log('Unable to get a product: ', err)
       }
       getProductStyle(results.id, (err, styles) => {
-        console.log("STYYYYYYYYLES", styles)
         if (err) {
           return console.log('Unable to get styles', err)
         }
