@@ -12,6 +12,11 @@ var RatingsBreakdown = (props) => {
       numberOfReviews += parseFloat(props.metaData.ratings[key]);
     }
     var rating = (totalStars / numberOfReviews).toFixed(1);
+    console.log(props.metaData.product_id);
+    console.log('rating in dec',props.metaData.recommended.true + props.metaData.recommended.false );
+    var recommend_true = parseInt(props.metaData.recommended.true);
+    var recommend_false = parseInt(props.metaData.recommended.false);
+    var recommended = ((recommend_true/(recommend_true + recommend_false)).toFixed(2) * 100);
 
     return(
       <div className="grid-item rating-breakdown">
@@ -24,6 +29,9 @@ var RatingsBreakdown = (props) => {
           </div>
         </div>
         <div className="rating-breakdown-body">
+          <div className="progress-bar-contents">
+            {recommended}% of reviewers reccomend this product
+          </div>
           <div className="progress-bar-contents">
             5 Stars: <RatingsBreakdownBar percentage={(parseFloat(props.metaData.ratings["5"]).toFixed(2)/numberOfReviews) * 100}/> ({props.metaData.ratings["5"]})
           </div>

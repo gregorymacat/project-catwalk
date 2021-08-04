@@ -56,10 +56,6 @@
   margin-right: 30%;
 }
 
-.review-tile-verified::before {
-  content: '\2714';
-}
-
 .review-tile-reviewSummary {
   font-weight: bold;
 }
@@ -83,6 +79,14 @@
 .review-tile-helpfulness-item {
   display: flex;
   margin-right: 1%;
+}
+
+.review-tile-helpfulness-item-true {
+  color: black;
+}
+
+.review-tile-helpfulness-item-false {
+  color: grey;
 }
 
 
