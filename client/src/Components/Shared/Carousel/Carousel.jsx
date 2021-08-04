@@ -66,7 +66,7 @@ class Carousel extends React.Component {
 
   displayArrow(direction) {
     if (direction === 'left') {
-      if (this.state.leftVisible) { return <ArrowLeft click={this.handleArrowClick}/> }
+      if (this.state.leftVisible) { return <ArrowLeft click={this.handleArrowClick} /> }
       return <div className='carousel left'></div>
     } else if (direction === 'right') {
       if (this.state.rightVisible) { return <ArrowRight click={this.handleArrowClick}/> }
@@ -75,11 +75,12 @@ class Carousel extends React.Component {
   }
 
   render () {
+    const { styles } = this.props
     return (
       <React.Fragment>
         {this.displayArrow('left')}
-        <div className='carousel container'>
-          <Item item={this.props.items[this.state.displayIndex]}/>
+        <div className='carousel container' style={{ ...styles.container }}>
+          <Item item={this.props.items[this.state.displayIndex]} styles={styles} />
         </div>
         {this.displayArrow('right')}
       </React.Fragment>

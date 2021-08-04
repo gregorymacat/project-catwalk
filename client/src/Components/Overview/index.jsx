@@ -3,6 +3,7 @@ import styles from './styles.js'
 import StarsDisplay from '../Shared/StarsDisplay.jsx'
 import axios from 'axios'
 import {getOneProduct, getProductStyle} from '../../../Controllers/general.js'
+import Carousel from '../Shared/Carousel/Carousel.jsx';
 export default class Overview extends React.Component {
   constructor(props) {
     super(props)
@@ -107,21 +108,31 @@ export default class Overview extends React.Component {
             flex direction set to "row" to read from left to right, carousel and info each taking 50% width
           */}
           <div style={styles.row}>
-              <div style={styles.carousel}>
+              <div style={styles.carouselContainer}>
               {
                 this.state.selectedStyle.photos &&
                 (
-                  <div style={styles.carousel}>
+                  <div style={styles.carouselContainer}>
                     {/* additional photos */}
                     <div style={styles.extraPhotos}>
-                      <div style={styles.extraPhoto}></div>
-                      <div style={styles.extraPhoto}></div>
-                      <div style={styles.extraPhoto}></div>
-                      <div style={styles.extraPhoto}></div>
+                      {this.state.selectedStyle.photos.map((photo, index) => {
+                        return (
+                          <div key={index} style={styles.extraPhotoContainer}>
+                            <img
+                              src={photo.thumbnail_url}
+                              style={styles.extraPhoto}
+                              alt="product_image"
+                            />
+                          </div>
+                        )
+                      })}
                     </div>
-                    {/* selected photos */}
-                    <div>
-                      <img  style={styles.selectedPhoto} src={this.state.selectedStyle.photos[0].thumbnail_url}></img>
+                    {/* selected photo */}
+                    <div style={styles.carousel}>
+                      <Carousel
+                        items={this.state.selectedStyle.photos}
+                        styles={styles.carouselOverrides}
+                      />
                     </div>
                   </div>
                 )

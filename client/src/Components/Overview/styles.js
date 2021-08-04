@@ -18,11 +18,16 @@ export default {
     display: "flex",
     flexDirection: "column"
   },
-  extraPhoto: {
+  extraPhotoContainer: {
     height: "75px",
     width: "75px",
     margin: "0 10px 10px 0",
-    backgroundColor: "#d3d3d3"
+    backgroundColor: "#d3d3d3",
+    borderRadius: "8px"
+  },
+  extraPhoto: {
+    height: "100%",
+    width: "100%"
   },
   selectedPhoto: {
     height: "80%"
@@ -49,11 +54,15 @@ export default {
   rating:{
 
   },
-  carousel: {
+  carouselContainer: {
     display: "flex",
     height: "425px",
     width: "50%",
     padding: "20px"
+  },
+  carousel: {
+    display: "flex",
+    justifyContent: "space-evenly"
   },
   productInfo: {
     padding: "20px",
@@ -81,5 +90,20 @@ export default {
   },
   productDetails: {
     margin: "20px"
+  },
+  carouselOverrides: {
+    container: {
+      display: "flex",
+      flexDirection: "row"
+    },
+    image: {
+      height: "250px"
+    },
+    rightArrow: {
+
+    },
+    leftArrow: {
+
+    }
   }
 };
