@@ -6,6 +6,8 @@ var TableModal = function(props) {
   }
 
   if (props.display) {
+    console.log('Current Items ', props.current.features, ' versus clicked on ', props.compareTo.features)
+
     return (
       <div className='modal-body'>
         <div className='modal-content table'>
@@ -35,7 +37,7 @@ var TableModal = function(props) {
                 <td><p>Category</p></td>
                 <td><p>{props.compareTo.category}</p></td>
               </tr>
-              {compareFeatures(props.current.features, props.compareTo.features)}
+              {getComparison(props.current.features, props.compareTo.features)}
             </tbody>
           </table>
         </div>
@@ -45,26 +47,33 @@ var TableModal = function(props) {
   return null;
 }
 
-var compareFeatures = (firstFeatures, secondFeatures) => {
-  var allFeats = [];
+var getComparison = (firstFeatures, secondFeatures) => {
+  var tableData = [];
+  var comparison = new Map();
 
-  firstFeatures.forEach((itemFeat) => {
-    secondFeatures.forEach((itemTwoFeat) => {
-      if (itemFeat.feature === itemTwoFeat.feature) {
-        allFeats.push([itemFeat.value, itemFeat.feature, itemTwoFeat.value]);
-      }
-    })
+  firstFeatures.forEach((item) => {
+    comparison.set(item.feature, [item.value, null]);
+  })
+  secondFeatures.forEach((item) => {
+    var sharedFeature = comparison.get(item.feature)
+    if (sharedFeature !== undefined) {
+      sharedFeature[1] = item.value;
+      comparison.set(item.feature, sharedFeature);
+    } else {
+      comparison.set(item.feature, [null, item.value]);
+    }
   })
 
-  return allFeats.map((features) => {
-    return (
+  comparison.forEach((values, feature) => {
+    tableData.push(
       <tr>
-        <td><p>{features[0]}</p></td>
-        <td><p>{features[1]}</p></td>
-        <td><p>{features[2]}</p></td>
+        <td><p>{values[0]}</p></td>
+        <td><p>{feature}</p></td>
+        <td><p>{values[1]}</p></td>
       </tr>
     )
   })
+  return tableData;
 }
 
 export default TableModal;
