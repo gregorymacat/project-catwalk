@@ -28,7 +28,7 @@ var ProductCards = function(props) {
                 <img src={getImage(card[0].id, props.allStyles)} alt="Image of the product" alt="Image of the product"></img>
               </div>
               <p>{card[0].category}</p>
-              <p onClick={handleItemClick} data-itemnum={card[0].id}>{card[0].name}</p>
+              <b id='item-name' onClick={handleItemClick} data-itemnum={card[0].id}>{card[0].name}</b>
               <p>{card[0].default_price}</p>
               <StarsDisplay starsData={parseFloat(props.ratings[card[1]])}/>
             </div>

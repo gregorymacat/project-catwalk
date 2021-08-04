@@ -44,9 +44,9 @@ var ProductCard = function(props) {
           <img src={getImage()} alt="Image of the product"></img>
         </div>
         <p>{props.product.category}</p>
-        <p onClick={handleItemClick} data-itemnum={props.product.id}>
+        <b onClick={handleItemClick} data-itemnum={props.product.id}>
           {props.product.name}
-        </p>
+        </b>
         <p>{props.product.default_price}</p>
         <StarsDisplay starsData={parseFloat(props.ratings)}/>
       </div>
