@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon --delay 250ms ./server/index.js",
     "build": "webpack --config webpack.config.js --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
