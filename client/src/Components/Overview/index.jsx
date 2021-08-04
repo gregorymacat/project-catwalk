@@ -45,6 +45,7 @@ export default class Overview extends React.Component {
   componentDidUpdate(prevProps) {
     if (Number(this.props.product) !== Number(prevProps.product)) {
       this.getProductAndStyles()
+      window.scrollTo(0, 0)
     }
   }
   addToCart() {
@@ -106,8 +107,25 @@ export default class Overview extends React.Component {
             flex direction set to "row" to read from left to right, carousel and info each taking 50% width
           */}
           <div style={styles.row}>
-            <div style={styles.carousel}>
-            {this.state.selectedStyle.photos && <img src={this.state.selectedStyle.photos[0].thumbnail_url}></img>}
+              <div style={styles.carousel}>
+              {
+                this.state.selectedStyle.photos &&
+                (
+                  <div style={styles.carousel}>
+                    {/* additional photos */}
+                    <div style={styles.extraPhotos}>
+                      <div style={styles.extraPhoto}></div>
+                      <div style={styles.extraPhoto}></div>
+                      <div style={styles.extraPhoto}></div>
+                      <div style={styles.extraPhoto}></div>
+                    </div>
+                    {/* selected photos */}
+                    <div>
+                      <img  style={styles.selectedPhoto} src={this.state.selectedStyle.photos[0].thumbnail_url}></img>
+                    </div>
+                  </div>
+                )
+              }
             </div>
             <div style={styles.productInfo}>
               <div style={styles.rating}>

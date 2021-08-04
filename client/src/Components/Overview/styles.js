@@ -1,7 +1,7 @@
 export default {
   overview: {
     display: "flex",
-    backgroundColor: "#d3d3d3",
+    backgroundColor: "white",
     height: "100vh",
     flexDirection: "column"
   },
@@ -13,6 +13,19 @@ export default {
     display: 'block',
     fontSize: '20px',
     fontWeight: 'bold'
+  },
+  extraPhotos: {
+    display: "flex",
+    flexDirection: "column"
+  },
+  extraPhoto: {
+    height: "75px",
+    width: "75px",
+    margin: "0 10px 10px 0",
+    backgroundColor: "#d3d3d3"
+  },
+  selectedPhoto: {
+    height: "80%"
   },
   errorMsg: {
     color: "red",
@@ -37,9 +50,8 @@ export default {
 
   },
   carousel: {
-    backgroundColor: "grey",
     display: "flex",
-    height: "400px",
+    height: "425px",
     width: "50%",
     padding: "20px"
   },
