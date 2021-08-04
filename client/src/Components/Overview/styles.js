@@ -17,7 +17,7 @@ export default {
   extraPhotos: {
     display: "flex",
     flexDirection: "column",
-    overflow: "hidden"
+    overflow: "scroll"
   },
   extraPhotoContainer: {
     height: "75px",
@@ -28,7 +28,9 @@ export default {
   },
   extraPhoto: {
     height: "100%",
-    width: "100%"
+    width: "100%",
+    border: "3px solid #d3d3d3",
+    borderRadius: "5px"
   },
   selectedPhoto: {
     height: "80%"
@@ -58,13 +60,13 @@ export default {
   carouselContainer: {
     display: "flex",
     height: "425px",
-    width: "50%",
+    width: "100%",
     padding: "20px",
     justifyContent: "center"
   },
   carousel: {
     display: "flex",
-    justifyContent: "space-evenly"
+    justifyContent: "space-evenly center"
   },
   productInfo: {
     padding: "20px",
@@ -75,14 +77,17 @@ export default {
     flexDirection: "column"
   },
   colorCircles: {
-    display: "flex"
+    display: "grid",
+    gridTemplateColumns: "50px 50px 50px 50px",
+    gridGap: "10px"
   },
   circle: {
-    margin: "10px",
-    borderRadius: "50%",
+    // margin: "10px",
     height: "50px",
     width: "50px",
-    backgroundColor: "purple"
+    backgroundColor: "purple",
+    border: "3px solid #d3d3d3",
+    borderRadius: "50%"
   },
   select: {
     backgroundColor: "transparent",
@@ -98,17 +103,19 @@ export default {
       display: "flex",
       flexDirection: "row",
       height: "400px",
-      width: "150%"
+      width: "150%",
+      justifyContent: "space-between"
     },
     image: {
       height: "250px",
-      width: "95%"
+      width: "95%",
+      // marginLeft: "50%"
     },
     rightArrow: {
-
+      // marginLeft: "50%"
     },
     leftArrow: {
-
+      // marginLeft: "50%"
     }
   }
 };

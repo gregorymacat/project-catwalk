@@ -78,11 +78,11 @@ class Carousel extends React.Component {
     const { styles } = this.props
     return (
       <React.Fragment>
-        {this.displayArrow('left')}
         <div className='carousel container' style={{ ...styles.container }}>
+          {this.displayArrow('left')}
           <Item item={this.props.items[this.state.displayIndex]} styles={styles} />
+          {this.displayArrow('right')}
         </div>
-        {this.displayArrow('right')}
       </React.Fragment>
     )
   }
