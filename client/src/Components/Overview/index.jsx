@@ -5,6 +5,9 @@ import StarsDisplay from '../Shared/StarsDisplay.jsx'
 import axios from 'axios'
 import {getOneProduct, getProductStyle} from '../../../Controllers/general.js'
 import Carousel from '../Shared/Carousel/Carousel.jsx';
+import {getRelatedProductIds, getProductsByIds,
+  getStylesByIds, getMetadataByIds}
+from '../../../Controllers/related-outfit.js';
 export default class Overview extends React.Component {
   constructor(props) {
     super(props)
@@ -16,10 +19,13 @@ export default class Overview extends React.Component {
       selectedStyle: {},
       styleSelectError: false,
       selectedQuantity: '-',
-      extendView: false
+      position: 0,
+      // extendView: false,
+      ratings: 3.6
     }
     this.addToCart = this.addToCart.bind(this)
-    this.extendedView = this.extendedView.bind(this)
+    this.changeThumbnail = this.changeThumbnail.bind(this)
+    // this.extendedView = this.extendedView.bind(this)
     this.changeQuantity = this.changeQuantity.bind(this)
     this.changeSelectedSize = this.changeSelectedSize.bind(this)
     this.changeSelectedStyle = this.changeSelectedStyle.bind(this)
@@ -51,6 +57,22 @@ export default class Overview extends React.Component {
       this.getProductAndStyles()
       window.scrollTo(0, 0)
     }
+    getMetadataByIds([this.props.product], (err, responses) => {
+      if (err) { return console.log('Unable to get all review data: ', err); }
+      var allReviewData = responses.map((response) => {
+        return response.data;
+      })
+      allReviewData = allReviewData.map((oneReview) => {
+        var totalStars = 0;
+        var numberOfReviews = 0;
+        for (var key in oneReview.ratings) {
+          totalStars += parseInt(oneReview.ratings[key]) * key;
+          numberOfReviews += parseInt(oneReview.ratings[key]);
+        }
+        return (totalStars / numberOfReviews).toFixed(1);
+      })
+      this.setState({ratings: allReviewData});
+    })
   }
   addToCart() {
     if (this.state.selectedSize === 'Select Size') {
@@ -100,23 +122,31 @@ export default class Overview extends React.Component {
       selectedSize: 'Select Size'
     })
   }
-  extendedView(event) {
-    event.preventDefault()
-    if (this.extendView === true) {
-      this.setState({
-        extendView: false
-      })
-      var productInfo = document.getElementById("ProductInfo")
-      console.log("PRODUCT INFOOOOO", productInfo)
-      productInfo.style.display = "flex"
-    } else {
-      this.setState({
-        extendView: true
-      })
-      var productInfo = document.getElementById("ProductInfo")
-      productInfo.style.display = "none"
-    }
+  changeThumbnail(event) {
+    // console.log("EVENT::::", event)
+    // var copy = {...this.state.selectedStyle}
+    // copy.photos.mainImg = styles.results[0]
+    this.setState({
+      position: event
+    })
   }
+  // extendedView(event) {
+  //   event.preventDefault()
+  //   if (this.extendView === true) {
+  //     this.setState({
+  //       extendView: false
+  //     })
+  //     var productInfo = document.getElementById("ProductInfo")
+  //     console.log("PRODUCT INFOOOOO", productInfo)
+  //     productInfo.style.display = "flex"
+  //   } else {
+  //     this.setState({
+  //       extendView: true
+  //     })
+  //     var productInfo = document.getElementById("ProductInfo")
+  //     productInfo.style.display = "none"
+  //   }
+  // }
   render() {
     var inventory = this.state.selectedStyle.skus ? Object.values(this.state.selectedStyle.skus) : []
     const sizeQuantity = Array.from(Array(this.getSizeQuantity(inventory)).keys()).slice(0, 16)
@@ -140,7 +170,9 @@ export default class Overview extends React.Component {
                         return (
                           <div key={index} style={styles.extraPhotoContainer}>
                             <img
+                              onClick={() => this.changeThumbnail(index)}
                               src={photo.thumbnail_url}
+                              position={index}
                               style={styles.extraPhoto}
                               alt="product_image"
                             />
@@ -149,11 +181,11 @@ export default class Overview extends React.Component {
                       })}
                     </div>
                     {/* selected photo */}
-                    <div style={styles.carousel} onClick={() => this.extendedView(event)}>
+                    <div style={styles.carousel} >
                       <Carousel
                         styles={styles.carouselOverrides}
                         items={this.state.selectedStyle.photos}
-
+                        position={this.state.position}
                          />
                     </div>
                   </div>
@@ -162,7 +194,7 @@ export default class Overview extends React.Component {
             </div>
             <div style={styles.productInfo} id="ProductInfo">
               <div style={styles.rating}>
-                  <StarsDisplay starsData={3.6}/>
+                  <StarsDisplay starsData={this.state.ratings}/>
                   <a href="#RatingsReviews">Read All Reviews</a>
               </div>
               <p>{this.state.product.category}</p>
