@@ -12,8 +12,6 @@ var RatingsBreakdown = (props) => {
       numberOfReviews += parseFloat(props.metaData.ratings[key]);
     }
     var rating = (totalStars / numberOfReviews).toFixed(1);
-    //Size and Comfort
-    var sizeRating = parseFloat(props.metaData.characteristics.Size.value).toFixed(1) * 10;
 
     return(
       <div className="grid-item rating-breakdown">

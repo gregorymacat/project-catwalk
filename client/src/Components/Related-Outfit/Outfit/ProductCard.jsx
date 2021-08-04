@@ -1,5 +1,6 @@
 import React from 'react';
 import StarsDisplay from '../../Shared/StarsDisplay.jsx';
+import {generateId} from '../Helpers/helpers.js';
 
 var ProductCard = function(props) {
   var handleActionClick = (event) => {
@@ -25,18 +26,6 @@ var ProductCard = function(props) {
     return 'https://1080motion.com/wp-content/uploads/2018/06/NoImageFound.jpg.png';
   }
 
-  var generateId = function() {
-    var id = '';
-    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0987654321';
-    for (var i = 0; i < 10; i++) {
-      id += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return id;
-  }
-
-  var getStars = function() {
-    //if () {}
-  }
   if (props.product === undefined) {
     return <div key={generateId()} className='carousel item product-card'></div>;
   }
@@ -45,7 +34,7 @@ var ProductCard = function(props) {
         <span id='remove' className="action fa fa-times"
           onClick={handleActionClick} data-itemnum={props.product.id}></span>
         <div>
-          <img src={getImage()}></img>
+          <img src={getImage()} alt="Image of the product"></img>
         </div>
         <p>{props.product.category}</p>
         <p>{props.product.name}</p>
