@@ -20,6 +20,10 @@
   margin-bottom: 1.5%;
 }
 
+.review-tile-reviewBodyText {
+  width: 40%;
+}
+
 .rating-breakdown-header {
   display: flex;
 

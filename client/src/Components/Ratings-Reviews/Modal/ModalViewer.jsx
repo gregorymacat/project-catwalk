@@ -1,34 +1,44 @@
-import React from 'react';
-import Modal from './Modal.jsx';
-
+import React from "react";
+import Modal from "./Modal.jsx";
 
 class ModalViewer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      displayModal: false
-    }
+      displayModal: false,
+    };
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(event) {
     var id = event.target.id;
-    if (id === 'open') {
-      this.setState({displayModal: true});
-    } else if (id === 'close') {
-      this.setState({displayModal: false});
+    if (id === "open") {
+      this.setState({ displayModal: true });
+    } else if (id === "close") {
+      this.setState({ displayModal: false });
     }
   }
 
-  render () {
+  render() {
     return (
       <React.Fragment>
-        <div className='test-modal'>
-          <Modal product_id={this.props.data} characteristics={this.props.metaData.characteristics} click={this.handleClick} display={this.state.displayModal}/>
-          <button className="button-RR rating-reviews-button-form" id='open' onClick={this.handleClick}>Add A Review</button>
+        <div className="test-modal">
+          <Modal
+            product_id={this.props.data}
+            characteristics={this.props.metaData.characteristics}
+            click={this.handleClick}
+            display={this.state.displayModal}
+          />
+          <button
+            className="button-RR rating-reviews-button-form"
+            id="open"
+            onClick={this.handleClick}
+          >
+            Add A Review
+          </button>
         </div>
       </React.Fragment>
-    )
+    );
   }
 }
 
