@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './styles.js'
+import VerticalCarousel from './VerticalCarousel.jsx'
 import StarsDisplay from '../Shared/StarsDisplay.jsx'
 import axios from 'axios'
 import {getOneProduct, getProductStyle} from '../../../Controllers/general.js'
@@ -14,9 +15,11 @@ export default class Overview extends React.Component {
       styles: [],
       selectedStyle: {},
       styleSelectError: false,
-      selectedQuantity: '-'
+      selectedQuantity: '-',
+      extendView: false
     }
     this.addToCart = this.addToCart.bind(this)
+    this.extendedView = this.extendedView.bind(this)
     this.changeQuantity = this.changeQuantity.bind(this)
     this.changeSelectedSize = this.changeSelectedSize.bind(this)
     this.changeSelectedStyle = this.changeSelectedStyle.bind(this)
@@ -78,7 +81,8 @@ export default class Overview extends React.Component {
   changeSelectedSize(event) {
     this.setState({
       selectedSize: event.target.value,
-      selectedQuantity: 1
+      selectedQuantity: 1,
+      styleSelectError: false
     })
   }
   getSizeQuantity(inventory) {
@@ -95,6 +99,23 @@ export default class Overview extends React.Component {
       selectedQuantity: 1,
       selectedSize: 'Select Size'
     })
+  }
+  extendedView(event) {
+    event.preventDefault()
+    if (this.extendView === true) {
+      this.setState({
+        extendView: false
+      })
+      var productInfo = document.getElementById("ProductInfo")
+      console.log("PRODUCT INFOOOOO", productInfo)
+      productInfo.style.display = "flex"
+    } else {
+      this.setState({
+        extendView: true
+      })
+      var productInfo = document.getElementById("ProductInfo")
+      productInfo.style.display = "none"
+    }
   }
   render() {
     var inventory = this.state.selectedStyle.skus ? Object.values(this.state.selectedStyle.skus) : []
@@ -128,17 +149,18 @@ export default class Overview extends React.Component {
                       })}
                     </div>
                     {/* selected photo */}
-                    <div style={styles.carousel}>
+                    <div style={styles.carousel} onClick={() => this.extendedView(event)}>
                       <Carousel
                         styles={styles.carouselOverrides}
                         items={this.state.selectedStyle.photos}
+
                          />
                     </div>
                   </div>
                 )
               }
             </div>
-            <div style={styles.productInfo}>
+            <div style={styles.productInfo} id="ProductInfo">
               <div style={styles.rating}>
                   <StarsDisplay starsData={3.6}/>
                   <a href="#RatingsReviews">Read All Reviews</a>
@@ -187,13 +209,15 @@ export default class Overview extends React.Component {
                     <button style={styles.addToCartButton} onClick={this.addToCart}>
                       Add To Bag
                     </button>
-                  }
-                  <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Share</a></div>
+                    }
+                    <div className="sharethis-inline-share-buttons"></div>
+                  {/* <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Share</a></div>
                   <a className="twitter-share-button"
                   href="https://twitter.com/intent/tweet?text=Hello%20world">
                   Tweet</a>
                   <a href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark">
                   </a>
+                </div> */}
                 </div>
               </div>
             </div>
@@ -207,7 +231,7 @@ export default class Overview extends React.Component {
               <p>{this.state.product.description}</p>
             </div>
           </div>
-        </div>
+          </div>
       )
   }
 }

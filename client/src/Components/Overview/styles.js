@@ -3,7 +3,8 @@ export default {
     display: "flex",
     backgroundColor: "white",
     height: "100vh",
-    flexDirection: "column"
+    flexDirection: "column",
+    fontFamily: "Montserrat sans-serif"
   },
   addToCartButton: {
     width: '250px',
@@ -14,30 +15,9 @@ export default {
     fontSize: '20px',
     fontWeight: 'bold'
   },
-  extraPhotos: {
-    display: "flex",
-    flexDirection: "column",
-    overflow: "scroll"
-  },
-  extraPhotoContainer: {
-    height: "75px",
-    width: "75px",
-    margin: "0 100px 10px 0",
-    backgroundColor: "#d3d3d3",
-    borderRadius: "8px"
-  },
-  extraPhoto: {
-    height: "100%",
-    width: "100%",
-    border: "3px solid #d3d3d3",
-    borderRadius: "5px"
-  },
-  selectedPhoto: {
-    height: "80%"
-  },
   errorMsg: {
     color: "red",
-    padding: "0px"
+    padding: "0px",
   },
   addedToCart: {
     width: '250px',
@@ -66,6 +46,33 @@ export default {
   },
   carousel: {
     display: "flex",
+    justifyContent: "space-evenly center",
+    width: "550px"
+  },
+  extraPhotos: {
+    display: "flex",
+    flexDirection: "column",
+    overflow: "scroll"
+  },
+  extraPhotoContainer: {
+    height: "75px",
+    width: "75px",
+    margin: "0 100px 10px 0",
+    backgroundColor: "#d3d3d3",
+    borderRadius: "8px"
+  },
+  extraPhoto: {
+    height: "100%",
+    width: "100%",
+    border: "3px solid #d3d3d3",
+    borderRadius: "5px"
+  },
+  selectedPhoto: {
+    height: "80%"
+  },
+  verticalCarousel: {
+    display: "flex",
+    transform: "rotate(90deg)",
     justifyContent: "space-evenly center",
     width: "550px"
   },
@@ -110,13 +117,10 @@ export default {
     image: {
       height: "250px",
       width: "95%",
-      // marginLeft: "50%"
     },
     rightArrow: {
-      // marginLeft: "50%"
     },
     leftArrow: {
-      // marginLeft: "50%"
     }
   }
 };
