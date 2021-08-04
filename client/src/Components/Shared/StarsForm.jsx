@@ -15,6 +15,7 @@ class StarsForm extends React.Component {
   }
 
   setRating(stars) {
+    this.props.modalCallback(stars + 1);
     this.setState({
       starSelected: stars,
       starOnHover: stars - 1,

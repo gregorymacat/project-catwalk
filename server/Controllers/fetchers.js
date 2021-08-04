@@ -27,7 +27,7 @@ module.exports = {
         callback(null);
       })
       .catch((err) => {
-        console.log('!!!ERROR: axios post: \"/controllers.js add()\"');
+        console.log('!!!ERROR: axios post: \"/controllers.js add()\"', err.message);
         callback(err);
       });
   },
