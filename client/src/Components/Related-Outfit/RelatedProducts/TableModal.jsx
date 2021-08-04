@@ -4,8 +4,6 @@ var TableModal = function(props) {
   var handleClick = (event) => {
     props.click('close');
   }
-  //console.log('Main item ', props.current);
-  //console.log('Comparing to ', props.compareTo);
 
   if (props.display) {
     return (
@@ -48,23 +46,17 @@ var TableModal = function(props) {
 }
 
 var compareFeatures = (firstFeatures, secondFeatures) => {
-  var sharedFeats = [];
+  var allFeats = [];
+
   firstFeatures.forEach((itemFeat) => {
     secondFeatures.forEach((itemTwoFeat) => {
-      //console.log(itemTwoFeat);
       if (itemFeat.feature === itemTwoFeat.feature) {
-        sharedFeats.push([itemFeat.value, itemFeat.feature, itemTwoFeat.value]);
+        allFeats.push([itemFeat.value, itemFeat.feature, itemTwoFeat.value]);
       }
     })
   })
-  // firstFeatures.forEach((feat) => {
-  //   var common = secondFeatures.find((secondFeat) => {
-  //     Object.keys(secondFeat).includes(feat.feature);
-  //   })
-  //   sharedFeats.push([feat.value, feat.feature, common]);
-  // })
-  // console.log(sharedFeats);
-  return sharedFeats.map((features) => {
+
+  return allFeats.map((features) => {
     return (
       <tr>
         <td><p>{features[0]}</p></td>

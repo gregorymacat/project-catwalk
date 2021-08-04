@@ -12,24 +12,22 @@ class App extends React.Component {
     super(props);
     this.state = {
       starsRating: 1.8,
-      product: 17067,
+      product: 17071,
     }
+    this.clickHandler = this.clickHandler.bind(this);
   }
 
-  // componentDidMount(){
-  //   getOneProduct('19093', (err, results) => {
-  //     if (err) {
-  //       return console.log('Unable to get a product: ', err)
-  //     }
-  //     this.setState({product: results});
-  //   })
-  // }
+  clickHandler(newProductID) {
+    this.setState({
+      product: newProductID
+    });
+  }
 
   render() {
     return (
       <div>
         <Overview product={this.state.product} />
-        <RelatedOutfit product={this.state.product}/>
+        <RelatedOutfit product={this.state.product} appClick={this.clickHandler}/>
         <QuestionsList product={this.state.product}/>
         <RatingsReviews product={this.state.product}/>
         {/* <StarsDisplay starsData={this.state.starsRating}/> */}

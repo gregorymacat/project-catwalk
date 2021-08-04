@@ -1,10 +1,8 @@
 import React from 'react';
 
 var ArrowRight = function(props) {
-  // console.log(props.index);
   var handleClick = () => {
     var index = props.index;
-    // console.log(index);
     if (index + 1 < props.max - 1) {
       props.click({
         displayIndex: index + 1,

@@ -1,60 +1,63 @@
 import React from 'react';
+import ProductCard from './ProductCard.jsx';
 
 var RenderCards = function(props) {
-  var cards = chooseCards(props.startIndex, props.allProducts, props.add);
-
-  return (
-    <React.Fragment>
-      {cards}
-    </React.Fragment>
-  )
-}
-
-var chooseCards = function(index, products, addCard) {
-  var displayCards = [];
-  var i = index;
+  // var argArray = [props.startIndex, props.allProducts, props.add,
+  //   props.atStart];
+  //var items = chooseItems(...argArray);
+  var index = props.startIndex;
+  var rating = props.ratings;
+  var prodCount = props.allProducts.length;
+  var itemsTuple = [];
   var onDisplay = 0;
-  //console.log('Cards before picking', displayCards);
-  while (onDisplay < 4 && i <= products.length) {
-    if (i === 0) {
-      displayCards.push(addCard);
-    } else {
-      displayCards.push(formatCard(products[i - 1]));
+
+  if (props.atStart) {
+    while (index < 3 && index < prodCount) {
+      itemsTuple.push([props.allProducts[index], index]);
+      index++;
     }
-    onDisplay++;
-    i++;
+
+    return (
+      <React.Fragment>
+        {props.add}
+        {itemsTuple.map((item) => {
+          return <ProductCard styles={props.allStyles} ratings={props.ratings[item[1]]}
+          product={item[0]} click={props.click}/>
+        })}
+      </React.Fragment>
+    )
+  } else {
+    while (index < 4 && index < prodCount) {
+      itemsTuple.push([props.allProducts[index], index]);
+      index++;
+    }
+    return (
+      <React.Fragment>
+        {itemsTuple.map((item) => {
+          return <ProductCard styles={props.allStyles} ratings={props.ratings[item[1]]}
+                  product={item[0]} click={props.click}/>
+        })}
+      </React.Fragment>
+    )
   }
 
-  //console.log('Cards after picking', displayCards);
+}
 
+var chooseItems = function(index, products, addCard, atStart) {
+  var displayCards = [];
+  var onDisplay = 0;
+
+  var itemCount = products.length;
+  if (atStart) {
+    displayCards.push(addCard);
+    while (index < 3 && index < itemCount) {
+      displayCards.push(formatCard(products[index]), func);
+      index++;
+    }
+  } else {
+
+  }
   return displayCards;
-}
-
-var formatCard = function(card) {
-  return (
-    <div key={card.id} className='carousel item product-card'>
-      <span id='compare' className='action fa fa-star'
-       onClick={handleClick} data-itemNum={card.id}></span>
-      <p>{card.category}</p>
-      <p>{card.name}</p>
-      <p>{card.default_price}</p>
-    </div>
-  )
-}
-
-var handleClick = (event) => {
-  var itemId = event.target.dataset.itemnum;
-  props.click('compare', itemId);
-}
-
-var getImage = function(productId, styles) {
-  for (var index = 0; index < styles.length; index++) {
-    if (styles[index].product_id === productId.toString()) {
-      return styles[index].results[0].photos[0].thumbnail_url;
-    }
-  }
-  return 'https://picsum.photos/seed/picsum/300/80';
-
 }
 
 export default RenderCards;

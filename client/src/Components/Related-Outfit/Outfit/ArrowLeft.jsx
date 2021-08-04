@@ -3,16 +3,25 @@ import React from 'react';
 var ArrowLeft = function(props) {
   var handleClick = () => {
     var index = props.index;
-    if (!(index - 1 > 0)) {
-      props.click({
-        displayIndex: index - 1,
-        leftVisible: false
-      });
-    } else {
+    if (index - 1 > 0) {
       props.click({
         displayIndex: index - 1,
         leftVisible: true,
         rightVisible: true
+      });
+
+    } else if (index - 1 === 0) {
+      props.click({
+        displayIndex: index - 1,
+        leftVisible: true,
+        rightVisible: true
+      });
+    } else {
+      props.click({
+        displayIndex: 0,
+        leftVisible: false,
+        rightVisible: true,
+        atStart: true
       });
     }
   }
