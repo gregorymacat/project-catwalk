@@ -24,8 +24,8 @@ class ModalViewer extends React.Component {
     return (
       <React.Fragment>
         <div className='test-modal'>
-          <Modal click={this.handleClick} display={this.state.displayModal}/>
-          <button id='open' onClick={this.handleClick}>Add A Review</button>
+          <Modal product_id={this.props.data} characteristics={this.props.metaData.characteristics} click={this.handleClick} display={this.state.displayModal}/>
+          <button className="button-RR rating-reviews-button-form" id='open' onClick={this.handleClick}>Add A Review</button>
         </div>
       </React.Fragment>
     )
