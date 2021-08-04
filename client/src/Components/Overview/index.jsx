@@ -130,9 +130,9 @@ export default class Overview extends React.Component {
                     {/* selected photo */}
                     <div style={styles.carousel}>
                       <Carousel
-                        items={this.state.selectedStyle.photos}
                         styles={styles.carouselOverrides}
-                      />
+                        items={this.state.selectedStyle.photos}
+                         />
                     </div>
                   </div>
                 )

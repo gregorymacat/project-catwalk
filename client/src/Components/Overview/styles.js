@@ -16,12 +16,13 @@ export default {
   },
   extraPhotos: {
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    overflow: "hidden"
   },
   extraPhotoContainer: {
     height: "75px",
     width: "75px",
-    margin: "0 10px 10px 0",
+    margin: "0 100px 10px 0",
     backgroundColor: "#d3d3d3",
     borderRadius: "8px"
   },
@@ -58,7 +59,8 @@ export default {
     display: "flex",
     height: "425px",
     width: "50%",
-    padding: "20px"
+    padding: "20px",
+    justifyContent: "center"
   },
   carousel: {
     display: "flex",
@@ -94,10 +96,13 @@ export default {
   carouselOverrides: {
     container: {
       display: "flex",
-      flexDirection: "row"
+      flexDirection: "row",
+      height: "400px",
+      width: "150%"
     },
     image: {
-      height: "250px"
+      height: "250px",
+      width: "95%"
     },
     rightArrow: {
 
