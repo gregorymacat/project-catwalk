@@ -1,6 +1,5 @@
 var axios = require('axios');
 const testUrl = 'http://localhost:8080/';
-const {url, API_KEY} = require('../../config.js');
 
 var testGet = function(route, callback){
   axios.get(testUrl)
@@ -15,7 +14,7 @@ var testGet = function(route, callback){
 }
 
 module.exports = {
-  testingToDo: function(req, res){
+  testGetToDo: function(req, res){
     testGet(req.url, (err, data) => {
       if (err) {
         console.log('!!!ERROR: axios test get: \"/testers.js\" ');

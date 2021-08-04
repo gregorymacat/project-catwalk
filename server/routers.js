@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var {findToDo, addToDo, updateToDo} = require('./Controllers/helpers.js');
-var {testingToDo} = require('./Controllers/testers.js');
+var {testGetToDo} = require('./Controllers/testers.js');
 
 // TESTING
-router.get('/testing', testingToDo);
+router.get('/testing', testGetToDo);
 
 // PRODUCTS API
 router.get('/products', findToDo);
