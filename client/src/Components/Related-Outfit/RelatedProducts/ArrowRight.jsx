@@ -21,7 +21,7 @@ var ArrowRight = function(props) {
     return (
         <div className='carousel right'>
           <img src='Assets/Icons/ArrowForward/2x/outline_arrow_forward_black_24dp.png'
-          onClick={handleClick} id="arrow-forward"></img>
+          onClick={handleClick} id="arrow-forward" alt="Image of the arrow to the right"></img>
         </div>
     )
   }
