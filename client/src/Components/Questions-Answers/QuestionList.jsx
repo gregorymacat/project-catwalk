@@ -23,9 +23,10 @@ class QuestionList extends React.Component {
   }
 
   componentDidMount() {
-    this.state.product_id = '17068'
-    if (!this.state.repeated) {
-      getQuestions(this.state.product_id, (error, quests) => {
+    //this.state.product_id = '17068'
+    this.state.product_id = this.props.product;
+    //if (!this.state.repeated) {
+      getQuestions(this.props.product, (error, quests) => {
         if (error) { return console.log('Failure to get ID: ', error); }
         var quests1 = quests.results;
         //console.log(quests);
@@ -36,7 +37,27 @@ class QuestionList extends React.Component {
         })
       });
       this.state.repeated = true;
-    }
+    //}
+  }
+
+
+  componentDidUpdate() {
+    //this.state.product_id = '17068'
+    this.state.product_id = this.props.product;
+    //if (!this.state.repeated) {
+      getQuestions(this.props.product, (error, quests) => {
+        if (error) { return console.log('Failure to get ID: ', error); }
+        var quests1 = quests.results;
+        //console.log(quests);
+        if (quests1) {
+          this.setState({
+            questionList: quests1.slice(0,2),
+            queryList: quests1,
+            allQuestions: quests1,
+          })
+        }
+      });
+    //}
   }
 
   handleChange(e) {
@@ -72,6 +93,8 @@ class QuestionList extends React.Component {
   }
 
   render() {
+    console.log('hello')
+    console.log(this.props.product);
     if (this.state.questionList === undefined) {
       const questionList = this.state.savedQuestions
     }
