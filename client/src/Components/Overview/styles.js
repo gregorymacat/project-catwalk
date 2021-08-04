@@ -66,7 +66,8 @@ export default {
   },
   carousel: {
     display: "flex",
-    justifyContent: "space-evenly center"
+    justifyContent: "space-evenly center",
+    width: "550px"
   },
   productInfo: {
     padding: "20px",

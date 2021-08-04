@@ -143,6 +143,9 @@ export default class Overview extends React.Component {
                   <StarsDisplay starsData={3.6}/>
                   <a href="#RatingsReviews">Read All Reviews</a>
               </div>
+              <div>
+                Hello World
+              </div>
               <p>{this.state.product.category}</p>
               <h1>{this.state.product.name}</h1>
               <p>${this.state.selectedStyle.original_price || this.state.product.default_price}</p>
