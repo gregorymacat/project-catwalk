@@ -1,18 +1,19 @@
-import React from 'react';
+import React from "react";
 
 class RatingsSort extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      sortValue: 'relevant'
-    }
+      sortValue: "relevant",
+    };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(e) {
+    this.props.reviewListCallback(e.target.value);
     this.setState({
-      sortValue: e.target.value
-    })
+      sortValue: e.target.value,
+    });
   }
 
   render() {
@@ -20,10 +21,14 @@ class RatingsSort extends React.Component {
     for (var key in this.props.prodRatings.ratings) {
       numberOfReviews += parseFloat(this.props.prodRatings.ratings[key]);
     }
-    return(
+    return (
       <div className="grid-item ratings-sort">
         <label htmlFor="sortBy">{numberOfReviews} reviews, sorted by </label>
-        <select onChange={(value) => this.props.handleChange(this.sate.sortValue)} name="rating-sort-menu" id="sortValue">
+        <select
+          onChange={this.handleChange}
+          name="rating-sort-menu"
+          id="sortValue"
+        >
           <option value="relevant">Relevant</option>
           <option value="helpful">Helpful</option>
           <option value="newest">Newest</option>
