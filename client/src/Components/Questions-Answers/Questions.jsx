@@ -21,7 +21,7 @@ class Questions extends React.Component {
   }
 
   render() {
-    const { questions, allQuestions, product, onClick } = this.props;
+    const { questions, allQuestions, product, onClick, product_name} = this.props;
     const { addQuestion } = this.state;
     if (!questions) {
       questions = questionList.results;
@@ -31,7 +31,7 @@ class Questions extends React.Component {
     }
       var questionBody = questions.map((question) => (
         <div key={question.question_id}>
-          <QuestionEntry question={question} product={question.question_id}/>
+          <QuestionEntry question={question} product={question.question_id} product_name={product_name}/>
           <br></br>
         </div>
       ));
@@ -49,7 +49,7 @@ class Questions extends React.Component {
           <button className="big-green-button" onClick={this.addQuestions}>Add a Question</button>
         {addQuestion && (
           <QuestionModal submit={this.addQuestions}>
-            <SubmitQuestion productName={product} productId={product.product_id} />
+            <SubmitQuestion productName={product} productId={product.product_id} product_name={product_name} />
           </QuestionModal>
         )}
         </div>
