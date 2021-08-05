@@ -4,16 +4,11 @@ import {generateId} from '../Helpers/helpers.js';
 
 var ProductCards = function(props) {
   var cards = chooseCards(props.startIndex, props.allProducts);
-  var handleActionClick = (event) => {
-    var itemId = event.target.dataset.itemnum;
-    props.actionClick('compare', itemId);
-  }
-  var handleItemClick = (event) => {
-    var itemId = event.target.dataset.itemnum;
+  var handleItemClick = (itemId, itemName) => {
     if (itemId === undefined) {
       return console.log('!!!ERROR: This item has no ID');
     }
-    props.itemClick(itemId);
+    props.itemClick(itemId, itemName);
   }
 
   return (
@@ -23,14 +18,16 @@ var ProductCards = function(props) {
           return (
             <div key={generateId()} className='carousel item product-card'>
               <span id='compare' className='action fa fa-star'
-               onClick={handleActionClick} data-itemnum={card[0].id}></span>
-              <div>
-                <img src={getImage(card[0].id, props.allStyles)} alt="Image of the product" alt="Image of the product"></img>
+               onClick={()=>props.actionClick('compare', card[0].id)}></span>
+              <div className='card-interaction' onClick={()=>handleItemClick(card[0].id, card[0].name)}>
+                <div>
+                  <img src={getImage(card[0].id, props.allStyles)} alt="Image of the product"></img>
+                </div>
+                <p>{card[0].category}</p>
+                <b>{card[0].name}</b>
+                <p>{card[0].default_price}</p>
+                <StarsDisplay starsData={parseFloat(props.ratings[card[1]])}/>
               </div>
-              <p>{card[0].category}</p>
-              <p onClick={handleItemClick} data-itemnum={card[0].id}>{card[0].name}</p>
-              <p>{card[0].default_price}</p>
-              <StarsDisplay starsData={parseFloat(props.ratings[card[1]])}/>
             </div>
         )})
       }
@@ -54,6 +51,9 @@ var chooseCards = function(index, products) {
 }
 
 var getImage = function(productId, styles) {
+  if (styles === undefined) {
+    return 'https://1080motion.com/wp-content/uploads/2018/06/NoImageFound.jpg.png';
+  }
   for (var index = 0; index < styles.length; index++) {
     if (styles[index].product_id === productId.toString()) {
       var styleIndex = styles[index].results.findIndex((style) => {

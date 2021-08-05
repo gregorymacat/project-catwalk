@@ -26,6 +26,14 @@ class RatingsReviews extends React.Component {
     this.handleMoreReviews = this.handleMoreReviews.bind(this);
   }
 
+  componentDidUpdate() {
+    if (this.state.product !== parseInt(this.props.product)) {
+      this.state.product = parseInt(this.props.product);
+      this.getReviews();
+      this.getMetaReviews();
+    }
+  }
+
   componentDidMount() {
     this.getReviews();
     this.getMetaReviews();
@@ -82,7 +90,7 @@ class RatingsReviews extends React.Component {
 
   render() {
     return (
-      <div id="RatingsReviews" className="ratings-reviews">
+      <div id="RatingsReviews" className="ratings-reviews" onClick={(e) => {this.props.handleInteraction(e, 'rr')}}>
         <div className="grid-container ratings-reviews-dispay">
           <RatingsBreakdown metaData={this.state.reviewMetaData} />
           <ReviewList

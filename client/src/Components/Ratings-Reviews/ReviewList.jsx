@@ -8,12 +8,22 @@ import { getAllReviews } from "../../../Controllers/ratings-reviews";
 class Review extends React.Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      helpfulnessButton: true
+    };
     this.handleChange = this.handleChange.bind(this);
+    this.handleHelpfulness = this.handleHelpfulness.bind(this);
   }
+
 
   handleChange(rating) {
     this.props.getReviewsCallback(rating);
+  }
+
+  handleHelpfulness(e) {
+    this.setState({
+      helpfulnessButton: false
+    });
   }
 
   render() {
@@ -46,7 +56,6 @@ class Review extends React.Component {
               <div className="review-tile-item review-tile-header">
                 <StarsDisplay starsData={tile.rating} />
                 <div className="review-tile-verified">
-                  {" "}
                   {tile.reviewer_name}, {moment(tile.date).format("LL")}
                 </div>
               </div>
@@ -88,15 +97,21 @@ class Review extends React.Component {
                 )}
               </div>
               <div className="review-tile-item review-tile-footer">
-                <div className="review-tile-helpfulness">
+                <div className="review-tile-helpfulness-item">
                   Helpful?
                   <div
-                    onClick={this.handleHelpfulness}
-                    className="review-tile-helpfulness-yes"
+                    onClick={() => this.handleHelpfulness(tile)}
+                    className={this.state.helpfulnessButton ? "review-tile-helpfulness-item-true" : "review-tile-helpfulness-item-false"}
                   >
                     Yes ({tile.helpfulness})
                   </div>
-                  <div className="review-tile-helpfulness-no">No</div>
+                  <div
+                    onClick={this.handleHelpfulness}
+                    value="No"
+                    className={this.state.helpfulnessButton ? "review-tile-helpfulness-item-true" : "review-tile-helpfulness-item-false"}
+                  >
+                    No
+                  </div>
                 </div>
                 <hr className="ratings-hr"></hr>
               </div>

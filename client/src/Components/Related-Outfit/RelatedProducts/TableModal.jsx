@@ -6,8 +6,6 @@ var TableModal = function(props) {
   }
 
   if (props.display) {
-    console.log('Current Items ', props.current.features, ' versus clicked on ', props.compareTo.features)
-
     return (
       <div className='modal-body'>
         <div className='modal-content table'>

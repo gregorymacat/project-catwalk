@@ -34,4 +34,13 @@ module.exports = {
         return callback(err);
       });
   },
+  postInteractions: function(data, callback) {
+    axios.post('/interactions', data)
+      .then((response) => {
+        callback(null, response);
+      })
+      .catch((err) => {
+        callback(err);
+      })
+  }
 }

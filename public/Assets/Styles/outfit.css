@@ -7,7 +7,6 @@
   width: 85%;
   height: 10%;
 }
-
 /*
 *********************
 ** CAROUSEL STYLES **
@@ -27,7 +26,7 @@
 ** CARD STYLES **
 *****************
 */
-.product-card .action {
+/* .product-card .action {
   padding: 2% 0 0 88%;
 }
 .product-card img {
@@ -41,4 +40,4 @@
 }
 .action:hover {
   color: cyan;
-}
+} */

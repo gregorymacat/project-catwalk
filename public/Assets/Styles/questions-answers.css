@@ -1,15 +1,190 @@
-
-.small-btn {
-  width: 50px;
-  height: 25px;
+.title-question, .title-answers {
+  font-size: 17px;
+  text-align: center;
+}
+.subtitle {
+  font-size: 14px;
+  text-align: center;
 }
 
-.medium-btn {
-  width: 70px;
+.qa-button-big, .button-big {
+  background-color: white;
+  border: 2px solid black;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 200px;
+}
+
+.qa-button-small, .btn-small {
+  background-color: white;
+  border: 0.5px solid rgb(52, 51, 51);
+  color: black;
+  padding: 1px 1.5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 1px 1px;
+  cursor: pointer;
+  width: 80px;
+}
+
+.mid-button {
+  background-color: white;
+  border: 0.5px solid rgb(52, 51, 51);
+  color: black;
+  padding: 2px 3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 2px 2px;
+  cursor: pointer;
+  width: 100px;
+}
+
+/* .photos-qa {
+  width: 100%;
+  height: auto;
+} */
+.photos-qa {
+  max-width:100px; /* you can use % */
+  height: auto;
+}
+
+.reported {
+  background-color: rgba(186, 9, 9, 0.964);
+  border: 0.5px solid rgb(52, 51, 51);
+  color: white;
+  padding: 0.5px 1.5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 0.5px 0.5px;
+  cursor: pointer;
+  width: 80px;
+}
+
+.report {
+  background-color: rgba(241, 13, 13, 0.991);
+  border: 0.5px solid rgb(52, 51, 51);
+  color: white;
+  padding: 0.5px 1.5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 0.5px 0.5px;
+  cursor: pointer;
+  width: 80px;
+}
+
+.green-button {
+  background-color: rgb(26, 141, 13);
+  border: 0.5px solid rgb(52, 51, 51);
+  color: rgb(255, 255, 255);
+  padding: 1px 1.5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 1px 1px;
+  cursor: pointer;
+  width: 80px;
+}
+
+.green-button:hover {
+  background-color: rgb(43, 215, 23);
+}
+
+.big-green-button {
+  background-color: rgb(26, 141, 13);
+  border: 2px solid rgb(52, 51, 51);
+  color: rgb(255, 255, 255);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 200px;
+}
+
+.big-green-button:hover {
+  background-color: rgb(43, 215, 23);
+}
+
+.sbar {
+  position: relative;
+  display: flex;
+  padding: 5px 0px 10px 0px;
+  margin-bottom: 10px;
+}
+
+.search:hover {
+  background-color: #f9f1f1;
+}
+
+
+.search {
+  border: 2px solid grey;
   height: 30px;
+  width: 80%;
+  padding: 3px 20px 2px 8px;
+  outline: 0;
+  background-color: #beb9b9;
+}
+.simage {
+  position: relative;
+  top: 5px;
+  right: 30px;
+  width: 27px;
+  height: 27px;
 }
 
-.big-btn {
-  width: 90px;
-  height: 40px;
+.questionModalClose, .answerModalClose {
+  color: rgb(234, 231, 231);
+  font-size: 12px;
+  font-weight: bold;
+  background-color: rgb(212, 89, 89);
+  border-radius: 1px;
+}
+
+.answerMod {
+  display: flex;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(5, 22, 47, 0.587);
+}
+.questionMod {
+  display: flex;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(5, 22, 47, 0.587);
+}
+
+.questionPopout, .answerPopout {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 16px;
+  border-radius: 6px;
+  width: 80%;
+  max-width: 800px;
+  overflow-y: auto;
 }

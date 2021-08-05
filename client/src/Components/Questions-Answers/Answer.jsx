@@ -24,15 +24,6 @@ class Answer extends React.Component {
         .catch((err) => {
           console.log(err);
         });
-      // putHelpfulAnswersById(answer.id, (error, quests) => {
-      //   if (error) { return console.log('Failure to get ID: ', error); }
-      //   var quests1 = quests.results;
-      //   //console.log(quests);
-      //   console.log("called helpful");
-      //   this.setState({
-      //     helpfulStatus: true
-      //   })
-      // });
     }
   }
 
@@ -40,33 +31,48 @@ class Answer extends React.Component {
     const { reportedStatus } = this.state;
     const { answer } = this.props;
     if (!reportedStatus) {
-      this.reportedStatus = true;
-        //AXIOS PUT REQUEST FOR REPORT
+      axios.put(`/qa/answers/${answer.id}/report`)
+        .then((res) => {
+          this.setState({ reportedStatus: true });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }
 
   render() {
     const { answer } = this.props;
     const { helpfulStatus, reportedStatus } = this.state;
-
-    let answerer = answer.answerer_name;
-    let seller;
-    if (answerer === seller) {
-      answerer = Seller;
+    var pics = null;
+    var time = new Date(answer.date).toLocaleDateString();
+    if (answer.photos.length > 0) {
+      var i = 0;
+      pics = answer.photos.map((x) => (
+        <div key={i++}>
+          <img className="photos-qa" src={x} alt="" />
+        </div>
+      ));
     }
-    let time = new Date(answer.date).toISOString().slice(0, 10);
 
-    //const answerTag = `by ${answerer}, ${time} | Helpful? `;
+    var seller;
+    var poster = answer.answerer_name;
+    if (poster === seller) {
+      poster = Seller;
+    }
 
     return (
       <div>
         <div>{answer.body}</div>
-          <span><font size="1">{`by ${answerer}, ${time} | Helpful? `} </font></span>
-          <button onClick={this.callHelpful}>Yes</button>
+        <div className="photos-qa">
+          {pics}
+        </div>
+          <span><font size="1">{`by ${poster}, ${time} | Helpful? `} </font></span>
+          <button className="btn-small" onClick={this.callHelpful}>Yes</button>
           <span> <font size="1">
             {helpfulStatus ? ` (${answer.helpfulness + 1}) ` : ` (${answer.helpfulness}) `} </font>
           </span>
-          {reportedStatus ? <span className="report">Reported</span> : <button onClick={this.callReport}>Report</button>}
+          {reportedStatus ? <button className="report">Reported</button> : <button className="reported" onClick={this.callReport}>Report</button>}
       </div>
     );
   }

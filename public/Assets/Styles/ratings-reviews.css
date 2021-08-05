@@ -56,10 +56,6 @@
   margin-right: 30%;
 }
 
-.review-tile-verified::before {
-  content: '\2714';
-}
-
 .review-tile-reviewSummary {
   font-weight: bold;
 }
@@ -78,6 +74,23 @@
   border-radius: 4px;
   padding: 5px;
   width: 100px;
+}
+
+.review-tile-helpfulness-item {
+  display: flex;
+  margin-right: 1%;
+}
+
+.review-tile-helpfulness-item-true {
+  color: black;
+}
+
+.review-tile-helpfulness-item-false {
+  color: grey;
+}
+
+.progress-bar-name:hover {
+  background-color: lightgrey;
 }
 
 /* --------- Rating-Reiviews Buttons ----------- */
@@ -101,12 +114,21 @@
   cursor: pointer;
   width: 200px;
 }
-.rating-reviews-button-show-more, .rating-reviews-button-form {
+.rating-reviews-button-form {
+  margin-right: 2%;
+  background-color: green;
+  color: white;
+  border: 2px solid black; /* Green */
+}
+
+.rating-reviews-button-show-more{
   margin-right: 2%;
   background-color: white;
   color: black;
   border: 2px solid black; /* Green */
 }
+
+
 
 /* --------- Rating-Reiviews Sort ----------- */
 .ratings-sort {
@@ -122,7 +144,7 @@
   position: relative;
   height: 10px;
   width: 150px;
-  background-color: grey;
+  background-color: lightgrey;
 }
 .filler {
   background-color: green;
@@ -142,12 +164,14 @@
   position: relative;
   height: 10px;
   width: 150px;
-  background-color: grey;
+  background-color: lightgrey;
 }
 .char-filler {
-  background-color: green;
   height: 100%;
-  /* transition: width .2s ease-in; */
+}
+.char-symbol {
+  padding-left: 90%;
+  font-size: 10px;
 }
 
 .ratings-breakdown-chars-item {
