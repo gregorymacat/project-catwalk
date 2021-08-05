@@ -88,4 +88,4 @@
 //   }
 // }
 
-// export default Carousel;
+// export default VerticalCarousel;

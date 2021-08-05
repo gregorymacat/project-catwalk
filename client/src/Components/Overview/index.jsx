@@ -20,12 +20,12 @@ export default class Overview extends React.Component {
       styleSelectError: false,
       selectedQuantity: '-',
       position: 0,
-      // extendView: false,
+      extendView: false,
       ratings: 3.6
     }
     this.addToCart = this.addToCart.bind(this)
     this.changeThumbnail = this.changeThumbnail.bind(this)
-    // this.extendedView = this.extendedView.bind(this)
+    this.extendedView = this.extendedView.bind(this)
     this.changeQuantity = this.changeQuantity.bind(this)
     this.changeSelectedSize = this.changeSelectedSize.bind(this)
     this.changeSelectedStyle = this.changeSelectedStyle.bind(this)
@@ -130,23 +130,23 @@ export default class Overview extends React.Component {
       position: event
     })
   }
-  // extendedView(event) {
-  //   event.preventDefault()
-  //   if (this.extendView === true) {
-  //     this.setState({
-  //       extendView: false
-  //     })
-  //     var productInfo = document.getElementById("ProductInfo")
-  //     console.log("PRODUCT INFOOOOO", productInfo)
-  //     productInfo.style.display = "flex"
-  //   } else {
-  //     this.setState({
-  //       extendView: true
-  //     })
-  //     var productInfo = document.getElementById("ProductInfo")
-  //     productInfo.style.display = "none"
-  //   }
-  // }
+  extendedView(event) {
+    event.preventDefault()
+    if (this.extendView === true) {
+      this.setState({
+        extendView: false
+      })
+      var productInfo = document.getElementById("ProductInfo")
+      // console.log("PRODUCT INFOOOOO", productInfo)
+      productInfo.style.display = "flex"
+    } else {
+      this.setState({
+        extendView: true
+      })
+      var productInfo = document.getElementById("ProductInfo")
+      productInfo.style.display = "none"
+    }
+  }
   render() {
     var inventory = this.state.selectedStyle.skus ? Object.values(this.state.selectedStyle.skus) : []
     const sizeQuantity = Array.from(Array(this.getSizeQuantity(inventory)).keys()).slice(0, 16)
@@ -181,7 +181,7 @@ export default class Overview extends React.Component {
                       })}
                     </div>
                     {/* selected photo */}
-                    <div style={styles.carousel} >
+                    <div style={styles.carousel} onClick={() => this.extendedView(event)}>
                       <Carousel
                         styles={styles.carouselOverrides}
                         items={this.state.selectedStyle.photos}
