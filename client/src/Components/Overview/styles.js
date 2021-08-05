@@ -131,5 +131,17 @@ export default {
     },
     leftArrow: {
     }
-  }
+  },
+//   imgMagnifierContainer: {
+//     position: "relative"
+//   },
+//   imgMagnifierGlass: {
+//     position: "absolute",
+//     border: "3px solid #000",
+//     borderRadius: "50%",
+//     cursor: "none",
+//     /*Set the size of the magnifier glass:*/
+//     width: "100px",
+//     height: "100px",
+//   }
 };
