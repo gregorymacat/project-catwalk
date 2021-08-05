@@ -2,7 +2,7 @@ import React from 'react';
 import AnswerModal from './AnswerModal';
 import QuestionEntry from './QuestionEntry';
 import QuestionModal from './QuestionModal';
-import QuestionForm from './QuestionForm';
+import SubmitQuestion from './SubmitQuestion';
 
 
 class Questions extends React.Component {
@@ -37,7 +37,7 @@ class Questions extends React.Component {
       ));
 
     const moreQuestionsButton = (
-      <button className="qa-button-big" onClick={onClick}>
+      <button className="button-big" onClick={onClick}>
         More Questions
       </button>
     );
@@ -49,7 +49,7 @@ class Questions extends React.Component {
           <button className="big-green-button" onClick={this.addQuestions}>Add a Question</button>
         {addQuestion && (
           <QuestionModal submit={this.addQuestions}>
-            <QuestionForm productName={product} productId={product.product_id} />
+            <SubmitQuestion productName={product} productId={product.product_id} />
           </QuestionModal>
         )}
         </div>

@@ -5,8 +5,16 @@
   height: 100vh;
 }
 
+.title-question, .title-answers {
+  font-size: 17px;
+  text-align: center;
+}
+.subtitle {
+  font-size: 14px;
+  text-align: center;
+}
 
-.qa-button-big {
+.qa-button-big, .button-big {
   background-color: white;
   border: 2px solid black;
   color: black;
@@ -20,7 +28,7 @@
   width: 200px;
 }
 
-.qa-button-small {
+.qa-button-small, .btn-small {
   background-color: white;
   border: 0.5px solid rgb(52, 51, 51);
   color: black;

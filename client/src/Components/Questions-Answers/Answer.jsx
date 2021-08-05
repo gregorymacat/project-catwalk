@@ -68,11 +68,11 @@ class Answer extends React.Component {
           {pics}
         </div>
           <span><font size="1">{`by ${poster}, ${time} | Helpful? `} </font></span>
-          <button className="qa-button-small" onClick={this.callHelpful}>Yes</button>
+          <button className="btn-small" onClick={this.callHelpful}>Yes</button>
           <span> <font size="1">
             {helpfulStatus ? ` (${answer.helpfulness + 1}) ` : ` (${answer.helpfulness}) `} </font>
           </span>
-          {reportedStatus ? <button className="report">Reported</button> : <button className="qa-button-small reported" onClick={this.callReport}>Report</button>}
+          {reportedStatus ? <button className="report">Reported</button> : <button className="reported" onClick={this.callReport}>Report</button>}
       </div>
     );
   }

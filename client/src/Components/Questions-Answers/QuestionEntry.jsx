@@ -4,7 +4,7 @@ import {reportQuestionsById, putHelpfulQuestionsById} from '../../../Controllers
 import AnswerModal from './AnswerModal';
 import axios from 'axios';
 import QuestionModal from './QuestionModal';
-import AnswerForm from './AnswerForm';
+import SubmitAnswer from './SubmitAnswer';
 
 class QuestionEntry extends React.Component {
 constructor(props) {
@@ -92,7 +92,7 @@ render() {
       <button className="green-button" onClick={this.handleAddAnswer}>Add Answer</button>
       {addAnswers && (
             <AnswerModal submit={this.handleAddAnswer}>
-              <AnswerForm
+              <SubmitAnswer
                 productName={product}
                 questionBody={question}
                 questionId={product}

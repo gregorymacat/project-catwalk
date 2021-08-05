@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-class QuestionForm extends React.Component {
+class SubmitAnswer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -9,7 +9,6 @@ class QuestionForm extends React.Component {
       name: '',
       email: ''
     };
-
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleQuestionChange = this.handleQuestionChange.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -27,6 +26,7 @@ class QuestionForm extends React.Component {
     this.setState({ email: e.target.value});
   }
 
+
   handleSubmit(e) {
     e.preventDefault();
     const {
@@ -35,10 +35,10 @@ class QuestionForm extends React.Component {
       email
     } = this.state;
     const { questionId } = this.props;
-    axios.post(`/qa/questions/${questionId}`, {
+    axios.post(`/qa/questions/${questionId}/answers`, {
       body: answerBody,
       name: name,
-      email: email,
+      email: email
     })
       .then((response) => {
         this.setState({
@@ -56,23 +56,24 @@ class QuestionForm extends React.Component {
     var {
       answerBody, name, email
     } = this.state;
-    var { productName } = this.props;
-    var subtitle = 'Product';
+    var { productName, questionBody } = this.props;
+    var subtitle = productName;
     return (
-      <div className="form question">
-        <form className="form-submit" onSubmit={this.handleSubmit}>
-          <div className="title-question" id="title-question">Submit Your Questions</div>
+      <div className="new answers">
+        <form className="submission" onSubmit={this.handleSubmit}>
+          <div className="title-answers" id="title-answers">Submit Your Answers</div>
           <div className="subtitle" id="subtitle">{subtitle}</div>
-          <label htmlFor="form-body" id="form-body-label">Your Question: </label>
-          <textarea id="form-body" name="body" value={answerBody} onChange={this.handleQuestionChange} maxLength="1000" />
+          <label htmlFor="text-body" id="textbody">Your Answer: </label>
+          <textarea id="text-body" name="text_body" value={answerBody} onChange={this.handleQuestionChange} maxLength="1000" />
           <br></br>
-          <label htmlFor="name" id="name-label">What is your name?: </label>
-          <input type="text" id="name" name="name" value={name} onChange={this.handleNameChange} placeholder="Example: jackson11!" maxLength="50" />
+          <label htmlFor="name" id="naming">What is your name?: </label>
+          <input type="text" id="name" name="name" value={name} onChange={this.handleNameChange} placeholder="Example: jack543!" maxLength="60" />
           <br></br>
-          <span id='name-warning'>For privacy reasons, please do not use your full name or email address</span>
+          <label id="name-warning">For privacy reasons, please do not use your full name or email address</label>
           <br></br>
-          <label htmlFor="name" id="name-label">What is your email?: </label>
-          <input type="text" id="email" name="name" value={email} onChange={this.handleEmailChange} placeholder="Why did you like the product or not?" maxLength="60" />
+
+          <label htmlFor="email-id" id="email-id">What is your email?: </label>
+          <input type="text" id="email" name="email-id" value={email} onChange={this.handleEmailChange} placeholder="Example: jack@email.com" maxLength="60" />
           <br></br>
           <label htmlFor="auth" id="auth">For authentication reasons, you will not be emailed</label>
           <br></br>
@@ -83,4 +84,4 @@ class QuestionForm extends React.Component {
   }
 }
 
-export default QuestionForm;
+export default SubmitAnswer;
