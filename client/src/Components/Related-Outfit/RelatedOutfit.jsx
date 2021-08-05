@@ -117,7 +117,7 @@ class RelatedOutfit extends React.Component {
           styles={this.state.styles} appClick={this.props.appClick} productId={this.props.product}
           ratings={this.state.ratings}/>
         </div>
-        <div className='outfit' onClick={(e) => {this.props.handleInteraction(e, 'ro')}}>
+        <div className='outfit'>
           <OutfitCarousel currentProduct={this.state.currentProduct} productId={this.props.product}
           appClick={this.props.appClick}/>
         </div>
