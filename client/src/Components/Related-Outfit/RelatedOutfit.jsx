@@ -45,7 +45,6 @@ class RelatedOutfit extends React.Component {
         this.setState({styles: photos});
       });
       getMetadataByIds(relatedItemIds, (err, responses) => {
-        console.log("RELATEDITEMIDS:::", relatedItemIds)
         if (err) { return console.log('Unable to get all review data: ', err); }
         var allReviewData = responses.map((response) => {
           return response.data;

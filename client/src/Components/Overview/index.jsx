@@ -56,23 +56,23 @@ export default class Overview extends React.Component {
     if (Number(this.props.product) !== Number(prevProps.product)) {
       this.getProductAndStyles()
       window.scrollTo(0, 0)
+      getMetadataByIds([this.props.product], (err, responses) => {
+        if (err) { return console.log('Unable to get all review data: ', err); }
+        var allReviewData = responses.map((response) => {
+          return response.data;
+        })
+        allReviewData = allReviewData.map((oneReview) => {
+          var totalStars = 0;
+          var numberOfReviews = 0;
+          for (var key in oneReview.ratings) {
+            totalStars += parseInt(oneReview.ratings[key]) * key;
+            numberOfReviews += parseInt(oneReview.ratings[key]);
+          }
+          return (totalStars / numberOfReviews).toFixed(1);
+        })
+        this.setState({ratings: allReviewData});
+      })
     }
-    getMetadataByIds([this.props.product], (err, responses) => {
-      if (err) { return console.log('Unable to get all review data: ', err); }
-      var allReviewData = responses.map((response) => {
-        return response.data;
-      })
-      allReviewData = allReviewData.map((oneReview) => {
-        var totalStars = 0;
-        var numberOfReviews = 0;
-        for (var key in oneReview.ratings) {
-          totalStars += parseInt(oneReview.ratings[key]) * key;
-          numberOfReviews += parseInt(oneReview.ratings[key]);
-        }
-        return (totalStars / numberOfReviews).toFixed(1);
-      })
-      this.setState({ratings: allReviewData});
-    })
   }
   addToCart() {
     if (this.state.selectedSize === 'Select Size') {
