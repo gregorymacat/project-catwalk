@@ -27,7 +27,7 @@ class RelatedCarousel extends React.Component {
     if (action === 'compare') {
       var products = this.props.products
       for (var index = 0; index < products.length; index++) {
-        if (products[index].id.toString() === itemId) {
+        if (products[index].id === itemId) {
           this.setState({
             displayModal: true,
             compareItem: products[index]

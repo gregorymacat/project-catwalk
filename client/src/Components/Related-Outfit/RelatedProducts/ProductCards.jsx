@@ -4,13 +4,7 @@ import {generateId} from '../Helpers/helpers.js';
 
 var ProductCards = function(props) {
   var cards = chooseCards(props.startIndex, props.allProducts);
-  var handleActionClick = (event) => {
-    var itemId = event.target.dataset.itemnum;
-    props.actionClick('compare', itemId);
-  }
-  var handleItemClick = (event) => {
-    var itemId = event.target.dataset.itemnum;
-    var itemName = event.target.innerText;
+  var handleItemClick = (itemId, itemName) => {
     if (itemId === undefined) {
       return console.log('!!!ERROR: This item has no ID');
     }
@@ -24,17 +18,16 @@ var ProductCards = function(props) {
           return (
             <div key={generateId()} className='carousel item product-card'>
               <span id='compare' className='action fa fa-star'
-               onClick={handleActionClick} data-itemnum={card[0].id}></span>
-              <div>
+               onClick={()=>props.actionClick('compare', card[0].id)}></span>
+              <div onClick={()=>handleItemClick(card[0].id, card[0].name)}>
                 <div>
-                  <img src={getImage(card[0].id, props.allStyles)} alt="Image of the product" alt="Image of the product"></img>
+                  <img src={getImage(card[0].id, props.allStyles)} alt="Image of the product"></img>
                 </div>
                 <p>{card[0].category}</p>
-                <b id='item-name' onClick={handleItemClick} data-itemnum={card[0].id}>{card[0].name}</b>
+                <b>{card[0].name}</b>
                 <p>{card[0].default_price}</p>
                 <StarsDisplay starsData={parseFloat(props.ratings[card[1]])}/>
               </div>
-
             </div>
         )})
       }
