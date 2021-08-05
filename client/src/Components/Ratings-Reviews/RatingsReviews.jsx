@@ -26,6 +26,14 @@ class RatingsReviews extends React.Component {
     this.handleMoreReviews = this.handleMoreReviews.bind(this);
   }
 
+  componentDidUpate() {
+    if (this.state.product !== this.props.product) {
+      this.state.product = this.props.product;
+      this.getReviews();
+      this.getMetaReviews();
+    }
+  }
+
   componentDidMount() {
     this.getReviews();
     this.getMetaReviews();
