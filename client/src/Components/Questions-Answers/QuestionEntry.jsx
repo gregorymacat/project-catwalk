@@ -94,7 +94,7 @@ render() {
             <AnswerModal submit={this.handleAddAnswer}>
               <SubmitAnswer
                 productName={product}
-                questionBody={question}
+                questionBody={question.question_body}
                 questionId={product}
                 product_name={product_name}
               />

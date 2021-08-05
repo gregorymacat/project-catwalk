@@ -57,7 +57,7 @@ class SubmitAnswer extends React.Component {
       answerBody, name, email
     } = this.state;
     var { productName, questionBody, product_name } = this.props;
-    var subtitle = product_name;
+    var subtitle = product_name + ' : ' + questionBody;
     return (
       <div className="new answers">
         <form className="submission" onSubmit={this.handleSubmit}>
