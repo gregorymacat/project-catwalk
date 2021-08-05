@@ -100,7 +100,7 @@ class QuestionList extends React.Component {
     const { questionList, query, allQuestions, queryList, products } = this.state;
 
     return (
-      <div id="main">
+      <div id="main" onClick={(e) => {this.props.handleInteraction(e, 'qa')}}>
         <div id="qaheading"><h4>Questions and Answers</h4></div>
         <div id="qa"></div>
         <div className="sbar">

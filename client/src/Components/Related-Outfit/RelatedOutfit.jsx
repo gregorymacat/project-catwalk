@@ -112,7 +112,7 @@ class RelatedOutfit extends React.Component {
   render(){
     return(
       <React.Fragment>
-        <div className='related'>
+        <div className='related' onClick={(e) => {this.props.handleInteraction(e, 'ro')}}>
           <RelatedCarousel currentProduct={this.state.currentProduct} products={this.state.products}
           styles={this.state.styles} appClick={this.props.appClick} productId={this.props.product}
           ratings={this.state.ratings}/>
