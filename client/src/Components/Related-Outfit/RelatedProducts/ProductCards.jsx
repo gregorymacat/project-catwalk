@@ -10,10 +10,11 @@ var ProductCards = function(props) {
   }
   var handleItemClick = (event) => {
     var itemId = event.target.dataset.itemnum;
+    var itemName = event.target.innerText;
     if (itemId === undefined) {
       return console.log('!!!ERROR: This item has no ID');
     }
-    props.itemClick(itemId);
+    props.itemClick(itemId, itemName);
   }
 
   return (
