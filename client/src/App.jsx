@@ -52,7 +52,7 @@ class App extends React.Component {
         <Overview handleInteraction={this.handleInteraction} product={this.state.product} />
         <RelatedOutfit handleInteraction={this.handleInteraction} product={this.state.product}
           appClick={this.clickHandler}/>
-        <QuestionsList handleInteraction={this.handleInteraction} product={this.state.product}/>
+        <QuestionsList handleInteraction={this.handleInteraction} product={this.state.product} prodName={this.state.name}/>
         <RatingsReviews handleInteraction={this.handleInteraction} product={this.state.product}/>
       </div>
     );

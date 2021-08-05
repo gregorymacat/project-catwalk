@@ -34,7 +34,7 @@ class SubmitAnswer extends React.Component {
       name,
       email
     } = this.state;
-    const { questionId } = this.props;
+    const { questionId, product_name } = this.props;
     axios.post(`/qa/questions/${questionId}/answers`, {
       body: answerBody,
       name: name,
@@ -56,8 +56,8 @@ class SubmitAnswer extends React.Component {
     var {
       answerBody, name, email
     } = this.state;
-    var { productName, questionBody } = this.props;
-    var subtitle = productName;
+    var { productName, questionBody, product_name } = this.props;
+    var subtitle = product_name;
     return (
       <div className="new answers">
         <form className="submission" onSubmit={this.handleSubmit}>

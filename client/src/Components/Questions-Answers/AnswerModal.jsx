@@ -3,7 +3,6 @@ import React from 'react';
 class AnswerModal extends React.Component {
   render() {
     const { submit, children } = this.props;
-
     return (
       <div className="answerMod">
         <div className="answerPopout">

@@ -66,7 +66,7 @@ callHelpful() {
 }
 
 render() {
-  const { question, product} = this.props;
+  const { question, product, product_name} = this.props;
   const {
     answerList, allAnswer, isCollapsed, helpfulStatus, addAnswers
   } = this.state;
@@ -96,6 +96,7 @@ render() {
                 productName={product}
                 questionBody={question}
                 questionId={product}
+                product_name={product_name}
               />
             </AnswerModal>
           )}

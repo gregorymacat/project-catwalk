@@ -22,6 +22,7 @@ class QuestionList extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props.prodName);
     //console.log(this.props.productName);
     //this.state.product_id = '17068'
     //this.state.product_id = this.props.product;
@@ -40,7 +41,7 @@ class QuestionList extends React.Component {
 
 
   componentDidUpdate(prevProps) {
-    //this.state.product_id = '17068'
+
     if (prevProps.product !== this.props.product) {
       this.state.product_id = this.props.product;
       getQuestions(this.props.product, (error, quests) => {
@@ -112,6 +113,7 @@ class QuestionList extends React.Component {
           allQuestions={allQuestions}
           product={products}
           onClick={this.onClick}
+          product_name={this.props.prodName}
         />
       </div>
     );
