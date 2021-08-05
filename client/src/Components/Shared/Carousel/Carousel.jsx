@@ -2,6 +2,7 @@ import React from 'react';
 import ArrowLeft from './Left.jsx';
 import ArrowRight from './Right.jsx';
 import Item from './Item.jsx'
+// import styles from '../../../components/Overview/styles.js'
 
 /*
   Props:
@@ -86,7 +87,7 @@ class Carousel extends React.Component {
       <React.Fragment>
         <div className='carousel container' style={{ ...styles.container }}>
           {this.displayArrow('left')}
-          <Item item={this.props.items[this.state.displayIndex]} styles={styles} />
+          <Item item={this.props.items[this.state.displayIndex]} styles={styles} position="absolute"/>
           {this.displayArrow('right')}
         </div>
       </React.Fragment>

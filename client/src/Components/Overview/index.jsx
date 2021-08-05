@@ -131,18 +131,16 @@ export default class Overview extends React.Component {
     })
   }
   extendedView(event) {
+    // console.log("EVENT:::", event)
     event.preventDefault()
-    if (this.extendView === true) {
-      this.setState({
-        extendView: false
-      })
+    // console.log(this.state.extendView)
+    this.setState({
+      extendView: !this.state.extendView
+    })
+    if (this.state.extendView) {
       var productInfo = document.getElementById("ProductInfo")
-      // console.log("PRODUCT INFOOOOO", productInfo)
-      productInfo.style.display = "flex"
+      productInfo.style.display = "block"
     } else {
-      this.setState({
-        extendView: true
-      })
       var productInfo = document.getElementById("ProductInfo")
       productInfo.style.display = "none"
     }
@@ -181,13 +179,15 @@ export default class Overview extends React.Component {
                       })}
                     </div>
                     {/* selected photo */}
-                    <div style={styles.carousel} onClick={() => this.extendedView(event)}>
+                    <div style={styles.carousel}>
                       <Carousel
                         styles={styles.carouselOverrides}
                         items={this.state.selectedStyle.photos}
                         position={this.state.position}
                          />
+                      <img style={styles.toggle} src={'/Assets/toggle.png'} onClick={() => this.extendedView(event)}  ></img>
                     </div>
+                    {/* <img></img> */}
                   </div>
                 )
               }
