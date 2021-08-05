@@ -29,14 +29,14 @@ class App extends React.Component {
     }
     var elementString = event.target.outerHTML.toString();
     var date = new Date();
-    postInteractions({
+    setTimeout(() => { postInteractions({
       element: elementString,
       widget: widgetNames[widgetString],
       time: date
     }, (err, response) => {
       if (err) {return console.log('!!!ERROR logging user interaction');}
-      // console.log('Response ', response.config.data);
-    })
+      //console.log('Response ', response.config.data);
+    })}, 3000);
   }
 
   clickHandler(newProductID, itemName) {
