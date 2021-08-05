@@ -4,7 +4,15 @@ export default {
     backgroundColor: "white",
     height: "100vh",
     flexDirection: "column",
-    fontFamily: "Montserrat sans-serif"
+    // fontFamily: "Montserrat sans-serif"
+  },
+  toggle: {
+    position: "relative",
+    width: "auto",
+    height: "40px",
+    overflow: "hidden",
+    WebkitTapHighlightColor: "transparent",
+    cursor: "default"
   },
   addToCartButton: {
     width: '250px',
@@ -78,7 +86,8 @@ export default {
   },
   productInfo: {
     padding: "20px",
-    width: "50%"
+    width: "50%",
+    display: "block"
   },
   productStyle: {
     display: "flex",
