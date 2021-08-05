@@ -14,10 +14,11 @@ constructor(props) {
     answerList: [],
     isCollapsed: false,
     helpfulStatus: false,
-    showModal: false,
+    addAnswers: false,
   };
   this.onClick = this.onClick.bind(this);
   this.callHelpful = this.callHelpful.bind(this);
+  this.handleAddAnswer = this.handleAddAnswer(this);
 }
 
 componentDidMount() {
@@ -38,12 +39,12 @@ componentDidMount() {
   this.setState({ fullAnswerList, answerList });
 }
 
-handleToggleModal() {
-  let { showModal } = this.state;
-  console.log(this.state.showModal);
+handleAddAnswer() {
+  let { addAnswers } = this.state;
+  //console.log(this.state.addAnswers);
 
-  showModal = !showModal;
-  this.setState({ showModal });
+  addAnswers = !addAnswers;
+  this.setState({ addAnswers });
 }
 
 onClick() {
@@ -62,22 +63,13 @@ callHelpful() {
       .catch((err) => {
         console.log(err);
       });
-    // putHelpfulAnswersById(answer.id, (error, quests) => {
-    //   if (error) { return console.log('Failure to get ID: ', error); }
-    //   var quests1 = quests.results;
-    //   //console.log(quests);
-    //   console.log("called helpful");
-    //   this.setState({
-    //     helpfulStatus: true
-    //   })
-    // });
   }
 }
 
 render() {
   const { question, product} = this.props;
   const {
-    answerList, fullAnswerList, isCollapsed, helpfulStatus, showModal
+    answerList, fullAnswerList, isCollapsed, helpfulStatus, addAnswers
   } = this.state;
   const buttonText = isCollapsed ? 'Collapse Answers' : 'See More Answers';
   const answersButton = (
@@ -94,9 +86,9 @@ render() {
         <span><font size="1">Helpful?  </font></span>
         <button className="small-btn" onClick={this.callHelpful}>Yes</button>
       </span>
-      <button className="tag qa_button" onClick={this.handleToggleModal}>Add Answer</button>
+      <button className="tag qa_button" onClick={this.handleAddAnswer}>Add Answer</button>
       {(
-            <AnswerModal submit={this.handleToggleModal}>
+            <AnswerModal submit={this.handleAddAnswer}>
               <AnswerForm
                 productName={product}
                 questionBody={question}

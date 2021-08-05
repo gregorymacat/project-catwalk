@@ -69,10 +69,10 @@ class AnswerForm extends React.Component {
           <textarea id="form-body" name="body" value={answerBody} onChange={this.handleQuestionChange} maxLength="1000" />
           <br></br>
           <label htmlFor="name" id="name-label">What is your name?: </label>
-          <input type="text" id="name" name="name" value={name} onChange={this.handleNameChange} placeholder="Example: jack543!" maxLength="50" />
+          <input type="text" id="name" name="name" value={name} onChange={this.handleNameChange} placeholder="Example: jack543!" maxLength="60" />
           <br></br>
           <label htmlFor="name" id="name-label">What is your email?: </label>
-          <input type="text" id="email" name="name" value={email} onChange={this.handleEmailChange} placeholder="Example: jack@email.com" maxLength="50" />
+          <input type="text" id="email" name="name" value={email} onChange={this.handleEmailChange} placeholder="Example: jack@email.com" maxLength="60" />
 
           <input type="submit" value="Submit" id="a-form-submit" />
         </form>

@@ -24,6 +24,9 @@ class QuestionList extends React.Component {
   }
 
   componentDidMount() {
+    console.log('YELLOW');
+    console.log(this.props.productName);
+    console.log('YELLOW');
     //this.state.product_id = '17068'
     //this.state.product_id = this.props.product;
       getQuestions(this.state.product_id, (error, quests) => {

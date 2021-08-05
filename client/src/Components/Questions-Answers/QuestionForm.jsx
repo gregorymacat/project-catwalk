@@ -62,6 +62,8 @@ class QuestionForm extends React.Component {
           <label htmlFor="name" id="name-label">What is your name?: </label>
           <input type="text" id="name" name="name" value={name} onChange={this.handleNameChange} placeholder="Example: jackson11!" maxLength="50" />
           <br></br>
+          <span id="nickname-disclaimer">For privacy reasons, please do not use your full name or email address</span>
+          <br></br>
           <label htmlFor="name" id="name-label">What is your email?: </label>
           <input type="text" id="email" name="name" value={name} onChange={this.handleEmailChange} placeholder="Why did you like the product or not?" maxLength="60" />
           <br></br>

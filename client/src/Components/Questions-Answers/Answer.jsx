@@ -24,15 +24,6 @@ class Answer extends React.Component {
         .catch((err) => {
           console.log(err);
         });
-      // putHelpfulAnswersById(answer.id, (error, quests) => {
-      //   if (error) { return console.log('Failure to get ID: ', error); }
-      //   var quests1 = quests.results;
-      //   //console.log(quests);
-      //   console.log("called helpful");
-      //   this.setState({
-      //     helpfulStatus: true
-      //   })
-      // });
     }
   }
 
