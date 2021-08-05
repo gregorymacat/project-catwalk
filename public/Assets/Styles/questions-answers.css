@@ -6,10 +6,8 @@
 }
 
 
-/* ---------Buttons ----------- */
-
 .qa-button-big {
-  background-color: white; /* Green */
+  background-color: white;
   border: 2px solid black;
   color: black;
   padding: 15px 32px;
@@ -34,6 +32,20 @@
   margin: 1px 1px;
   cursor: pointer;
   width: 80px;
+}
+
+.mid-button {
+  background-color: white;
+  border: 0.5px solid rgb(52, 51, 51);
+  color: black;
+  padding: 2px 3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 2px 2px;
+  cursor: pointer;
+  width: 100px;
 }
 
 .reported {
@@ -62,6 +74,20 @@
   margin: 1px 1px;
   cursor: pointer;
   width: 80px;
+}
+
+.big-green-button {
+  background-color: rgb(26, 141, 13);
+  border: 2px solid rgb(52, 51, 51);
+  color: rgb(255, 255, 255);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 200px;
 }
 
 .sbar {

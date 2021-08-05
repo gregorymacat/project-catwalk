@@ -55,27 +55,7 @@ class QuestionList extends React.Component {
         }
       });
     }
-    //const {prev} = this.state.prevID;
-    // console.log('CCCCCCCC')
-    // console.log(prev);
-    // console.log(this.props.product)
-    // console.log('AAAAAAA')
-    // if (this.props.product === prev) {
-    //   console.log('repeated');
-    // } else {
-    //   this.state.product_id = this.props.product;
-    //   getQuestions(this.props.product, (error, quests) => {
-    //     if (error) { return console.log('Failure to get ID: ', error); }
-    //     var quests1 = quests.results;
-    //     if (quests1) {
-    //       this.setState({
-    //         questionList: quests1.slice(0,2),
-    //         queryList: quests1,
-    //         allQuestions: quests1,
-    //       })
-    //     }
-    //   });
-    // }
+
   }
 
   handleChange(e) {

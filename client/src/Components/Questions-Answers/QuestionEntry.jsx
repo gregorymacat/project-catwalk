@@ -70,9 +70,13 @@ render() {
   const {
     answerList, fullAnswerList, isCollapsed, helpfulStatus, addAnswers
   } = this.state;
-  const buttonText = isCollapsed ? 'Collapse Answers' : 'More Answers';
+  if (isCollapsed) {
+    var buttonText = 'Collapse Answers';
+  } else if (!isCollapsed) {
+    var buttonText = 'More Answers';
+  }
   const answersButton = (
-    <button className="button-RR rating-reviews-button-show-more" onClick={this.onClick}>
+    <button className="mid-button" onClick={this.onClick}>
       {buttonText}
     </button>
   );
@@ -85,7 +89,7 @@ render() {
         <span><font size="1">Helpful?  </font></span>
         <button className="qa-button-small" onClick={this.callHelpful}>Yes</button>
       </span>
-      <button className="qa-button-small" onClick={this.handleAddAnswer}>Add Answer</button>
+      <button className="green-button" onClick={this.handleAddAnswer}>Add Answer</button>
       {addAnswers && (
             <AnswerModal submit={this.handleAddAnswer}>
               <AnswerForm

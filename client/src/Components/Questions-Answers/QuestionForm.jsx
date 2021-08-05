@@ -75,6 +75,7 @@ class QuestionForm extends React.Component {
           <input type="text" id="email" name="name" value={email} onChange={this.handleEmailChange} placeholder="Why did you like the product or not?" maxLength="60" />
           <br></br>
           <label htmlFor="auth" id="auth">For authentication reasons, you will not be emailed</label>
+          <br></br>
           <input type="submit" value="Submit" id="a-form-submit" />
         </form>
       </div>

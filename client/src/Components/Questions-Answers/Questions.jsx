@@ -46,7 +46,7 @@ class Questions extends React.Component {
         <div className="question_body">
           {questionBody}
           {moreQuestionsButton}
-          <button className="qa-button-big" onClick={this.addQuestions}>Add a Question</button>
+          <button className="big-green-button" onClick={this.addQuestions}>Add a Question</button>
         {addQuestion && (
           <QuestionModal submit={this.addQuestions}>
             <QuestionForm productName={product} productId={product.product_id} />

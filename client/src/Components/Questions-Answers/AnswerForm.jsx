@@ -57,7 +57,7 @@ class AnswerForm extends React.Component {
       answerBody, name, email
     } = this.state;
     var { productName, questionBody } = this.props;
-    var subtitle = 'Product';
+    var subtitle = productName;
     return (
       <div className="new answers">
         <form className="submission" onSubmit={this.handleSubmit}>
@@ -69,9 +69,14 @@ class AnswerForm extends React.Component {
           <label htmlFor="name" id="naming">What is your name?: </label>
           <input type="text" id="name" name="name" value={name} onChange={this.handleNameChange} placeholder="Example: jack543!" maxLength="60" />
           <br></br>
+          <label id="name-warning">For privacy reasons, please do not use your full name or email address</label>
+          <br></br>
+
           <label htmlFor="email-id" id="email-id">What is your email?: </label>
           <input type="text" id="email" name="email-id" value={email} onChange={this.handleEmailChange} placeholder="Example: jack@email.com" maxLength="60" />
-          <span id="name-warning">For privacy reasons, please do not use your full name or email address</span>
+          <br></br>
+          <label htmlFor="auth" id="auth">For authentication reasons, you will not be emailed</label>
+          <br></br>
           <input type="submit" value="Submit" id="a-form-submit" />
         </form>
       </div>
