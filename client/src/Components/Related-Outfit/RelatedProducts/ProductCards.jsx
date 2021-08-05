@@ -54,6 +54,9 @@ var chooseCards = function(index, products) {
 }
 
 var getImage = function(productId, styles) {
+  if (styles === undefined) {
+    return 'https://1080motion.com/wp-content/uploads/2018/06/NoImageFound.jpg.png';
+  }
   for (var index = 0; index < styles.length; index++) {
     if (styles[index].product_id === productId.toString()) {
       var styleIndex = styles[index].results.findIndex((style) => {
