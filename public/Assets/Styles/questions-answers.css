@@ -48,6 +48,15 @@
   width: 100px;
 }
 
+/* .photos-qa {
+  width: 100%;
+  height: auto;
+} */
+.photos-qa {
+  max-width:100px; /* you can use % */
+  height: auto;
+}
+
 .reported {
   background-color: rgba(186, 9, 9, 0.964);
   border: 0.5px solid rgb(52, 51, 51);

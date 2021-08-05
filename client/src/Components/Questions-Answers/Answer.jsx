@@ -44,7 +44,16 @@ class Answer extends React.Component {
   render() {
     const { answer } = this.props;
     const { helpfulStatus, reportedStatus } = this.state;
-    var time = new Date(answer.date).toISOString().slice(0, 10);
+    var pics = null;
+    var time = new Date(answer.date).toLocaleDateString();
+    if (answer.photos.length > 0) {
+      var i = 0;
+      pics = answer.photos.map((x) => (
+        <div key={i++}>
+          <img className="photos-qa" src={x} alt="" />
+        </div>
+      ));
+    }
 
     var seller;
     var poster = answer.answerer_name;
@@ -55,6 +64,9 @@ class Answer extends React.Component {
     return (
       <div>
         <div>{answer.body}</div>
+        <div className="photos-qa">
+          {pics}
+        </div>
           <span><font size="1">{`by ${poster}, ${time} | Helpful? `} </font></span>
           <button className="qa-button-small" onClick={this.callHelpful}>Yes</button>
           <span> <font size="1">
