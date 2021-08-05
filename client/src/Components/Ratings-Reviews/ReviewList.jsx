@@ -21,7 +21,6 @@ class Review extends React.Component {
   }
 
   handleHelpfulness(e) {
-    console.log(e);
     this.setState({
       helpfulnessButton: false
     });
