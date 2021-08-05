@@ -88,15 +88,15 @@ class Review extends React.Component {
                 )}
               </div>
               <div className="review-tile-item review-tile-footer">
-                <div className="review-tile-helpfulness">
+                <div className="review-tile-helpfulness-item">
                   Helpful?
                   <div
-                    onClick={this.handleHelpfulness}
-                    className="review-tile-helpfulness-yes"
+                    onClick={this.handleHelpfuls}
+                    className="review-tile-helpfulness-item review-tile-helpfulness-yes"
                   >
                     Yes ({tile.helpfulness})
                   </div>
-                  <div className="review-tile-helpfulness-no">No</div>
+                  <div className="review-tile-helpfulness-item review-tile-helpfulness-no">No</div>
                 </div>
                 <hr className="ratings-hr"></hr>
               </div>

@@ -1,12 +1,10 @@
 import React from 'react'
 import styles from './styles.js'
+import VerticalCarousel from './VerticalCarousel.jsx'
 import StarsDisplay from '../Shared/StarsDisplay.jsx'
 import axios from 'axios'
-import {getOneProduct, getProductStyle} from '../../../Controllers/general.js';
-// import testStyle from './dummy-style.js';
-// import Carousel from './components/Shared/Carousel/Carousel.jsx';
-// import testProduct from '../../dummy-product.js';
-// import {stylesArray} from '../../dummy-style.js';
+import {getOneProduct, getProductStyle} from '../../../Controllers/general.js'
+import Carousel from '../Shared/Carousel/Carousel.jsx';
 export default class Overview extends React.Component {
   constructor(props) {
     super(props)
@@ -17,16 +15,19 @@ export default class Overview extends React.Component {
       styles: [],
       selectedStyle: {},
       styleSelectError: false,
-      selectedQuantity: '-'
+      selectedQuantity: '-',
+      extendView: false
     }
     this.addToCart = this.addToCart.bind(this)
+    this.extendedView = this.extendedView.bind(this)
     this.changeQuantity = this.changeQuantity.bind(this)
     this.changeSelectedSize = this.changeSelectedSize.bind(this)
     this.changeSelectedStyle = this.changeSelectedStyle.bind(this)
     this.getSizeQuantity = this.getSizeQuantity.bind(this)
+    this.getProductAndStyles = this.getProductAndStyles.bind(this)
   }
-  componentDidMount(){
-    getOneProduct("17071", (err, results) => {
+  getProductAndStyles() {
+    getOneProduct(this.props.product, (err, results) => {
       if (err) {
         return console.log('Unable to get a product: ', err)
       }
@@ -41,7 +42,15 @@ export default class Overview extends React.Component {
         });
       })
     })
-
+  }
+  componentDidMount() {
+    this.getProductAndStyles()
+  }
+  componentDidUpdate(prevProps) {
+    if (Number(this.props.product) !== Number(prevProps.product)) {
+      this.getProductAndStyles()
+      window.scrollTo(0, 0)
+    }
   }
   addToCart() {
     if (this.state.selectedSize === 'Select Size') {
@@ -59,7 +68,6 @@ export default class Overview extends React.Component {
       this.setState({
         addedToCart: true
       })
-      // console.log('data::', data)
     })
     .catch(()=>{
       console.log('Error')
@@ -73,7 +81,8 @@ export default class Overview extends React.Component {
   changeSelectedSize(event) {
     this.setState({
       selectedSize: event.target.value,
-      selectedQuantity: 1
+      selectedQuantity: 1,
+      styleSelectError: false
     })
   }
   getSizeQuantity(inventory) {
@@ -91,11 +100,26 @@ export default class Overview extends React.Component {
       selectedSize: 'Select Size'
     })
   }
+  extendedView(event) {
+    event.preventDefault()
+    if (this.extendView === true) {
+      this.setState({
+        extendView: false
+      })
+      var productInfo = document.getElementById("ProductInfo")
+      console.log("PRODUCT INFOOOOO", productInfo)
+      productInfo.style.display = "flex"
+    } else {
+      this.setState({
+        extendView: true
+      })
+      var productInfo = document.getElementById("ProductInfo")
+      productInfo.style.display = "none"
+    }
+  }
   render() {
     var inventory = this.state.selectedStyle.skus ? Object.values(this.state.selectedStyle.skus) : []
     const sizeQuantity = Array.from(Array(this.getSizeQuantity(inventory)).keys()).slice(0, 16)
-    // console.log('whats goin onnn', sizeQuantity)
-    // console.log("INVENTORY:::::", inventory, "SIZE QUANTITY:::::", sizeQuantity)
       return (
         // overview is the container component, flex direction is set to column, so the page reads top to bottom
         <div style={styles.overview} onClick={(e) => {this.props.handleInteraction(e, 'o')}}>
@@ -105,10 +129,38 @@ export default class Overview extends React.Component {
             flex direction set to "row" to read from left to right, carousel and info each taking 50% width
           */}
           <div style={styles.row}>
-            <div style={styles.carousel}>
-            {this.state.selectedStyle.photos && <img src={this.state.selectedStyle.photos[0].thumbnail_url}></img>}
+              <div style={styles.carouselContainer}>
+              {
+                this.state.selectedStyle.photos &&
+                (
+                  <div style={styles.carouselContainer}>
+                    {/* additional photos */}
+                    <div style={styles.extraPhotos}>
+                      {this.state.selectedStyle.photos.map((photo, index) => {
+                        return (
+                          <div key={index} style={styles.extraPhotoContainer}>
+                            <img
+                              src={photo.thumbnail_url}
+                              style={styles.extraPhoto}
+                              alt="product_image"
+                            />
+                          </div>
+                        )
+                      })}
+                    </div>
+                    {/* selected photo */}
+                    <div style={styles.carousel} onClick={() => this.extendedView(event)}>
+                      <Carousel
+                        styles={styles.carouselOverrides}
+                        items={this.state.selectedStyle.photos}
+
+                         />
+                    </div>
+                  </div>
+                )
+              }
             </div>
-            <div style={styles.productInfo}>
+            <div style={styles.productInfo} id="ProductInfo">
               <div style={styles.rating}>
                   <StarsDisplay starsData={3.6}/>
                   <a href="#RatingsReviews">Read All Reviews</a>
@@ -122,7 +174,7 @@ export default class Overview extends React.Component {
                 </div>
                 <div style={styles.colorCircles}>
                   {this.state.styles.map((styleObj, index) => {
-                    return <div onClick={() => this.changeSelectedStyle(index)}>
+                    return <div key={index} onClick={() => this.changeSelectedStyle(index)}>
                       <img style={styles.circle} src={styleObj.photos[0].thumbnail_url}></img>
                     </div>
                   })}
@@ -135,7 +187,7 @@ export default class Overview extends React.Component {
                     onChange={this.changeSelectedSize}>
                     <option value="Select Size">Select Size</option>
                     {inventory.map((style, index) => {
-                      return (style.quantity > 0 ? <option value={style.size}>{style.size}</option> : <></>
+                      return (style.quantity > 0 ? <option key={index} value={style.size}>{style.size}</option> : <></>
                         )})}
                   </select>
                   <select
@@ -146,7 +198,7 @@ export default class Overview extends React.Component {
                   >
                   <option value="Quantity">-</option>
                     {sizeQuantity.map((quantity, index) => {
-                      return <option value={quantity}>{quantity}</option>
+                      return <option key={index} value={quantity}>{quantity}</option>
                     })}
                   </select>
                 </div>
@@ -157,13 +209,15 @@ export default class Overview extends React.Component {
                     <button style={styles.addToCartButton} onClick={this.addToCart}>
                       Add To Bag
                     </button>
-                  }
-                  <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
-                  <a class="twitter-share-button"
+                    }
+                    <div className="sharethis-inline-share-buttons"></div>
+                  {/* <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Share</a></div>
+                  <a className="twitter-share-button"
                   href="https://twitter.com/intent/tweet?text=Hello%20world">
                   Tweet</a>
                   <a href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark">
                   </a>
+                </div> */}
                 </div>
               </div>
             </div>
@@ -177,7 +231,7 @@ export default class Overview extends React.Component {
               <p>{this.state.product.description}</p>
             </div>
           </div>
-        </div>
+          </div>
       )
   }
 }

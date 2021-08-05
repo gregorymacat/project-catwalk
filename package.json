@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --delay 250ms ./server/index.js",
-    "build": "webpack --config webpack.config.js --watch",
+    "build": "webpack --watch",
     "test": "jest"
   },
   "repository": {

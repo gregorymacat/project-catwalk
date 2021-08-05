@@ -1,7 +1,7 @@
 import React from 'react';
-import ArrowLeft from './Left.jsx';
-import ArrowRight from './Right.jsx';
-import Item from './Item.jsx'
+import ArrowLeft from '../Shared/Carousel/Left.jsx';
+import ArrowRight from '../Shared/Carousel/Right.jsx';
+import Item from '../Shared/Carousel/Item.jsx'
 
 /*
   Props:
@@ -78,7 +78,7 @@ class Carousel extends React.Component {
     const { styles } = this.props
     return (
       <React.Fragment>
-        <div className='carousel container' style={{ ...styles.container }}>
+        <div className='carousel container' style={{ ...styles.VerticalCarousel }}>
           {this.displayArrow('left')}
           <Item item={this.props.items[this.state.displayIndex]} styles={styles} />
           {this.displayArrow('right')}
@@ -89,13 +89,3 @@ class Carousel extends React.Component {
 }
 
 export default Carousel;
-
-/*
-Put these in the proper spots in app/here/Item if you want a
-small example of how this works
-
-import testStyle from './dummy-style.js';
-import Carousel from './Components/Shared/Carousel/Carousel.jsx';
-<Carousel items={testStyle.photos}/>
-<img src={props.item.thumbnail_url}></img>
-*/
