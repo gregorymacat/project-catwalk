@@ -21,10 +21,12 @@ export default class Overview extends React.Component {
       selectedQuantity: '-',
       position: 0,
       extendView: false,
-      ratings: 3.6
+      ratings: 3.6,
+      isZoomed: false
     }
     this.addToCart = this.addToCart.bind(this)
-    this.magnify = this.magnify.bind(this)
+    this.changeZoom = this.changeZoom.bind(this)
+    // this.carouselCss = this.carouselCss.bind(this)
     this.changeThumbnail = this.changeThumbnail.bind(this)
     this.extendedView = this.extendedView.bind(this)
     this.changeQuantity = this.changeQuantity.bind(this)
@@ -146,65 +148,60 @@ export default class Overview extends React.Component {
       productInfo.style.display = "none"
     }
   }
-  magnify(imgID, zoom) {
-    var img, glass, w, h, bw;
-    img = document.getElementById(imgID);
-
-    /* Create magnifier glass: */
-    glass = document.createElement("DIV");
-    glass.setAttribute("class", "img-magnifier-glass");
-
-    /* Insert magnifier glass: */
-    img.parentElement.insertBefore(glass, img);
-
-    /* Set background properties for the magnifier glass: */
-    glass.style.backgroundImage = "url('" + img.src + "')";
-    glass.style.backgroundRepeat = "no-repeat";
-    glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
-    bw = 3;
-    w = glass.offsetWidth / 2;
-    h = glass.offsetHeight / 2;
-
-    /* Execute a function when someone moves the magnifier glass over the image: */
-    glass.addEventListener("mousemove", moveMagnifier);
-    img.addEventListener("mousemove", moveMagnifier);
-
-    /*and also for touch screens:*/
-    glass.addEventListener("touchmove", moveMagnifier);
-    img.addEventListener("touchmove", moveMagnifier);
-    moveMagnifier = (e) => {
-      var pos, x, y;
-      /* Prevent any other actions that may occur when moving over the image */
-      e.preventDefault();
-      /* Get the cursor's x and y positions: */
-      pos = getCursorPos(e);
-      x = pos.x;
-      y = pos.y;
-      /* Prevent the magnifier glass from being positioned outside the image: */
-      if (x > img.width - (w / zoom)) {x = img.width - (w / zoom);}
-      if (x < w / zoom) {x = w / zoom;}
-      if (y > img.height - (h / zoom)) {y = img.height - (h / zoom);}
-      if (y < h / zoom) {y = h / zoom;}
-      /* Set the position of the magnifier glass: */
-      glass.style.left = (x - w) + "px";
-      glass.style.top = (y - h) + "px";
-      /* Display what the magnifier glass "sees": */
-      glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
-    }
-    getCursorPos = (e) => {
-      var a, x = 0, y = 0;
-      e = e || window.event;
-      /* Get the x and y positions of the image: */
-      a = img.getBoundingClientRect();
-      /* Calculate the cursor's x and y coordinates, relative to the image: */
-      x = e.pageX - a.left;
-      y = e.pageY - a.top;
-      /* Consider any page scrolling: */
-      x = x - window.pageXOffset;
-      y = y - window.pageYOffset;
-      return {x : x, y : y};
+  isZoomed() {
+    this.setState({
+      isZoomed: true
+    })
   }
+  changeZoom(event) {
+    if (this.isZoomed()) {
+      const el = event.target
+      el.style.backgroundPositionX = -event.offsetX + "px";
+      el.style.backgroundPositionY = -event.offsetY + "px";
+    } else {
+      const el = event.target
+      el.style.backgroundPositionX = "center";
+      el.style.backgroundPositionY = "center";
+    }
 }
+  // carouselCss() {
+  //   if (this.isZoomed()) {
+  //     `width: 300px;
+  //     height: 300px;
+  //     border: 1px solid white;
+  //     background-image: url(${this.state.selectedStyle.photos[this.state.position].thumbnail_url});
+  //     background-size: 500px;
+  //     background: center;
+  //     cursor: url(https://img.icons8.com/material-outlined/24/000000/plus--v1.png), zoom-in;`
+  //   } else {
+  //     `width: 150px;
+  //     height: 150px;
+  //     border: 1px solid white;
+  //     background-image: url(${this.state.selectedStyle.photos[this.state.position].thumbnail_url});
+  //     background-size: 250px;
+  //     background: center;
+  //     cursor: url(https://img.icons8.com/material-outlined/24/000000/plus--v1.png), zoom-in;`
+  //   }
+  // }
+  // changeZoom(event) {
+  //   event.preventDefault()
+  //   // console.log(this.state.extendView)
+  //   this.setState({
+  //     zoomed: !this.state.zoomed
+  //   })
+  //   if (this.state.zoomed && this.state.extendView) {
+  //     var Zoom = document.getElementById("Zoom")
+  //     console.log('i cannot zoom')
+  //     Zoom.style.height = "250px"
+  //     Zoom.style.width = "95%"
+  //   } else {
+  //     var Zoom = document.getElementById("Zoom")
+  //     console.log('im trying to zoom')
+  //     Zoom.style.height = "500px"
+  //     Zoom.style.width = "190%"
+  //   }
+  // }
+
   render() {
     var inventory = this.state.selectedStyle.skus ? Object.values(this.state.selectedStyle.skus) : []
     const sizeQuantity = Array.from(Array(this.getSizeQuantity(inventory)).keys()).slice(0, 16)
@@ -222,7 +219,7 @@ export default class Overview extends React.Component {
                 this.state.selectedStyle.photos &&
                 (
                   <div style={styles.carouselContainer}>
-                    {/* additional photos */}
+                    {/*additional photos */}
                     <div style={styles.extraPhotos}>
                       {this.state.selectedStyle.photos.map((photo, index) => {
                         return (
@@ -239,12 +236,14 @@ export default class Overview extends React.Component {
                       })}
                     </div>
                     {/* selected photo */}
-                    <div style={styles.carousel}>
+                    <div style={styles.carousel} id="Zoom">
                       <Carousel
                         styles={styles.carouselOverrides}
                         items={this.state.selectedStyle.photos}
                         position={this.state.position}
                          />
+                         <div style={styles.zoomedCarousel} onMouseMove={() => this.changeZoom(event)}>
+                     </div>
                       <img style={styles.toggle} src={'/Assets/toggle.png'} onClick={() => this.extendedView(event)}  ></img>
                     </div>
                     {/* <img></img> */}
@@ -258,7 +257,7 @@ export default class Overview extends React.Component {
                   <a href="#RatingsReviews">Read All Reviews</a>
               </div>
               <p>{this.state.product.category}</p>
-              <h1>{this.state.selectedStyle.name}</h1>
+              <h1>{this.state.product.name}</h1>
               {this.state.selectedStyle.sale_price && <p style={{color: 'red'}}>${this.state.selectedStyle.sale_price}</p>}
               {!this.state.selectedStyle.sale_price && <p>${this.state.selectedStyle.original_price || this.state.product.default_price}</p>}
               <div style={styles.productStyle}>
@@ -303,7 +302,8 @@ export default class Overview extends React.Component {
                       Add To Bag
                     </button>
                     }
-                    <div className="sharethis-inline-share-buttons"></div>
+                    <div></div>
+                    <div style={{textAlign: "left", marginTop: "10px"}}className="sharethis-inline-share-buttons"></div>
                   {/* <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Share</a></div>
                   <a className="twitter-share-button"
                   href="https://twitter.com/intent/tweet?text=Hello%20world">
