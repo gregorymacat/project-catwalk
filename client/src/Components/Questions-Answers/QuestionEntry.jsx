@@ -10,7 +10,7 @@ class QuestionEntry extends React.Component {
 constructor(props) {
   super(props);
   this.state = {
-    fullAnswerList: [],
+    allAnswer: [],
     answerList: [],
     isCollapsed: false,
     helpfulStatus: false,
@@ -29,14 +29,14 @@ componentDidMount() {
   }
   //sort answers according to helpfulness, most helpful first in list
   answers.sort((a, b) => b.helpfulness - a.helpfulness);
-  const fullAnswerList = answers.map((answer) => (
+  const allAnswer = answers.map((answer) => (
     <div key={answer.id}>
       <hr></hr>
       <Answer answer={answer} />
     </div>
   ));
-  const answerList = fullAnswerList.slice(0, 1);
-  this.setState({ fullAnswerList, answerList });
+  const answerList = allAnswer.slice(0, 1);
+  this.setState({ allAnswer, answerList });
 }
 
 handleAddAnswer() {
@@ -68,7 +68,7 @@ callHelpful() {
 render() {
   const { question, product} = this.props;
   const {
-    answerList, fullAnswerList, isCollapsed, helpfulStatus, addAnswers
+    answerList, allAnswer, isCollapsed, helpfulStatus, addAnswers
   } = this.state;
   if (isCollapsed) {
     var buttonText = 'Collapse Answers';
@@ -82,9 +82,9 @@ render() {
   );
 
   return (
-    <div className="question_wrapper">
+    <div className="entry">
       <hr></hr>
-      <div className="question_body"><h5>Q: {question.question_body}</h5></div>
+      <div className="qb"><h5>Q: {question.question_body}</h5></div>
       <span>
         <span><font size="1">Helpful?  </font></span>
         <button className="qa-button-small" onClick={this.callHelpful}>Yes</button>
@@ -99,13 +99,13 @@ render() {
               />
             </AnswerModal>
           )}
-      <span className="qa_label" id="a_label"><br></br></span>
+        <br></br>
       <div className="answers">
         <span>A: </span>
         <div className="allAnswers">
-          {isCollapsed ? fullAnswerList : answerList}
+          {isCollapsed ? allAnswer : answerList}
         </div>
-        {fullAnswerList.length > answerList.length && answersButton}
+        {allAnswer.length > answerList.length && answersButton}
       </div>
     </div>
   );
