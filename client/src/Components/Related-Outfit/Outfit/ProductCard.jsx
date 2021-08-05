@@ -9,7 +9,8 @@ var ProductCard = function(props) {
   }
   var handleItemClick = (event) => {
     var itemId = event.target.dataset.itemnum;
-    props.appClick(itemId);
+    var itemName = event.target.innerText;
+    props.appClick(itemId, itemName);
   }
 
   var getImage = function() {

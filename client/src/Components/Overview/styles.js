@@ -2,7 +2,7 @@ export default {
   overview: {
     display: "flex",
     backgroundColor: "white",
-    height: "100vh",
+    height: "80vh",
     flexDirection: "column",
     // fontFamily: "Montserrat sans-serif"
   },
