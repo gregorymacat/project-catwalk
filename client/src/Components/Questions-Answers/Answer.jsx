@@ -72,7 +72,7 @@ class Answer extends React.Component {
           <span> <font size="1">
             {helpfulStatus ? ` (${answer.helpfulness + 1}) ` : ` (${answer.helpfulness}) `} </font>
           </span>
-          {reportedStatus ? <span className="report">Reported</span> : <button className="qa-button-small reported" onClick={this.callReport}>Report</button>}
+          {reportedStatus ? <button className="report">Reported</button> : <button className="qa-button-small reported" onClick={this.callReport}>Report</button>}
       </div>
     );
   }

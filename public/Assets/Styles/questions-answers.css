@@ -71,6 +71,20 @@
   width: 80px;
 }
 
+.report {
+  background-color: rgba(241, 13, 13, 0.991);
+  border: 0.5px solid rgb(52, 51, 51);
+  color: white;
+  padding: 0.5px 1.5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 0.5px 0.5px;
+  cursor: pointer;
+  width: 80px;
+}
+
 .green-button {
   background-color: rgb(26, 141, 13);
   border: 0.5px solid rgb(52, 51, 51);
@@ -83,6 +97,10 @@
   margin: 1px 1px;
   cursor: pointer;
   width: 80px;
+}
+
+.green-button:hover {
+  background-color: rgb(43, 215, 23);
 }
 
 .big-green-button {
@@ -99,6 +117,10 @@
   width: 200px;
 }
 
+.big-green-button:hover {
+  background-color: rgb(43, 215, 23);
+}
+
 .sbar {
   position: relative;
   display: flex;
@@ -106,13 +128,18 @@
   margin-bottom: 10px;
 }
 
+.search:hover {
+  background-color: #f9f1f1;
+}
+
+
 .search {
   border: 2px solid grey;
   height: 30px;
   width: 80%;
   padding: 3px 20px 2px 8px;
   outline: 0;
-  background-color: #d7d4d4;
+  background-color: #beb9b9;
 }
 .simage {
   position: relative;
