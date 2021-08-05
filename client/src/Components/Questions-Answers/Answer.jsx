@@ -31,8 +31,13 @@ class Answer extends React.Component {
     const { reportedStatus } = this.state;
     const { answer } = this.props;
     if (!reportedStatus) {
-      this.reportedStatus = true;
-        //AXIOS PUT REQUEST FOR REPORT
+      axios.put(`/qa/answers/${answer.id}/report`)
+        .then((res) => {
+          this.setState({ reportedStatus: true });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }
 
@@ -47,17 +52,15 @@ class Answer extends React.Component {
     }
     let time = new Date(answer.date).toISOString().slice(0, 10);
 
-    //const answerTag = `by ${answerer}, ${time} | Helpful? `;
-
     return (
       <div>
         <div>{answer.body}</div>
           <span><font size="1">{`by ${answerer}, ${time} | Helpful? `} </font></span>
-          <button onClick={this.callHelpful}>Yes</button>
+          <button className="qa-button-small" onClick={this.callHelpful}>Yes</button>
           <span> <font size="1">
             {helpfulStatus ? ` (${answer.helpfulness + 1}) ` : ` (${answer.helpfulness}) `} </font>
           </span>
-          {reportedStatus ? <span className="report">Reported</span> : <button onClick={this.callReport}>Report</button>}
+          {reportedStatus ? <span className="report">Reported</span> : <button className="qa-button-small" onClick={this.callReport}>Report</button>}
       </div>
     );
   }

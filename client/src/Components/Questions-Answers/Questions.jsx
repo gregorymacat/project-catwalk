@@ -41,7 +41,7 @@ class Questions extends React.Component {
       ));
 
     const moreQuestionsButton = (
-      <button className="button-RR rating-reviews-button-show-more" onClick={onClick}>
+      <button className="qa-button-big" onClick={onClick}>
         More Questions
       </button>
     );
@@ -50,7 +50,7 @@ class Questions extends React.Component {
         <div className="question_body">
           {questionBody}
           {moreQuestionsButton}
-          <button className="button-RR rating-reviews-button-show-more" onClick={this.addQuestions}>Add a Question +</button>
+          <button className="qa-button-big" onClick={this.addQuestions}>Add a Question</button>
         {(
           <QuestionModal submit={this.addQuestions}>
             <QuestionForm productName={product} productId={product.product_id} />

@@ -4,3 +4,34 @@
   flex-direction: row;
   height: 100vh;
 }
+
+
+/* ---------Buttons ----------- */
+
+.qa-button-big {
+  background-color: white; /* Green */
+  border: 2px solid black;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 200px;
+}
+
+.qa-button-small {
+  background-color: white; /* Green */
+  border: 2px solid black;
+  color: black;
+  padding: 2px 3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 8px;
+  margin: 1px 1px;
+  cursor: pointer;
+  width: 100px;
+}
