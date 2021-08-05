@@ -2,6 +2,7 @@ import React from 'react';
 import ArrowLeft from './Left.jsx';
 import ArrowRight from './Right.jsx';
 import Item from './Item.jsx'
+// import styles from '../../../components/Overview/styles.js'
 
 /*
   Props:
@@ -32,7 +33,13 @@ class Carousel extends React.Component {
     }
     this.handleArrowClick = this.handleArrowClick.bind(this);
   }
-
+  componentDidUpdate(prevProps) {
+    if (prevProps.position !== this.props.position) {
+      this.setState({
+        displayIndex: this.props.position
+      })
+    }
+  }
   handleArrowClick(event) {
     var id = event.target.id;
     if (id === 'arrow-back') {
@@ -66,7 +73,7 @@ class Carousel extends React.Component {
 
   displayArrow(direction) {
     if (direction === 'left') {
-      if (this.state.leftVisible) { return <ArrowLeft click={this.handleArrowClick}/> }
+      if (this.state.leftVisible) { return <ArrowLeft click={this.handleArrowClick} /> }
       return <div className='carousel left'></div>
     } else if (direction === 'right') {
       if (this.state.rightVisible) { return <ArrowRight click={this.handleArrowClick}/> }
@@ -75,13 +82,14 @@ class Carousel extends React.Component {
   }
 
   render () {
+    const { styles } = this.props
     return (
       <React.Fragment>
-        {this.displayArrow('left')}
-        <div className='carousel container'>
-          <Item item={this.props.items[this.state.displayIndex]}/>
+        <div className='carousel container' style={{ ...styles.container }}>
+          {this.displayArrow('left')}
+          <Item item={this.props.items[this.state.displayIndex]} styles={styles} position="absolute"/>
+          {this.displayArrow('right')}
         </div>
-        {this.displayArrow('right')}
       </React.Fragment>
     )
   }
