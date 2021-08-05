@@ -32,7 +32,13 @@ class Carousel extends React.Component {
     }
     this.handleArrowClick = this.handleArrowClick.bind(this);
   }
-
+  componentDidUpdate(prevProps) {
+    if (prevProps.position !== this.props.position) {
+      this.setState({
+        displayIndex: this.props.position
+      })
+    }
+  }
   handleArrowClick(event) {
     var id = event.target.id;
     if (id === 'arrow-back') {
