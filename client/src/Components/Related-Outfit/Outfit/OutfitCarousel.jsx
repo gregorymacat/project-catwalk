@@ -183,7 +183,7 @@ class OutfitCarousel extends React.Component {
         <div className='carousel container cards'>
           <RenderCards startIndex={startIndex} allProducts={products}
           allStyles={styles} click={this.handleActionClick} atStart={this.state.atStart}
-          ratings={this.state.ratings}
+          ratings={this.state.ratings} appClick={this.props.appClick}
           add={<AddCard click={this.handleAddClick}/>}/>
         </div>
         <ArrowRight click={this.handleArrowClick} isDisplaying={displayRight} index={startIndex}
