@@ -52,6 +52,7 @@ class Modal extends React.Component {
       if (err) {
         console.log(err);
       } else {
+        location.reload();
         console.log(res);
       }
     });

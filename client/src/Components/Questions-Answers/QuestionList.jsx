@@ -101,7 +101,7 @@ class QuestionList extends React.Component {
 
     return (
       <div id="main" onClick={(e) => {this.props.handleInteraction(e, 'qa')}}>
-        <div id="qaheading"><h4>Questions and Answers</h4></div>
+        <div id="qaheading"><h1>Questions and Answers</h1></div>
         <div id="qa"></div>
         <div className="sbar">
         <input className="search" type="text" placeholder="Search for Questions" value={query} onChange={this.handleChange} />

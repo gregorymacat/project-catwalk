@@ -46,6 +46,7 @@ class SubmitAnswer extends React.Component {
           nickname: '',
           email: '',
         });
+        location.reload();
       })
       .catch((err) => {
         console.log(err);
