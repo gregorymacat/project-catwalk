@@ -66,9 +66,12 @@
 ** CARD STYLES **
 *****************
 */
-.product-card .stars-display {
+.product-card .card-interaction {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
 .product-card .action {
   padding: 2% 0 0 88%;
@@ -85,6 +88,10 @@
 .product-card b, .product-card p {
   display: block;
   text-align: center;
+}
+.product-card .stars-display {
+  display: flex;
+  justify-content: center;
 }
 .action:hover {
   color: cyan;
