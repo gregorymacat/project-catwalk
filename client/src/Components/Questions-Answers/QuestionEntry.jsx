@@ -54,8 +54,9 @@ onClick() {
 }
 
 callHelpful() {
+  const { question } = this.props;
   const { helpfulStatus } = this.state;
-  if (!helpfulStatus) {
+  if (!helpfulStatus && question) {
     axios.put(`/qa/questions/${question.id}/helpful`)
       .then((res) => {
         this.setState({ helpfulStatus: true });
