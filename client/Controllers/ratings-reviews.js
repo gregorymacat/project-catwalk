@@ -2,7 +2,7 @@ var axios = require('axios');
 
 module.exports = {
   getAllReviews: (req, callback) => {
-    axios.get(`/reviews/?page=1&count=5&sort=${req.sort}&product_id=${req.productID}`)
+    axios.get(`/reviews/?sort=${req.sort}&product_id=${req.productID}`)
     .then((data) => {
       callback(null, data);
     })
