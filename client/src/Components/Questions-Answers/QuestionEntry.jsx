@@ -23,8 +23,8 @@ constructor(props) {
 
 componentDidMount() {
   const { question } = this.props;
-  const answers = [];
-  for (const x in question.answers) {
+  var answers = [];
+  for (var x in question.answers) {
     answers.push(question.answers[x]);
   }
   //sort answers according to helpfulness, most helpful first in list
@@ -40,9 +40,7 @@ componentDidMount() {
 }
 
 handleAddAnswer() {
-  let { addAnswers } = this.state;
-  console.log('bread');
-
+  var { addAnswers } = this.state;
   addAnswers = !addAnswers;
   this.setState({ addAnswers });
 }

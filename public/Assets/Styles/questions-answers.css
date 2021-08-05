@@ -23,17 +23,45 @@
 }
 
 .qa-button-small {
-  background-color: white; /* Green */
-  border: 2px solid black;
+  background-color: white;
+  border: 0.5px solid rgb(52, 51, 51);
   color: black;
-  padding: 2px 3px;
+  padding: 1px 1.5px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 8px;
+  font-size: 12px;
   margin: 1px 1px;
   cursor: pointer;
-  width: 100px;
+  width: 80px;
+}
+
+.reported {
+  background-color: rgba(186, 9, 9, 0.964);
+  border: 0.5px solid rgb(52, 51, 51);
+  color: white;
+  padding: 0.5px 1.5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 0.5px 0.5px;
+  cursor: pointer;
+  width: 80px;
+}
+
+.green-button {
+  background-color: rgb(26, 141, 13);
+  border: 0.5px solid rgb(52, 51, 51);
+  color: rgb(255, 255, 255);
+  padding: 1px 1.5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 1px 1px;
+  cursor: pointer;
+  width: 80px;
 }
 
 .sbar {
@@ -53,8 +81,10 @@
 }
 .simage {
   position: relative;
+  top: 5px;
   right: 30px;
-  width: 18px;
+  width: 27px;
+  height: 27px;
 }
 
 .questionModalClose, .answerModalClose {
@@ -73,17 +103,17 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(17, 95, 34, 0.514);
+  background-color: rgba(5, 22, 47, 0.587);
 }
 .questionMod {
   display: flex;
   z-index: 1;
-  /* position: fixed; */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(17, 95, 34, 0.514);
+  background-color: rgba(5, 22, 47, 0.587);
 }
 
 .questionPopout, .answerPopout {

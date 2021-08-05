@@ -53,20 +53,23 @@ class QuestionForm extends React.Component {
   }
 
   render() {
-    const {
+    var {
       answerBody, name, email
     } = this.state;
-    const { productName } = this.props;
+    var { productName } = this.props;
+    var subtitle = 'Product';
     return (
       <div className="form question">
         <form className="form-submit" onSubmit={this.handleSubmit}>
+          <div className="title-question" id="title-question">Submit Your Questions</div>
+          <div className="subtitle" id="subtitle">{subtitle}</div>
           <label htmlFor="form-body" id="form-body-label">Your Question: </label>
           <textarea id="form-body" name="body" value={answerBody} onChange={this.handleQuestionChange} maxLength="1000" />
           <br></br>
           <label htmlFor="name" id="name-label">What is your name?: </label>
           <input type="text" id="name" name="name" value={name} onChange={this.handleNameChange} placeholder="Example: jackson11!" maxLength="50" />
           <br></br>
-          <span id="nickname-disclaimer">For privacy reasons, please do not use your full name or email address</span>
+          <span id='name-warning'>For privacy reasons, please do not use your full name or email address</span>
           <br></br>
           <label htmlFor="name" id="name-label">What is your email?: </label>
           <input type="text" id="email" name="name" value={email} onChange={this.handleEmailChange} placeholder="Why did you like the product or not?" maxLength="60" />

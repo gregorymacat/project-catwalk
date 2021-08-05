@@ -53,23 +53,25 @@ class AnswerForm extends React.Component {
   }
 
   render() {
-    const {
+    var {
       answerBody, name, email
     } = this.state;
-    const { productName, questionBody } = this.props;
-
+    var { productName, questionBody } = this.props;
+    var subtitle = 'Product';
     return (
-      <div className="form answer">
-        <form className="form-submit" onSubmit={this.handleSubmit}>
-          <label htmlFor="form-body" id="form-body-label">Your Answer: </label>
-          <textarea id="form-body" name="body" value={answerBody} onChange={this.handleQuestionChange} maxLength="1000" />
+      <div className="new answers">
+        <form className="submission" onSubmit={this.handleSubmit}>
+          <div className="title-answers" id="title-answers">Submit Your Answers</div>
+          <div className="subtitle" id="subtitle">{subtitle}</div>
+          <label htmlFor="text-body" id="textbody">Your Answer: </label>
+          <textarea id="text-body" name="text_body" value={answerBody} onChange={this.handleQuestionChange} maxLength="1000" />
           <br></br>
-          <label htmlFor="name" id="name-label">What is your name?: </label>
+          <label htmlFor="name" id="naming">What is your name?: </label>
           <input type="text" id="name" name="name" value={name} onChange={this.handleNameChange} placeholder="Example: jack543!" maxLength="60" />
           <br></br>
-          <label htmlFor="name" id="name-label">What is your email?: </label>
-          <input type="text" id="email" name="name" value={email} onChange={this.handleEmailChange} placeholder="Example: jack@email.com" maxLength="60" />
-
+          <label htmlFor="email-id" id="email-id">What is your email?: </label>
+          <input type="text" id="email" name="email-id" value={email} onChange={this.handleEmailChange} placeholder="Example: jack@email.com" maxLength="60" />
+          <span id="name-warning">For privacy reasons, please do not use your full name or email address</span>
           <input type="submit" value="Submit" id="a-form-submit" />
         </form>
       </div>

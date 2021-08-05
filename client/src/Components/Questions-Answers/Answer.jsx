@@ -44,23 +44,23 @@ class Answer extends React.Component {
   render() {
     const { answer } = this.props;
     const { helpfulStatus, reportedStatus } = this.state;
+    var time = new Date(answer.date).toISOString().slice(0, 10);
 
-    let answerer = answer.answerer_name;
-    let seller;
-    if (answerer === seller) {
-      answerer = Seller;
+    var seller;
+    var poster = answer.answerer_name;
+    if (poster === seller) {
+      poster = Seller;
     }
-    let time = new Date(answer.date).toISOString().slice(0, 10);
 
     return (
       <div>
         <div>{answer.body}</div>
-          <span><font size="1">{`by ${answerer}, ${time} | Helpful? `} </font></span>
+          <span><font size="1">{`by ${poster}, ${time} | Helpful? `} </font></span>
           <button className="qa-button-small" onClick={this.callHelpful}>Yes</button>
           <span> <font size="1">
             {helpfulStatus ? ` (${answer.helpfulness + 1}) ` : ` (${answer.helpfulness}) `} </font>
           </span>
-          {reportedStatus ? <span className="report">Reported</span> : <button className="qa-button-small" onClick={this.callReport}>Report</button>}
+          {reportedStatus ? <span className="report">Reported</span> : <button className="qa-button-small reported" onClick={this.callReport}>Report</button>}
       </div>
     );
   }

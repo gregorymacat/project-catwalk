@@ -17,19 +17,17 @@ class Questions extends React.Component {
   addQuestions() {
     let { addQuestion } = this.state;
     addQuestion = !addQuestion;
-    console.log(this.props);
-    console.log(this.state);
     this.setState({ addQuestion });
   }
 
   render() {
     const { questions, allQuestions, product, onClick } = this.props;
-    const { addQuestions } = this.state;
+    const { addQuestion } = this.state;
     if (!questions) {
       questions = questionList.results;
     }
     if (questions) {
-      questions.sort((a, b) => (b.question_helpfulness - a.question_helpfulness));
+      questions.sort((first, last) => (last.question_helpfulness - first.question_helpfulness));
     }
       var questionBody = questions.map((question) => (
         <div key={question.question_id}>
@@ -49,7 +47,7 @@ class Questions extends React.Component {
           {questionBody}
           {moreQuestionsButton}
           <button className="qa-button-big" onClick={this.addQuestions}>Add a Question</button>
-        {(
+        {addQuestion && (
           <QuestionModal submit={this.addQuestions}>
             <QuestionForm productName={product} productId={product.product_id} />
           </QuestionModal>
