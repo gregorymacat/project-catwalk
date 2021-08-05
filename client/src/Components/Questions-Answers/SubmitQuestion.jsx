@@ -56,12 +56,13 @@ class SubmitQuestion extends React.Component {
     var {
       answerBody, name, email
     } = this.state;
+    var {product_name} = this.props;
     var { productName } = this.props;
-    var subtitle = 'Product';
+    var subtitle = 'About the ' + product_name;
     return (
       <div className="form question">
         <form className="form-submit" onSubmit={this.handleSubmit}>
-          <div className="title-question" id="title-question">Submit Your Question</div>
+          <div className="title-question" id="title-question">Ask Your Question</div>
           <div className="subtitle" id="subtitle">{subtitle}</div>
           <label htmlFor="form-body" id="form-body-label">Your Question: </label>
           <textarea id="form-body" name="body" value={answerBody} onChange={this.handleQuestionChange} maxLength="1000" />

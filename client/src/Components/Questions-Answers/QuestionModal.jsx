@@ -8,7 +8,7 @@ class QuestionModal extends React.Component {
 
       <div className="questionMod">
         <div className="questionPopout">
-          <button className="questionModalClose" onClick={submit}>&times;</button>
+          <button className="questionModalClose" onClick={submit}>X</button>
           {children}
         </div>
       </div>

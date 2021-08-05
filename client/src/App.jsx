@@ -14,6 +14,7 @@ class App extends React.Component {
     this.state = {
       starsRating: 1.8,
       product: 17071,
+      name: 'Heir Force Ones'
     }
     this.clickHandler = this.clickHandler.bind(this);
     this.handleInteraction = this.handleInteraction.bind(this);
@@ -38,9 +39,10 @@ class App extends React.Component {
     })
   }
 
-  clickHandler(newProductID) {
+  clickHandler(newProductID, itemName) {
     this.setState({
-      product: newProductID
+      product: newProductID,
+      name: itemName
     });
   }
 
@@ -50,7 +52,7 @@ class App extends React.Component {
         <Overview handleInteraction={this.handleInteraction} product={this.state.product} />
         <RelatedOutfit handleInteraction={this.handleInteraction} product={this.state.product}
           appClick={this.clickHandler}/>
-        <QuestionsList handleInteraction={this.handleInteraction} product={this.state.product}/>
+        <QuestionsList handleInteraction={this.handleInteraction} product={this.state.product} prodName={this.state.name}/>
         <RatingsReviews handleInteraction={this.handleInteraction} product={this.state.product}/>
       </div>
     );
