@@ -92,9 +92,9 @@ class QuestionList extends React.Component {
         questionList = queryList.slice(0, 4);
         this.setState({ questionList, queryList });
       } else {
-        for (const question of allQuestions) {
-          if (question.question_body.toUpperCase().includes(query.toUpperCase())) {
-            queryList.push(question);
+        for (const x of allQuestions) {
+          if (x.question_body.toUpperCase().includes(query.toUpperCase())) {
+            queryList.push(x);
           }
         }
         questionList = queryList.slice(0, 4);

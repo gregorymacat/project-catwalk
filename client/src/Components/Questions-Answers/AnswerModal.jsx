@@ -5,9 +5,9 @@ class AnswerModal extends React.Component {
     const { submit, children } = this.props;
 
     return (
-      <div className="modal">
-        <div className="modal-content">
-          <button className="answerModal close" onClick={submit}>&times;</button>
+      <div className="answerMod">
+        <div className="answerPopout">
+          <button className="answerModalClose" onClick={submit}>&times;</button>
           {children}
         </div>
       </div>

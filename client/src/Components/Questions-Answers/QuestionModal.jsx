@@ -5,15 +5,13 @@ class QuestionModal extends React.Component {
     const { submit, children } = this.props;
 
     return (
-      <React.Fragment>
 
-      <div className="modal">
-        <div className="modal-content">
-          <button className="questionModal close" onClick={submit}>&times;</button>
+      <div className="questionMod">
+        <div className="questionPopout">
+          <button className="questionModalClose" onClick={submit}>&times;</button>
           {children}
         </div>
       </div>
-      </React.Fragment>
 
     );
   }

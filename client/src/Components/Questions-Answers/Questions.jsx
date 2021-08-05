@@ -25,8 +25,6 @@ class Questions extends React.Component {
   render() {
     const { questions, allQuestions, product, onClick } = this.props;
     const { addQuestions } = this.state;
-
-    //console.log(questions);
     if (!questions) {
       questions = questionList.results;
     }

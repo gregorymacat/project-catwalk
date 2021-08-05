@@ -18,7 +18,7 @@ constructor(props) {
   };
   this.onClick = this.onClick.bind(this);
   this.callHelpful = this.callHelpful.bind(this);
-  this.handleAddAnswer = this.handleAddAnswer(this);
+  this.handleAddAnswer = this.handleAddAnswer.bind(this);
 }
 
 componentDidMount() {
@@ -41,7 +41,7 @@ componentDidMount() {
 
 handleAddAnswer() {
   let { addAnswers } = this.state;
-  //console.log(this.state.addAnswers);
+  console.log('bread');
 
   addAnswers = !addAnswers;
   this.setState({ addAnswers });
@@ -88,7 +88,7 @@ render() {
         <button className="qa-button-small" onClick={this.callHelpful}>Yes</button>
       </span>
       <button className="qa-button-small" onClick={this.handleAddAnswer}>Add Answer</button>
-      {(
+      {addAnswers && (
             <AnswerModal submit={this.handleAddAnswer}>
               <AnswerForm
                 productName={product}

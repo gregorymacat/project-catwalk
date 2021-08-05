@@ -56,3 +56,42 @@
   right: 30px;
   width: 18px;
 }
+
+.questionModalClose, .answerModalClose {
+  color: rgb(234, 231, 231);
+  font-size: 12px;
+  font-weight: bold;
+  background-color: rgb(212, 89, 89);
+  border-radius: 1px;
+}
+
+.answerMod {
+  display: flex;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(17, 95, 34, 0.514);
+}
+.questionMod {
+  display: flex;
+  z-index: 1;
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(17, 95, 34, 0.514);
+}
+
+.questionPopout, .answerPopout {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 16px;
+  border-radius: 6px;
+  width: 80%;
+  max-width: 800px;
+  overflow-y: auto;
+}
