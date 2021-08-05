@@ -45,10 +45,6 @@ class AnswerForm extends React.Component {
           answerBody: '',
           nickname: '',
           email: '',
-          selectedImage: '',
-          images: [],
-          warning: false,
-          success: true,
         });
       })
       .catch((err) => {

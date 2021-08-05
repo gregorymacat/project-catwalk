@@ -35,3 +35,24 @@
   cursor: pointer;
   width: 100px;
 }
+
+.sbar {
+  position: relative;
+  display: flex;
+  padding: 5px 0px 10px 0px;
+  margin-bottom: 10px;
+}
+
+.search {
+  border: 2px solid grey;
+  height: 30px;
+  width: 80%;
+  padding: 3px 20px 2px 8px;
+  outline: 0;
+  background-color: #d7d4d4;
+}
+.simage {
+  position: relative;
+  right: 30px;
+  width: 18px;
+}

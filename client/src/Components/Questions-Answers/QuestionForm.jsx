@@ -31,16 +31,20 @@ class QuestionForm extends React.Component {
     e.preventDefault();
     const {
       answerBody,
+      name,
+      email
     } = this.state;
     const { questionId } = this.props;
-    axios.post(`/qa/questions/${questionId}/answers`, {
-      body: this.state.answer,
-      name: this.state.name,
-      email: this.state.email,
+    axios.post(`/qa/questions/${questionId}`, {
+      body: answerBody,
+      name: name,
+      email: email,
     })
       .then((response) => {
         this.setState({
-          questionBody: '',
+          answerBody: '',
+          nickname: '',
+          email: '',
         });
       })
       .catch((err) => {
@@ -50,14 +54,14 @@ class QuestionForm extends React.Component {
 
   render() {
     const {
-      questionBody
+      answerBody, name, email
     } = this.state;
     const { productName } = this.props;
     return (
       <div className="form question">
         <form className="form-submit" onSubmit={this.handleSubmit}>
           <label htmlFor="form-body" id="form-body-label">Your Question: </label>
-          <textarea id="form-body" name="body" value={questionBody} onChange={this.handleQuestionChange} maxLength="1000" />
+          <textarea id="form-body" name="body" value={answerBody} onChange={this.handleQuestionChange} maxLength="1000" />
           <br></br>
           <label htmlFor="name" id="name-label">What is your name?: </label>
           <input type="text" id="name" name="name" value={name} onChange={this.handleNameChange} placeholder="Example: jackson11!" maxLength="50" />
@@ -65,7 +69,7 @@ class QuestionForm extends React.Component {
           <span id="nickname-disclaimer">For privacy reasons, please do not use your full name or email address</span>
           <br></br>
           <label htmlFor="name" id="name-label">What is your email?: </label>
-          <input type="text" id="email" name="name" value={name} onChange={this.handleEmailChange} placeholder="Why did you like the product or not?" maxLength="60" />
+          <input type="text" id="email" name="name" value={email} onChange={this.handleEmailChange} placeholder="Why did you like the product or not?" maxLength="60" />
           <br></br>
           <label htmlFor="auth" id="auth">For authentication reasons, you will not be emailed</label>
           <input type="submit" value="Submit" id="a-form-submit" />

@@ -123,9 +123,9 @@ class QuestionList extends React.Component {
       <div id="main">
         <div id="qaheading"><h4>Questions and Answers</h4></div>
         <div id="qa"></div>
-        <div className="searchbarwrapper">
+        <div className="sbar">
         <input className="search" type="text" placeholder="Search for Questions" value={query} onChange={this.handleChange} />
-        <img className="search_image" src="https://img.icons8.com/material-outlined/24/000000/search--v1.png"/>
+        <img className="simage" src="https://img.icons8.com/material-outlined/24/000000/search--v1.png"/>
         </div>
         <Questions
           questions={questionList}

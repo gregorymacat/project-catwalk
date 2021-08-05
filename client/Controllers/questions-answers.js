@@ -38,7 +38,7 @@ module.exports = {
   },
 
   postQuestion: function(req, callback) {
-    axios.post('/qa/questions', req)
+    axios.post('/qa/questions/', req)
     .then((data) => {
       callback(null, data);
     })
