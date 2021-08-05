@@ -258,7 +258,7 @@ export default class Overview extends React.Component {
                   <a href="#RatingsReviews">Read All Reviews</a>
               </div>
               <p>{this.state.product.category}</p>
-              <h1>{this.state.selectedStyle.name}</h1>
+              <h1>{this.state.product.name}</h1>
               {this.state.selectedStyle.sale_price && <p style={{color: 'red'}}>${this.state.selectedStyle.sale_price}</p>}
               {!this.state.selectedStyle.sale_price && <p>${this.state.selectedStyle.original_price || this.state.product.default_price}</p>}
               <div style={styles.productStyle}>
@@ -303,7 +303,7 @@ export default class Overview extends React.Component {
                       Add To Bag
                     </button>
                     }
-                    <div className="sharethis-inline-share-buttons"></div>
+                    <div style={{textAlign: "left", marginTop: "10px"}}className="sharethis-inline-share-buttons"></div>
                   {/* <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Share</a></div>
                   <a className="twitter-share-button"
                   href="https://twitter.com/intent/tweet?text=Hello%20world">

@@ -118,6 +118,7 @@ class RelatedOutfit extends React.Component {
           ratings={this.state.ratings}/>
         </div>
         <div className='outfit'>
+          <head>Outfit</head>
           <OutfitCarousel currentProduct={this.state.currentProduct} productId={this.props.product}
           appClick={this.props.appClick}/>
         </div>

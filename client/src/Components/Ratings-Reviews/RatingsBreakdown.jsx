@@ -12,6 +12,7 @@ var RatingsBreakdown = (props) => {
       numberOfReviews += parseFloat(props.metaData.ratings[key]);
     }
     var rating = (totalStars / numberOfReviews).toFixed(1);
+    console.log(totalStars / numberOfReviews);
     var recommend_true = parseInt(props.metaData.recommended.true);
     var recommend_false = parseInt(props.metaData.recommended.false);
     var recommended = ((recommend_true/(recommend_true + recommend_false)).toFixed(2) * 100);
