@@ -24,6 +24,7 @@ export default class Overview extends React.Component {
       ratings: 3.6
     }
     this.addToCart = this.addToCart.bind(this)
+    this.magnify = this.magnify.bind(this)
     this.changeThumbnail = this.changeThumbnail.bind(this)
     this.extendedView = this.extendedView.bind(this)
     this.changeQuantity = this.changeQuantity.bind(this)
@@ -145,6 +146,65 @@ export default class Overview extends React.Component {
       productInfo.style.display = "none"
     }
   }
+  magnify(imgID, zoom) {
+    var img, glass, w, h, bw;
+    img = document.getElementById(imgID);
+
+    /* Create magnifier glass: */
+    glass = document.createElement("DIV");
+    glass.setAttribute("class", "img-magnifier-glass");
+
+    /* Insert magnifier glass: */
+    img.parentElement.insertBefore(glass, img);
+
+    /* Set background properties for the magnifier glass: */
+    glass.style.backgroundImage = "url('" + img.src + "')";
+    glass.style.backgroundRepeat = "no-repeat";
+    glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
+    bw = 3;
+    w = glass.offsetWidth / 2;
+    h = glass.offsetHeight / 2;
+
+    /* Execute a function when someone moves the magnifier glass over the image: */
+    glass.addEventListener("mousemove", moveMagnifier);
+    img.addEventListener("mousemove", moveMagnifier);
+
+    /*and also for touch screens:*/
+    glass.addEventListener("touchmove", moveMagnifier);
+    img.addEventListener("touchmove", moveMagnifier);
+    moveMagnifier = (e) => {
+      var pos, x, y;
+      /* Prevent any other actions that may occur when moving over the image */
+      e.preventDefault();
+      /* Get the cursor's x and y positions: */
+      pos = getCursorPos(e);
+      x = pos.x;
+      y = pos.y;
+      /* Prevent the magnifier glass from being positioned outside the image: */
+      if (x > img.width - (w / zoom)) {x = img.width - (w / zoom);}
+      if (x < w / zoom) {x = w / zoom;}
+      if (y > img.height - (h / zoom)) {y = img.height - (h / zoom);}
+      if (y < h / zoom) {y = h / zoom;}
+      /* Set the position of the magnifier glass: */
+      glass.style.left = (x - w) + "px";
+      glass.style.top = (y - h) + "px";
+      /* Display what the magnifier glass "sees": */
+      glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
+    }
+    getCursorPos = (e) => {
+      var a, x = 0, y = 0;
+      e = e || window.event;
+      /* Get the x and y positions of the image: */
+      a = img.getBoundingClientRect();
+      /* Calculate the cursor's x and y coordinates, relative to the image: */
+      x = e.pageX - a.left;
+      y = e.pageY - a.top;
+      /* Consider any page scrolling: */
+      x = x - window.pageXOffset;
+      y = y - window.pageYOffset;
+      return {x : x, y : y};
+  }
+}
   render() {
     var inventory = this.state.selectedStyle.skus ? Object.values(this.state.selectedStyle.skus) : []
     const sizeQuantity = Array.from(Array(this.getSizeQuantity(inventory)).keys()).slice(0, 16)
@@ -198,8 +258,9 @@ export default class Overview extends React.Component {
                   <a href="#RatingsReviews">Read All Reviews</a>
               </div>
               <p>{this.state.product.category}</p>
-              <h1>{this.state.product.name}</h1>
-              <p>${this.state.selectedStyle.original_price || this.state.product.default_price}</p>
+              <h1>{this.state.selectedStyle.name}</h1>
+              {this.state.selectedStyle.sale_price && <p style={{color: 'red'}}>${this.state.selectedStyle.sale_price}</p>}
+              {!this.state.selectedStyle.sale_price && <p>${this.state.selectedStyle.original_price || this.state.product.default_price}</p>}
               <div style={styles.productStyle}>
                 <div>
                   <p>Style &gt; {this.state.selectedStyle.name || "Selected Style"}</p>
