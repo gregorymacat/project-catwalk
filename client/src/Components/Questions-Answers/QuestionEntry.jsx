@@ -99,6 +99,7 @@ render() {
           )}
       <span className="qa_label" id="a_label"><br></br></span>
       <div className="answers">
+        <span>A: </span>
         <div className="allAnswers">
           {isCollapsed ? fullAnswerList : answerList}
         </div>
