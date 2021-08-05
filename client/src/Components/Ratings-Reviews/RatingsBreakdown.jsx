@@ -12,6 +12,9 @@ var RatingsBreakdown = (props) => {
       numberOfReviews += parseFloat(props.metaData.ratings[key]);
     }
     var rating = (totalStars / numberOfReviews).toFixed(1);
+    var recommend_true = parseInt(props.metaData.recommended.true);
+    var recommend_false = parseInt(props.metaData.recommended.false);
+    var recommended = ((recommend_true/(recommend_true + recommend_false)).toFixed(2) * 100);
 
     return(
       <div className="grid-item rating-breakdown">
@@ -25,19 +28,37 @@ var RatingsBreakdown = (props) => {
         </div>
         <div className="rating-breakdown-body">
           <div className="progress-bar-contents">
-            5 Stars: <RatingsBreakdownBar percentage={(parseFloat(props.metaData.ratings["5"]).toFixed(2)/numberOfReviews) * 100}/> ({props.metaData.ratings["5"]})
+            {recommended}% of reviewers reccomend this product
           </div>
           <div className="progress-bar-contents">
-            4 Stars: <RatingsBreakdownBar percentage={(parseFloat(props.metaData.ratings["4"]).toFixed(2)/numberOfReviews) * 100}/> ({props.metaData.ratings["4"]})
+            <div className="progress-bar-name">
+              5 Stars:
+            </div>
+             <RatingsBreakdownBar percentage={(parseFloat(props.metaData.ratings["5"]).toFixed(2)/numberOfReviews) * 100}/> ({props.metaData.ratings["5"]})
           </div>
           <div className="progress-bar-contents">
-            3 Stars: <RatingsBreakdownBar percentage={(parseFloat(props.metaData.ratings["3"]).toFixed(2)/numberOfReviews) * 100}/> ({props.metaData.ratings["3"]})
+            <div className="progress-bar-name">
+              4 Stars:
+            </div>
+            <RatingsBreakdownBar percentage={(parseFloat(props.metaData.ratings["4"]).toFixed(2)/numberOfReviews) * 100}/> ({props.metaData.ratings["4"]})
           </div>
           <div className="progress-bar-contents">
-            2 Stars: <RatingsBreakdownBar percentage={(parseFloat(props.metaData.ratings["2"]).toFixed(2)/numberOfReviews) * 100}/> ({props.metaData.ratings["2"]})
+          <div className="progress-bar-name">
+              3 Stars:
+            </div>
+            <RatingsBreakdownBar percentage={(parseFloat(props.metaData.ratings["3"]).toFixed(2)/numberOfReviews) * 100}/> ({props.metaData.ratings["3"]})
           </div>
           <div className="progress-bar-contents">
-            1 Stars: <RatingsBreakdownBar percentage={(parseFloat(props.metaData.ratings["1"]).toFixed(2)/numberOfReviews) * 100}/> ({props.metaData.ratings["1"]})
+            <div className="progress-bar-name">
+              2 Stars:
+            </div>
+            <RatingsBreakdownBar percentage={(parseFloat(props.metaData.ratings["2"]).toFixed(2)/numberOfReviews) * 100}/> ({props.metaData.ratings["2"]})
+          </div>
+          <div className="progress-bar-contents">
+            <div className="progress-bar-name">
+              1 Stars:
+            </div>
+            <RatingsBreakdownBar percentage={(parseFloat(props.metaData.ratings["1"]).toFixed(2)/numberOfReviews) * 100}/> ({props.metaData.ratings["1"]})
           </div>
         </div>
         <div className="rating-breakdown-footer">
