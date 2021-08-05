@@ -12,7 +12,6 @@ module.exports = {
   },
 
   addToDo: function (req, res) {
-    console.log('addToDo', req.body)
     add(req.url, req.body, (err) => {
       if (err) {
         console.log('!!!ERROR: express router \"/routers.js\" (post)');
