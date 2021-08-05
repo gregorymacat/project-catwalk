@@ -16,8 +16,6 @@ class QuestionList extends React.Component {
       query: [],
       queryList: [],
       product_id: this.props.product,
-      repeated: false,
-      prevID: '',
     };
     this.onClick = this.onClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -37,10 +35,8 @@ class QuestionList extends React.Component {
           questionList: quests1.slice(0,2),
           queryList: quests1,
           allQuestions: quests1,
-          prevID: this.state.product_id
         }) }
       });
-      this.state.repeated = true;
     //}
   }
 
@@ -126,7 +122,7 @@ class QuestionList extends React.Component {
     const { questionList, query, allQuestions, queryList, products } = this.state;
 
     return (
-      <div id="main" onClick={(e) => {this.props.handleInteraction(e, 'qa')}}>
+      <div id="main">
         <div id="qaheading"><h4>Questions and Answers</h4></div>
         <div id="qa"></div>
         <div className="searchbarwrapper">

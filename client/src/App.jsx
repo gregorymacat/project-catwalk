@@ -16,27 +16,27 @@ class App extends React.Component {
       product: 17071,
     }
     this.clickHandler = this.clickHandler.bind(this);
-    this.handleInteraction = this.handleInteraction.bind(this);
+    // this.handleInteraction = this.handleInteraction.bind(this);
   }
 
-  handleInteraction(event, widgetString) {
-    var widgetNames = {
-      'o': 'Overview',
-      'rr': 'Ratings and Reviews',
-      'qa': 'Questions and Answers',
-      'ro': 'Related Products and Outfits'
-    }
-    var elementString = event.target.outerHTML.toString();
-    var date = new Date();
-    postInteractions({
-      element: elementString,
-      widget: widgetNames[widgetString],
-      time: date
-    }, (err, response) => {
-      if (err) {return console.log('!!!ERROR logging user interaction');}
-      // console.log('Response ', response.config.data);
-    })
-  }
+  // handleInteraction(event, widgetString) {
+  //   var widgetNames = {
+  //     'o': 'Overview',
+  //     'rr': 'Ratings and Reviews',
+  //     'qa': 'Questions and Answers',
+  //     'ro': 'Related Products and Outfits'
+  //   }
+  //   var elementString = event.target.outerHTML.toString();
+  //   var date = new Date();
+  //   postInteractions({
+  //     element: elementString,
+  //     widget: widgetNames[widgetString],
+  //     time: date
+  //   }, (err, response) => {
+  //     if (err) {return console.log('!!!ERROR logging user interaction');}
+  //     // console.log('Response ', response.config.data);
+  //   })
+  // }
 
   clickHandler(newProductID) {
     this.setState({
@@ -47,18 +47,11 @@ class App extends React.Component {
   render() {
     return (
       <div>
-<<<<<<< HEAD
-        <RelatedOutfit product={this.state.product} appClick={this.clickHandler}/>
-        <QuestionsList product={this.state.product}/>
-        {/* <StarsDisplay starsData={this.state.starsRating}/> */}
-        {/* <StarsForm/> */}
-=======
-        <Overview handleInteraction={this.handleInteraction} product={this.state.product} />
-        <RelatedOutfit handleInteraction={this.handleInteraction} product={this.state.product}
+        <Overview product={this.state.product} />
+        <RelatedOutfit product={this.state.product}
           appClick={this.clickHandler}/>
-        <QuestionsList handleInteraction={this.handleInteraction} product={this.state.product}/>
-        <RatingsReviews handleInteraction={this.handleInteraction} product={this.state.product}/>
->>>>>>> 27e844a8e9b4a6705ed9098f74ae608540782d96
+        <QuestionsList product={this.state.product}/>
+        <RatingsReviews product={this.state.product}/>
       </div>
     );
   }

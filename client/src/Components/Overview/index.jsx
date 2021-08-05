@@ -152,7 +152,7 @@ export default class Overview extends React.Component {
     const sizeQuantity = Array.from(Array(this.getSizeQuantity(inventory)).keys()).slice(0, 16)
       return (
         // overview is the container component, flex direction is set to column, so the page reads top to bottom
-        <div style={styles.overview} onClick={(e) => {this.props.handleInteraction(e, 'o')}}>
+        <div style={styles.overview}>
           {/*
             from top to bottom:
             first row "section" includes carousel and product info, style selection
