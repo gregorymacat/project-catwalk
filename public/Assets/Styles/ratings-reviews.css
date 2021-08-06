@@ -1,0 +1,228 @@
+/* --------- Rating-Reiviews ----------- */
+.ratings-reviews-title {
+  padding: 0 0 2% 12.5%;
+}
+.ratings-reviews-dispay {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 40px
+}
+
+.ratings-hr {
+  width: 50%;
+  float: left;
+  color: black;
+}
+/* --------- Rating-Reiviews Breakdown ----------- */
+.rating-breakdown {
+  grid-column: 1 / 2;
+  margin-left: 40%;
+}
+
+.review-tile-item {
+  margin-bottom: 1.5%;
+}
+
+.review-tile-reviewBodyText {
+  width: 40%;
+}
+
+.rating-breakdown-header {
+  display: flex;
+
+}
+
+.rating-breakdown-star-display {
+  position: relative;
+  top: 23px;
+  left: 5px;
+}
+
+.rating-breakdown-footer {
+  margin-top: 10%;
+}
+
+.ratings-breakdown-comfort-rating {
+  margin-top: 10%;
+}
+
+/* --------- Rating-Reiviews Tiles ----------- */
+.reviews {
+  grid-column: 2 / 4;
+}
+
+.review-tile-header {
+  display: flex;
+}
+
+.review-tile-header .stars-display {
+  margin-right: 30%;
+}
+
+.review-tile-reviewSummary {
+  font-weight: bold;
+}
+
+
+.review-tile-recommended {
+  content: '\2714 I recommend this product';
+}
+
+.review-tile-reviewBodyButton {
+  color: grey;
+}
+
+.review-tile-Img  {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 100px;
+}
+
+.review-tile-helpfulness-item {
+  display: flex;
+  margin-right: 1%;
+}
+
+.review-tile-helpfulness-item-true {
+  color: black;
+}
+
+.review-tile-helpfulness-item-false {
+  color: grey;
+}
+
+.progress-bar-name:hover {
+  background-color: lightgrey;
+}
+
+/* --------- Rating-Reiviews Buttons ----------- */
+.rating-reviews-buttons {
+  grid-column: 2 / 4;
+  display: flex;
+  margin: 2%;
+
+
+}
+.button-RR {
+  background-color: white; /* Green */
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 200px;
+}
+.rating-reviews-button-form {
+  margin-right: 2%;
+  background-color: darkseagreen;
+  color: white;
+  border: 2px solid black;
+}
+.rating-reviews-button-form:hover {
+  background-color: rgb(26, 141, 13);
+}
+
+.rating-reviews-button-show-more{
+  margin-right: 2%;
+  background-color: white;
+  color: black;
+  border: 2px solid black; /* Green */
+}
+
+
+
+/* --------- Rating-Reiviews Sort ----------- */
+.ratings-sort {
+  margin-bottom: 3%;
+  margin-top: 2%;
+  font-size: 20px;
+}
+
+.progress-bar {
+  margin-top: 2%;
+  margin-left: 1%;
+  margin-right: 1%;
+  position: relative;
+  height: 10px;
+  width: 150px;
+  background-color: lightgrey;
+}
+.filler {
+  background-color: darkseagreen;
+  height: 100%;
+  transition: width .2s ease-in;
+}
+
+.progress-bar-contents {
+  margin-bottom: 5%;
+  display: flex;
+}
+
+.char-progress-bar {
+  margin-top: 2%;
+  margin-left: 1%;
+  margin-right: 1%;
+  position: relative;
+  height: 10px;
+  width: 150px;
+  background-color: lightgrey;
+}
+.char-filler {
+  height: 100%;
+}
+.char-symbol {
+  padding-left: 90%;
+  font-size: 10px;
+}
+
+.ratings-breakdown-chars-item {
+  margin-bottom: 10%;
+}
+
+.char-range {
+  display: flex;
+  font-size: 10px;
+}
+.char-range-small {
+  padding-right: 102px;
+}
+.char-range-narrow {
+  padding-right: 80px;
+}
+.char-range-soft {
+  padding-right: 100px;
+}
+.char-range-poor {
+  padding-right: 98px;
+}
+.char-range-length {
+  padding-right: 80px;
+}
+.char-range-fit {
+  padding-right: 90px;
+}
+
+.modal-review-body {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+}
+.modal-review-content {
+  display: block;
+  margin: 0 auto;
+  border: 1px solid;
+  border-radius: 5px;
+  width: 40%;
+  height: 80%;
+  background-color: #fefefe;
+  text-align: center;
+}
