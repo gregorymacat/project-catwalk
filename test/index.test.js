@@ -1,5 +1,5 @@
 const axios = require('axios');
-const server = 'http://localhost:8080/'
+const server = 'http://localhost:3000/'
 describe('Node Server is open and listening', () => {
   test('Expect response with Success 200 on \'/testing\' GET request', () => {
     return axios.get(server + 'testing')
