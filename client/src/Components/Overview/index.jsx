@@ -152,7 +152,7 @@ export default class Overview extends React.Component {
     }
   }
   changeZoom(event) {
-    console.log("EVENT::::", event)
+    // console.log("EVENT::::", event)
     if (this.state.extendView){
       this.setState({
         isZoomed: true
