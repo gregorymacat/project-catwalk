@@ -1,3 +1,4 @@
+@import 'reset.css';
 @import 'carousel.css';
 @import 'modal.css';
 @import 'related-products.css';
@@ -8,6 +9,15 @@
 body {
   background-color: white;
   font-family: "Montserrat";
+  margin: 0;
+}
+nav.navbar {
+  background-color: #d3d3d3;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+nav.navbar h1 {
+  padding: 0.5%;
 }
 
 :root {

@@ -91,6 +91,7 @@ class RatingsReviews extends React.Component {
   render() {
     return (
       <div id="RatingsReviews" className="ratings-reviews" onClick={(e) => {this.props.handleInteraction(e, 'rr')}}>
+        <h1 className="ratings-reviews-title">Reviews</h1>
         <div className="grid-container ratings-reviews-dispay">
           <RatingsBreakdown metaData={this.state.reviewMetaData} />
           <ReviewList
