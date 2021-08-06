@@ -25,7 +25,7 @@ var ProductCards = function(props) {
                 </div>
                 <p>{card[0].category}</p>
                 <b>{card[0].name}</b>
-                <p>{card[0].default_price}</p>
+                <p>${card[0].default_price}</p>
                 <StarsDisplay starsData={parseFloat(props.ratings[card[1]])}/>
               </div>
             </div>

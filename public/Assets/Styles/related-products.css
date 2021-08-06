@@ -7,6 +7,10 @@
   width: 85%;
   height: 10%;
 }
+.related.title {
+  display: inline;
+  margin: 0 0 0 5%;
+}
 /*
 ************************
 ** MODAL TABLE STYLES **
@@ -59,7 +63,7 @@
   width: 15%;
   min-width: 15vw;
   margin: 0.75% 1%;
-  background-color: silver;
+  background-color: #d3d3d3;
 }
 /*
 *****************

@@ -281,9 +281,15 @@ export default class Overview extends React.Component {
                     <button style={styles.addToCartButton} onClick={this.addToCart}>
                       Add To Bag
                     </button>
-                    }
-                    <div></div>
+                   }
                     <div style={{textAlign: "left", marginTop: "10px"}}className="sharethis-inline-share-buttons"></div>
+                  {/* <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Share</a></div>
+                  <a className="twitter-share-button"
+                  href="https://twitter.com/intent/tweet?text=Hello%20world">
+                  Tweet</a>
+                  <a href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark">
+                  </a>
+                </div> */}
                 </div>
               </div>
             </div>

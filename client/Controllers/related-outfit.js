@@ -55,7 +55,7 @@ module.exports = {
     }
 
     var requests = idArray.map((id) => {
-      return axios.get(`http://localhost:3000/reviews/meta/?product_id=` + id)
+      return axios.get(`/reviews/meta/?product_id=` + id)
     });
     Promise.all(requests)
       .then((responses) => {
