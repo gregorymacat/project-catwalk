@@ -22,7 +22,10 @@ export default class Overview extends React.Component {
       position: 0,
       extendView: false,
       ratings: 3.6,
-      isZoomed: false
+      isZoomed: false,
+      backgroundImage: '',
+      backgroundSize: '',
+      background: '',
     }
     this.addToCart = this.addToCart.bind(this)
     this.changeZoom = this.changeZoom.bind(this)
@@ -148,59 +151,37 @@ export default class Overview extends React.Component {
       productInfo.style.display = "none"
     }
   }
-  isZoomed() {
-    this.setState({
-      isZoomed: true
-    })
-  }
   changeZoom(event) {
-    if (this.isZoomed()) {
-      const el = event.target
-      el.style.backgroundPositionX = -event.offsetX + "px";
-      el.style.backgroundPositionY = -event.offsetY + "px";
+    console.log("EVENT::::", event)
+    if (this.state.extendView){
+      this.setState({
+        isZoomed: true
+      }, ()=> {
+        if (this.state.isZoomed) {
+          const el = event.target
+          //check also if local name === div
+          if (el.localName === "img") {
+            el.style.backgroundPositionX = event.offsetX + "px";
+            el.style.backgroundPositionY = event.offsetY + "px";
+            el.style.transform = `translate(${event.offsetX}px, ${event.offsetY}px) scale(2.5, 2.5)`;
+          }
+          // console.log('nice')
+        }
+      })
     } else {
       const el = event.target
-      el.style.backgroundPositionX = "center";
-      el.style.backgroundPositionY = "center";
+      //check also if local name === div
+      if (el.localName === "img") {
+        el.style.backgroundPositionX = "center";
+        el.style.backgroundPositionY = "center";
+        el.style.transform = "translate(0px,0px) scale(1, 1)";
+      }
+        // el.style.backgroundImage = 'url(big-image.jpg)';
+        // el.style.backgroundSize = '500px';
+        // el.style.background = 'center';
+
+      }
     }
-}
-  // carouselCss() {
-  //   if (this.isZoomed()) {
-  //     `width: 300px;
-  //     height: 300px;
-  //     border: 1px solid white;
-  //     background-image: url(${this.state.selectedStyle.photos[this.state.position].thumbnail_url});
-  //     background-size: 500px;
-  //     background: center;
-  //     cursor: url(https://img.icons8.com/material-outlined/24/000000/plus--v1.png), zoom-in;`
-  //   } else {
-  //     `width: 150px;
-  //     height: 150px;
-  //     border: 1px solid white;
-  //     background-image: url(${this.state.selectedStyle.photos[this.state.position].thumbnail_url});
-  //     background-size: 250px;
-  //     background: center;
-  //     cursor: url(https://img.icons8.com/material-outlined/24/000000/plus--v1.png), zoom-in;`
-  //   }
-  // }
-  // changeZoom(event) {
-  //   event.preventDefault()
-  //   // console.log(this.state.extendView)
-  //   this.setState({
-  //     zoomed: !this.state.zoomed
-  //   })
-  //   if (this.state.zoomed && this.state.extendView) {
-  //     var Zoom = document.getElementById("Zoom")
-  //     console.log('i cannot zoom')
-  //     Zoom.style.height = "250px"
-  //     Zoom.style.width = "95%"
-  //   } else {
-  //     var Zoom = document.getElementById("Zoom")
-  //     console.log('im trying to zoom')
-  //     Zoom.style.height = "500px"
-  //     Zoom.style.width = "190%"
-  //   }
-  // }
 
   render() {
     var inventory = this.state.selectedStyle.skus ? Object.values(this.state.selectedStyle.skus) : []
@@ -237,13 +218,15 @@ export default class Overview extends React.Component {
                     </div>
                     {/* selected photo */}
                     <div style={styles.carousel} id="Zoom">
-                      <Carousel
+
+                         <div style={styles.zoomedCarousel} onMouseMove={() => this.changeZoom(event)}
+                         >
+                           <Carousel
                         styles={styles.carouselOverrides}
                         items={this.state.selectedStyle.photos}
                         position={this.state.position}
                          />
-                         <div style={styles.zoomedCarousel} onMouseMove={() => this.changeZoom(event)}>
-                     </div>
+                        </div>
                       <img style={styles.toggle} src={'/Assets/toggle.png'} onClick={() => this.extendedView(event)}  ></img>
                     </div>
                     {/* <img></img> */}
@@ -304,13 +287,6 @@ export default class Overview extends React.Component {
                     }
                     <div></div>
                     <div style={{textAlign: "left", marginTop: "10px"}}className="sharethis-inline-share-buttons"></div>
-                  {/* <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Share</a></div>
-                  <a className="twitter-share-button"
-                  href="https://twitter.com/intent/tweet?text=Hello%20world">
-                  Tweet</a>
-                  <a href="https://www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark">
-                  </a>
-                </div> */}
                 </div>
               </div>
             </div>

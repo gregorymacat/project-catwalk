@@ -2,17 +2,17 @@ export default {
   overview: {
     display: "flex",
     backgroundColor: "white",
-    height: "80vh",
+    height: "100vh",
     flexDirection: "column",
     // fontFamily: "Montserrat sans-serif"
   },
   toggle: {
-    position: "relative",
+    position: "absolute",
     width: "auto",
     height: "40px",
     overflow: "hidden",
     WebkitTapHighlightColor: "transparent",
-    cursor: "default"
+    cursor: 'url(https://img.icons8.com/material-outlined/24/000000/plus--v1.png), zoom-in'
   },
   addToCartButton: {
     width: '250px',
