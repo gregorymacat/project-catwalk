@@ -16,8 +16,15 @@
 ** MODAL TABLE STYLES **
 ************************
 */
-.modal-body {
-  padding: 10% 0;
+.related .modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4% 0;
+}
+.modal-content.table {
+  width: 50%;
+  height: 85%;
 }
 .table {
   overflow-y: auto;
