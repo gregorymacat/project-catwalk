@@ -22,10 +22,7 @@ export default class Overview extends React.Component {
       position: 0,
       extendView: false,
       ratings: 3.6,
-      isZoomed: false,
-      backgroundImage: '',
-      backgroundSize: '',
-      background: '',
+      isZoomed: false
     }
     this.addToCart = this.addToCart.bind(this)
     this.changeZoom = this.changeZoom.bind(this)
