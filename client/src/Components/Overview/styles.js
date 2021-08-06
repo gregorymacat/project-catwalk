@@ -2,9 +2,8 @@ export default {
   overview: {
     // display: "flex",
     backgroundColor: "white",
-    // height: "100vh",
-    // flexDirection: "column",
-    // fontFamily: "Montserrat sans-serif"
+    flexDirection: "column",
+    fontFamily: "Montserrat"
   },
   toggle: {
     position: "absolute",
@@ -21,7 +20,8 @@ export default {
     border: '1px solid black',
     display: 'block',
     fontSize: '20px',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontFamily: "Montserrat"
   },
   errorMsg: {
     color: "red",
@@ -41,7 +41,8 @@ export default {
     fontSize: '20px',
     fontWeight: 'bold',
     textAlign: 'center',
-    lineHeight: '50px'
+    lineHeight: '50px',
+    fontFamily: "Montserrat"
   },
   row: {
     display: "flex",
@@ -116,7 +117,9 @@ export default {
     backgroundColor: "transparent",
     height: "30px",
     width: "auto",
-    margin: "10px"
+    margin: "10px",
+    fontFamily: "Montserrat",
+    fontWeight: 'bold',
   },
   productDetails: {
     margin: "20px",

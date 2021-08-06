@@ -14,7 +14,7 @@ var ProductCard = function(props) {
   }
 
   var getImage = function() {
-    if (props.styles === undefined || props.productId === undefined) {
+    if (props.styles === undefined || props.product.id === undefined) {
       return 'https://1080motion.com/wp-content/uploads/2018/06/NoImageFound.jpg.png';
     }
     for (var index = 0; index < props.styles.length; index++) {

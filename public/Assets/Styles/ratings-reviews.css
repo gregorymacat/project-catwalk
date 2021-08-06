@@ -1,4 +1,7 @@
 /* --------- Rating-Reiviews ----------- */
+.ratings-reviews-title {
+  padding: 0 0 2% 12.5%;
+}
 .ratings-reviews-dispay {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -116,10 +119,9 @@
 }
 .rating-reviews-button-form {
   margin-right: 2%;
-  /* background-color: green; */
   background-color: darkseagreen;
   color: white;
-  border: 2px solid black; /* Green */
+  border: 2px solid black;
 }
 .rating-reviews-button-form:hover {
   background-color: rgb(26, 141, 13);
@@ -151,7 +153,7 @@
   background-color: lightgrey;
 }
 .filler {
-  background-color: green;
+  background-color: darkseagreen;
   height: 100%;
   transition: width .2s ease-in;
 }
