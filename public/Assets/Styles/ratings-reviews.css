@@ -116,7 +116,7 @@
 }
 .rating-reviews-button-form {
   margin-right: 2%;
-  background-color: green;
+  background-color: darkseagreen;
   color: white;
   border: 2px solid black; /* Green */
 }
@@ -147,7 +147,7 @@
   background-color: lightgrey;
 }
 .filler {
-  background-color: green;
+  background-color: darkseagreen;
   height: 100%;
   transition: width .2s ease-in;
 }
