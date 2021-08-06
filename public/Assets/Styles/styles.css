@@ -1,3 +1,4 @@
+@import 'reset.css';
 @import 'carousel.css';
 @import 'modal.css';
 @import 'related-products.css';
@@ -7,6 +8,15 @@
 
 body {
   background-color: white;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+nav.navbar {
+  background-color: #d3d3d3;
+  text-align: center;
+}
+nav.navbar h1 {
+  padding: 0.5%;
 }
 
 :root {

@@ -104,7 +104,8 @@
 }
 
 .green-button {
-  background-color: rgb(26, 141, 13);
+  /* background-color: rgb(26, 141, 13); */
+  background-color: darkseagreen;
   border: 0.5px solid rgb(52, 51, 51);
   color: rgb(255, 255, 255);
   padding: 1px 1.5px;
@@ -118,11 +119,13 @@
 }
 
 .green-button:hover {
-  background-color: rgb(43, 215, 23);
+  /* background-color: rgb(43, 215, 23); */
+  background-color: rgb(26, 141, 13);
 }
 
 .big-green-button {
-  background-color: rgb(26, 141, 13);
+  /* background-color: rgb(26, 141, 13); */
+  background-color: darkseagreen;
   border: 2px solid rgb(52, 51, 51);
   color: rgb(255, 255, 255);
   padding: 15px 32px;
@@ -142,7 +145,8 @@
 }
 
 .answerModeSubmit, .questModeSubmit {
-  background-color: rgb(26, 141, 13);
+  /* background-color: rgb(26, 141, 13); */
+  background-color: darkseagreen;
   border: 2px solid rgb(52, 51, 51);
   color: rgb(255, 255, 255);
   padding: 15px 32px;
@@ -151,11 +155,13 @@
 }
 
 .answerModeSubmit:hover, .questModeSubmit:hover {
-  background-color: rgb(43, 215, 23);
+  /* background-color: rgb(43, 215, 23); */
+  background-color: rgb(26, 141, 13);
 }
 
 .big-green-button:hover {
-  background-color: rgb(43, 215, 23);
+  /* background-color: rgb(43, 215, 23); */
+  background-color: rgb(26, 141, 13);
 }
 
 .sbar {
@@ -166,17 +172,17 @@
 }
 
 .search:hover {
-  background-color: #f9f1f1;
+  background-color: #d3d3d3;
 }
 
 
 .search {
   border: 2px solid grey;
   height: 30px;
-  width: 80%;
+  width: 50%;
   padding: 3px 20px 2px 8px;
   outline: 0;
-  background-color: #beb9b9;
+  background-color: #f9f1f1;
 }
 .simage {
   position: relative;

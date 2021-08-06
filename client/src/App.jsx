@@ -7,6 +7,7 @@ import StarsForm from './Components/Shared/StarsForm';
 import StarsDisplay from './Components/Shared/StarsDisplay';
 import RatingsReviews from './Components/Ratings-Reviews/RatingsReviews';
 import {postInteractions} from '../Controllers/general.js';
+import NavBar from './Components/NavBar.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -49,6 +50,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        {/* <NavBar/> */}
         <Overview handleInteraction={this.handleInteraction} product={this.state.product} />
         <RelatedOutfit handleInteraction={this.handleInteraction} product={this.state.product}
           appClick={this.clickHandler}/>

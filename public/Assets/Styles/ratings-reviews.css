@@ -116,9 +116,13 @@
 }
 .rating-reviews-button-form {
   margin-right: 2%;
-  background-color: green;
+  /* background-color: green; */
+  background-color: darkseagreen;
   color: white;
   border: 2px solid black; /* Green */
+}
+.rating-reviews-button-form:hover {
+  background-color: rgb(26, 141, 13);
 }
 
 .rating-reviews-button-show-more{

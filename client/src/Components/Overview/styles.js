@@ -125,7 +125,7 @@ export default {
       display: "flex",
       flexDirection: "row",
       height: "400px",
-      width: "150%",
+      width: "600px",
       justifyContent: "space-between"
     },
     image: {
