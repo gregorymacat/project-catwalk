@@ -102,7 +102,6 @@ render() {
           )}
         <br></br>
       <div className="answers">
-        <span>A: </span>
         <div className="allAnswers">
           {isCollapsed ? allAnswer : answerList}
         </div>
