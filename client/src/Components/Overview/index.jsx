@@ -21,10 +21,12 @@ export default class Overview extends React.Component {
       selectedQuantity: '-',
       position: 0,
       extendView: false,
-      ratings: 3.6
+      ratings: 3.6,
+      isZoomed: false
     }
     this.addToCart = this.addToCart.bind(this)
-    this.magnify = this.magnify.bind(this)
+    this.changeZoom = this.changeZoom.bind(this)
+    // this.carouselCss = this.carouselCss.bind(this)
     this.changeThumbnail = this.changeThumbnail.bind(this)
     this.extendedView = this.extendedView.bind(this)
     this.changeQuantity = this.changeQuantity.bind(this)
@@ -146,65 +148,38 @@ export default class Overview extends React.Component {
       productInfo.style.display = "none"
     }
   }
-  magnify(imgID, zoom) {
-    var img, glass, w, h, bw;
-    img = document.getElementById(imgID);
+  changeZoom(event) {
+    // console.log("EVENT::::", event)
+    if (this.state.extendView){
+      this.setState({
+        isZoomed: true
+      }, ()=> {
+        if (this.state.isZoomed) {
+          const el = event.target
+          //check also if local name === div
+          if (el.localName === "img") {
+            el.style.backgroundPositionX = event.offsetX + "px";
+            el.style.backgroundPositionY = event.offsetY + "px";
+            el.style.transform = `translate(${event.offsetX}px, ${event.offsetY}px) scale(2.5, 2.5)`;
+          }
+          // console.log('nice')
+        }
+      })
+    } else {
+      const el = event.target
+      //check also if local name === div
+      if (el.localName === "img") {
+        el.style.backgroundPositionX = "center";
+        el.style.backgroundPositionY = "center";
+        el.style.transform = "translate(0px,0px) scale(1, 1)";
+      }
+        // el.style.backgroundImage = 'url(big-image.jpg)';
+        // el.style.backgroundSize = '500px';
+        // el.style.background = 'center';
 
-    /* Create magnifier glass: */
-    glass = document.createElement("DIV");
-    glass.setAttribute("class", "img-magnifier-glass");
-
-    /* Insert magnifier glass: */
-    img.parentElement.insertBefore(glass, img);
-
-    /* Set background properties for the magnifier glass: */
-    glass.style.backgroundImage = "url('" + img.src + "')";
-    glass.style.backgroundRepeat = "no-repeat";
-    glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
-    bw = 3;
-    w = glass.offsetWidth / 2;
-    h = glass.offsetHeight / 2;
-
-    /* Execute a function when someone moves the magnifier glass over the image: */
-    glass.addEventListener("mousemove", moveMagnifier);
-    img.addEventListener("mousemove", moveMagnifier);
-
-    /*and also for touch screens:*/
-    glass.addEventListener("touchmove", moveMagnifier);
-    img.addEventListener("touchmove", moveMagnifier);
-    moveMagnifier = (e) => {
-      var pos, x, y;
-      /* Prevent any other actions that may occur when moving over the image */
-      e.preventDefault();
-      /* Get the cursor's x and y positions: */
-      pos = getCursorPos(e);
-      x = pos.x;
-      y = pos.y;
-      /* Prevent the magnifier glass from being positioned outside the image: */
-      if (x > img.width - (w / zoom)) {x = img.width - (w / zoom);}
-      if (x < w / zoom) {x = w / zoom;}
-      if (y > img.height - (h / zoom)) {y = img.height - (h / zoom);}
-      if (y < h / zoom) {y = h / zoom;}
-      /* Set the position of the magnifier glass: */
-      glass.style.left = (x - w) + "px";
-      glass.style.top = (y - h) + "px";
-      /* Display what the magnifier glass "sees": */
-      glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
+      }
     }
-    getCursorPos = (e) => {
-      var a, x = 0, y = 0;
-      e = e || window.event;
-      /* Get the x and y positions of the image: */
-      a = img.getBoundingClientRect();
-      /* Calculate the cursor's x and y coordinates, relative to the image: */
-      x = e.pageX - a.left;
-      y = e.pageY - a.top;
-      /* Consider any page scrolling: */
-      x = x - window.pageXOffset;
-      y = y - window.pageYOffset;
-      return {x : x, y : y};
-  }
-}
+
   render() {
     var inventory = this.state.selectedStyle.skus ? Object.values(this.state.selectedStyle.skus) : []
     const sizeQuantity = Array.from(Array(this.getSizeQuantity(inventory)).keys()).slice(0, 16)
@@ -222,7 +197,7 @@ export default class Overview extends React.Component {
                 this.state.selectedStyle.photos &&
                 (
                   <div style={styles.carouselContainer}>
-                    {/* additional photos */}
+                    {/*additional photos */}
                     <div style={styles.extraPhotos}>
                       {this.state.selectedStyle.photos.map((photo, index) => {
                         return (
@@ -239,12 +214,16 @@ export default class Overview extends React.Component {
                       })}
                     </div>
                     {/* selected photo */}
-                    <div style={styles.carousel}>
-                      <Carousel
+                    <div style={styles.carousel} id="Zoom">
+
+                         <div style={styles.zoomedCarousel} onMouseMove={() => this.changeZoom(event)}
+                         >
+                           <Carousel
                         styles={styles.carouselOverrides}
                         items={this.state.selectedStyle.photos}
                         position={this.state.position}
                          />
+                        </div>
                       <img style={styles.toggle} src={'/Assets/toggle.png'} onClick={() => this.extendedView(event)}  ></img>
                     </div>
                     {/* <img></img> */}
@@ -302,7 +281,7 @@ export default class Overview extends React.Component {
                     <button style={styles.addToCartButton} onClick={this.addToCart}>
                       Add To Bag
                     </button>
-                    }
+                   }
                     <div style={{textAlign: "left", marginTop: "10px"}}className="sharethis-inline-share-buttons"></div>
                   {/* <div className="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" className="fb-xfbml-parse-ignore">Share</a></div>
                   <a className="twitter-share-button"

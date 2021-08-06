@@ -7,12 +7,12 @@ export default {
     // fontFamily: "Montserrat sans-serif"
   },
   toggle: {
-    position: "relative",
+    position: "absolute",
     width: "auto",
     height: "40px",
     overflow: "hidden",
     WebkitTapHighlightColor: "transparent",
-    cursor: "default"
+    cursor: 'url(https://img.icons8.com/material-outlined/24/000000/plus--v1.png), zoom-in'
   },
   addToCartButton: {
     width: '250px',
@@ -26,6 +26,11 @@ export default {
   errorMsg: {
     color: "red",
     padding: "0px",
+  },
+  zoomView: {
+    height: "600px",
+    width: "600px",
+    position: "center"
   },
   addedToCart: {
     width: '250px',
@@ -126,12 +131,22 @@ export default {
     image: {
       height: "250px",
       width: "95%",
+      background: "center"
     },
     rightArrow: {
     },
     leftArrow: {
     }
   },
+  zoomedCarousel: {
+    width: '300px',
+    height: '300px',
+    border: '1px solid white',
+    backgroundImage: 'url(big-image.jpg)',
+    backgroundSize: '500px',
+    background: 'center',
+    cursor: 'url(https://img.icons8.com/material-outlined/24/000000/plus--v1.png), zoom-in',
+  }
 //   imgMagnifierContainer: {
 //     position: "relative"
 //   },

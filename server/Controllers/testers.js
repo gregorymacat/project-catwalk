@@ -1,5 +1,5 @@
 var axios = require('axios');
-const testUrl = 'http://localhost:8080/';
+const testUrl = 'http://localhost:3000/';
 
 var testGet = function(route, callback){
   axios.get(testUrl)
