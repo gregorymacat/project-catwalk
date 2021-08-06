@@ -1,3 +1,20 @@
+#main {
+  margin-bottom: 8%;
+}
+
+#text-body, #quest-text {
+    height: 80px !important;
+    width: 400px;
+}
+
+#email, #name-answer, #name-quest {
+  width: 350px;
+}
+
+.questionsanswers {
+  padding-left: 12.5%;
+}
+
 .title-question, .title-answers {
   font-size: 17px;
   text-align: center;
@@ -116,6 +133,25 @@
   margin: 4px 2px;
   cursor: pointer;
   width: 200px;
+}
+
+.modalButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.answerModeSubmit, .questModeSubmit {
+  background-color: rgb(26, 141, 13);
+  border: 2px solid rgb(52, 51, 51);
+  color: rgb(255, 255, 255);
+  padding: 15px 32px;
+  font-size: 16px;
+  margin: 4px 2px;
+}
+
+.answerModeSubmit:hover, .questModeSubmit:hover {
+  background-color: rgb(43, 215, 23);
 }
 
 .big-green-button:hover {

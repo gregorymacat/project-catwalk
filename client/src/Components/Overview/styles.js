@@ -60,7 +60,7 @@ export default {
   carousel: {
     display: "flex",
     justifyContent: "space-evenly center",
-    width: "700px",
+    width: "700px"
   },
   extraPhotos: {
     display: "flex",
