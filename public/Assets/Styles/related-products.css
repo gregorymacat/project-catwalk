@@ -1,0 +1,109 @@
+.related {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 5px;
+  width: 85%;
+  height: 10%;
+}
+.related.title {
+  display: inline;
+  margin: 0 0 0 5%;
+}
+/*
+************************
+** MODAL TABLE STYLES **
+************************
+*/
+.related .modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4% 0;
+}
+.modal-content.table {
+  width: 50%;
+  height: 85%;
+}
+.table {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.table #close {
+  margin: 0.5% 98%;
+}
+.table #close:hover {
+  color: rgba(207, 8, 8, 0.842);
+}
+.table table {
+  margin: 2% auto;
+  width: 80%;
+  height: 80%;
+}
+.table table, thead, td {
+  border: 2px solid #ddd;
+  border-collapse: collapse;
+  text-align: center;
+}
+.table thead, td {
+  padding: 4px;
+}
+/*
+*********************
+** CAROUSEL STYLES **
+*********************
+*/
+.carousel.right {
+  margin-left: -25%;
+}
+.carousel.container.cards {
+  width: 90vw;
+  border: 0px;
+  /* background-color: aquamarine; */
+}
+.carousel.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+  min-width: 15vw;
+  margin: 0.75% 1%;
+  background-color: #d3d3d3;
+}
+/*
+*****************
+** CARD STYLES **
+*****************
+*/
+.product-card .card-interaction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.product-card .action {
+  padding: 2% 0 0 88%;
+}
+.product-card img {
+  /* margin: 0 6%;
+  width: 150px;
+  height: 112.5px; */
+  width: 150px;
+  height: 150px;
+  border: 1px solid;
+  overflow: hidden;
+}
+.product-card b, .product-card p {
+  display: block;
+  text-align: center;
+}
+.product-card .stars-display {
+  display: flex;
+  justify-content: center;
+}
+.action:hover {
+  color: cyan;
+}
