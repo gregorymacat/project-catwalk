@@ -13,6 +13,7 @@ body {
 }
 nav.navbar {
   background-color: #d3d3d3;
+  border-bottom: 1px solid black;
   text-align: center;
 }
 nav.navbar h1 {

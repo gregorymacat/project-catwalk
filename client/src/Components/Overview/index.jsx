@@ -192,7 +192,8 @@ export default class Overview extends React.Component {
             flex direction set to "row" to read from left to right, carousel and info each taking 50% width
           */}
           <div style={styles.row}>
-              <div style={styles.carouselContainer}>
+              {/* <div style={styles.carouselContainer}> */}
+              <div style={{height: "425px"}}>
               {
                 this.state.selectedStyle.photos &&
                 (
@@ -238,6 +239,7 @@ export default class Overview extends React.Component {
               </div>
               <p>{this.state.product.category}</p>
               <h1>{this.state.product.name}</h1>
+              {this.state.selectedStyle.sale_price && <p style={{textDecoration: "line-through"}}>${this.state.selectedStyle.original_price || this.state.product.default_price}</p>}
               {this.state.selectedStyle.sale_price && <p style={{color: 'red'}}>${this.state.selectedStyle.sale_price}</p>}
               {!this.state.selectedStyle.sale_price && <p>${this.state.selectedStyle.original_price || this.state.product.default_price}</p>}
               <div style={styles.productStyle}>
@@ -297,7 +299,8 @@ export default class Overview extends React.Component {
           {/*
             second row "section" includes slogan, description, related items etc
           */}
-          <div style={styles.row}>
+          {/* <div style={styles.row}> */}
+          <div>
             <div style={styles.productDetails}>
               <h1>{this.state.product.slogan}</h1>
               <p>{this.state.product.description}</p>

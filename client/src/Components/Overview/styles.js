@@ -1,9 +1,9 @@
 export default {
   overview: {
-    display: "flex",
+    // display: "flex",
     backgroundColor: "white",
-    height: "100vh",
-    flexDirection: "column",
+    // height: "100vh",
+    // flexDirection: "column",
     // fontFamily: "Montserrat sans-serif"
   },
   toggle: {
@@ -45,7 +45,8 @@ export default {
   },
   row: {
     display: "flex",
-    flexDirection: "row"
+    flexDirection: "row",
+    justifyContent: "space-evenly"
   },
   rating:{
 
@@ -91,8 +92,8 @@ export default {
   },
   productInfo: {
     padding: "20px",
-    width: "50%",
-    display: "block"
+    width: "40%",
+    // display: "block"
   },
   productStyle: {
     display: "flex",
@@ -118,7 +119,8 @@ export default {
     margin: "10px"
   },
   productDetails: {
-    margin: "20px"
+    margin: "20px",
+    marginBottom: "8%"
   },
   carouselOverrides: {
     container: {
@@ -129,8 +131,8 @@ export default {
       justifyContent: "space-between"
     },
     image: {
-      height: "250px",
-      width: "95%",
+      height: "350px",
+      width: "300px",
       background: "center"
     },
     rightArrow: {
