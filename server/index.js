@@ -1,8 +1,13 @@
-onst express = require('express');
+const express = require('express');
+const logger = require('morgan');
+const router = require('./routers.js');
 const app = express();
 
 app.use(express.static('public'));
 app.use(express.json())
-const port = 8080;
+const port = 3000;
 
-app.listen(port, () => console.log(`Server is listening on port: ${port}`));
+app.use(router);
+app.use(logger('dev'));
+
+app.listen(port, () => console.log(`Server is listening at http://localhost:${port}`));
