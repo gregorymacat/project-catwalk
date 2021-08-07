@@ -63,7 +63,7 @@ var getComparison = (firstFeatures, secondFeatures) => {
   })
 
   comparison.forEach((values, feature) => {
-    if (values[0] !== null && values[1] !== null) {
+    if (values[0] !== null || values[1] !== null) {
       tableData.push(
         <tr>
           <td><p>{values[0]}</p></td>
