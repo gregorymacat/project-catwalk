@@ -63,13 +63,15 @@ var getComparison = (firstFeatures, secondFeatures) => {
   })
 
   comparison.forEach((values, feature) => {
-    tableData.push(
-      <tr>
-        <td><p>{values[0]}</p></td>
-        <td><p>{feature}</p></td>
-        <td><p>{values[1]}</p></td>
-      </tr>
-    )
+    if (values[0] !== null && values[1] !== null) {
+      tableData.push(
+        <tr>
+          <td><p>{values[0]}</p></td>
+          <td><p>{feature}</p></td>
+          <td><p>{values[1]}</p></td>
+        </tr>
+      )
+    }
   })
   return tableData;
 }
